@@ -3,15 +3,20 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>core</artifactId>
+    <artifactId>application</artifactId>
+    <packaging>pom</packaging>
     <version>1.0</version>
-    <name>core</name>
+    <name>application</name>
 
     <parent>
         <artifactId>Avtolavka</artifactId>
         <groupId>kz.attractor</groupId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
+
+    <modules>
+        <module>api</module>
+    </modules>
 
     <properties>
         <maven.compiler.source>11</maven.compiler.source>
