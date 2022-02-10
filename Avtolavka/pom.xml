@@ -12,6 +12,7 @@
     <modules>
         <module>application</module>
         <module>core</module>
+        <module>manager</module>
     </modules>
 
     <parent>

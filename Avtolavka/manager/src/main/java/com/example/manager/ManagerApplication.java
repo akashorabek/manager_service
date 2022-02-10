@@ -1,13 +1,13 @@
-package com.example.meneger;
+package com.example.manager;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class MenagerApplication {
+public class ManagerApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(MenagerApplication.class, args);
+        SpringApplication.run(ManagerApplication.class, args);
     }
 
 }
