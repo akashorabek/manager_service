@@ -13,4 +13,8 @@ public class ProductService {
     public Iterable<Product> findAll() {
         return repository.findAll();
     }
+
+    public Iterable<Product> findAllByName(String name) {
+        return repository.findAllByName(name);
+    }
 }

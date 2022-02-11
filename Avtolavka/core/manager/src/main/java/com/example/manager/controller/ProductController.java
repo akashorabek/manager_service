@@ -15,4 +15,5 @@ public class ProductController {
         service.findAll().forEach(System.out::println);
         return "index";
     }
+
 }
