@@ -7,6 +7,10 @@
     <version>1.0</version>
     <name>core</name>
 
+    <modules>
+        <module>manager</module>
+    </modules>
+
     <parent>
         <artifactId>Avtolavka</artifactId>
         <groupId>kz.attractor</groupId>
