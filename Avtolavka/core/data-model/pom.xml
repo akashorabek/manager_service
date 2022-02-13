@@ -8,11 +8,11 @@
         <version>2.6.3</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>com.example</groupId>
-    <artifactId>manager</artifactId>
+    <groupId>data-model</groupId>
+    <artifactId>data-model</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>manager</name>
-    <description>manager</description>
+    <name>data-model</name>
+    <description>data-model</description>
     <properties>
         <java.version>11</java.version>
     </properties>
@@ -28,10 +28,6 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.flywaydb</groupId>
-            <artifactId>flyway-core</artifactId>
         </dependency>
 
         <dependency>

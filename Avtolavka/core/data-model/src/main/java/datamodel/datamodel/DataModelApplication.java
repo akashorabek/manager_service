@@ -1,13 +1,13 @@
-package com.example.manager;
+package datamodel.datamodel;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class ManagerApplication {
+public class DataModelApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(ManagerApplication.class, args);
+        SpringApplication.run(DataModelApplication.class, args);
     }
 
 }
