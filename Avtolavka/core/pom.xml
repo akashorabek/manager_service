@@ -8,7 +8,7 @@
     <name>core</name>
 
     <modules>
-        <module>manager</module>
+        <module>data-model</module>
     </modules>
 
     <parent>
