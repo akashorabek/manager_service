@@ -1,4 +1,4 @@
-package datamodel.datamodel.model;
+package kz.attractor.datamodel.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -14,7 +14,7 @@ import javax.persistence.*;
 public class ClientStatus {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
     @Column(name = "status", length = 50)
     private String status;

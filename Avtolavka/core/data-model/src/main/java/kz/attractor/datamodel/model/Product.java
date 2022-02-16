@@ -1,4 +1,4 @@
-package com.example.manager.model;
+package kz.attractor.datamodel.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

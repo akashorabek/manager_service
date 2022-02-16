@@ -1,9 +1,9 @@
-package datamodel.datamodel.util;
+package kz.attractor.datamodel.util;
 
-import datamodel.datamodel.model.Client;
-import datamodel.datamodel.model.ClientStatus;
-import datamodel.datamodel.repository.ClientRepository;
-import datamodel.datamodel.repository.ClientStatusRepository;
+import kz.attractor.datamodel.model.Client;
+import kz.attractor.datamodel.model.ClientStatus;
+import kz.attractor.datamodel.repository.ClientRepository;
+import kz.attractor.datamodel.repository.ClientStatusRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
@@ -37,8 +37,8 @@ public class DataInit {
 
     private ClientStatus[] clientStatuses() {
         return new ClientStatus[]{
-                new ClientStatus(1, "Новый"),
-                new ClientStatus(2, "Постоянный")
+                new ClientStatus(1L, "Новый"),
+                new ClientStatus(2L, "Постоянный")
         };
     }
 
@@ -51,14 +51,14 @@ public class DataInit {
     private Client[] clients() {
         List<ClientStatus> statuses = clientStatusRepository.findAll();
         return new Client[]{
-                new Client(1,
+                new Client(1L,
                         "Тест клиент новый",
                         "ск ном 1",
                         "Almaty",
                         "777",
                         "test1@gmail.com",
                         statuses.get(0)),
-                new Client(2,
+                new Client(2L,
                         "Тест клиент постоянный",
                         "ск ном 2",
                         "Boston",
