@@ -1,6 +1,6 @@
 package kz.attractor.api.dto;
 
-import datamodel.datamodel.model.Client;
+import kz.attractor.datamodel.model.Client;
 import lombok.Builder;
 import lombok.Data;
 

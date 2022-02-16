@@ -1,7 +1,7 @@
-package com.example.manager.service;
+package kz.attractor.api.service;
 
-import com.example.manager.model.Product;
-import com.example.manager.repository.ProductRepository;
+import kz.attractor.datamodel.model.Product;
+import kz.attractor.datamodel.repository.ProductRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -15,6 +15,7 @@ public class ProductService {
     }
 
     public Iterable<Product> findAllByName(String name) {
-        return repository.findAllByName(name);
+//        return repository.findAllByName(name);
+        return null;
     }
 }

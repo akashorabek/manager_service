@@ -1,20 +1,19 @@
 package kz.attractor.api.service;
 
-import datamodel.datamodel.model.Client;
-import datamodel.datamodel.repository.ClientRepository;
+import kz.attractor.datamodel.model.Client;
+import kz.attractor.datamodel.repository.ClientRepository;
 import kz.attractor.api.dto.ClientDto;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
+
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-@AllArgsConstructor
-@NoArgsConstructor
+@RequiredArgsConstructor
 public class ClientService {
-    private ClientRepository clientRepository;
+    private final ClientRepository clientRepository;
 
     public List<ClientDto> findAll() {
         List<Client> clients = clientRepository.findAll();

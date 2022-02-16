@@ -1,6 +1,6 @@
-package com.example.manager.controller;
+package kz.attractor.api.controller;
 
-import com.example.manager.service.ProductService;
+import kz.attractor.api.service.ProductService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
