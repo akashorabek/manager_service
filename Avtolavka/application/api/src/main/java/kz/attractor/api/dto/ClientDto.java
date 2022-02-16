@@ -13,15 +13,15 @@ public class ClientDto {
     private String email;
     private String status;
 
-//    public static ClientDto from(Client client) {
-//        return ClientDto.builder()
-//                .id(client.getId())
-//                .name(client.getName())
-//                .accountNumber(client.getAccountNumber())
-//                .address(client.getAddress())
-//                .phone(client.getPhone())
-//                .email(client.getEmail())
-//                .status(client.getStatus().getStatus())
-//                .build();
-//    }
+    public static ClientDto from(Client client) {
+       return ClientDto.builder()
+               .id(client.getId())
+              .name(client.getName())
+              .accountNumber(client.getAccountNumber())
+              .address(client.getAddress())
+              .phone(client.getPhone())
+               .email(client.getEmail())
+              .status(client.getStatus().getStatus())
+             .build();
+    }
 }

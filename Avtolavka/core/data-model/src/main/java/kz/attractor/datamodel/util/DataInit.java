@@ -64,7 +64,28 @@ public class DataInit {
                         "Boston",
                         "555",
                         "test2@gmail.com",
-                        statuses.get(1))
+                        statuses.get(1)),
+                new Client(3L,
+                        "Тест клиент новый",
+                        "ск ном 3",
+                        "Shymkent",
+                        "888",
+                        "test3@gmail.com",
+                        statuses.get(0)),
+                new Client(4L,
+                        "Тест клиент новый",
+                        "ск ном 4",
+                        "Saint-Peterburg",
+                        "999",
+                        "test4@gmail.com",
+                        statuses.get(0)),
+                new Client(5L,
+                        "Тест клиент новый",
+                        "ск ном 5",
+                        "Nur-Sultan",
+                        "444",
+                        "test5@gmail.com",
+                        statuses.get(0))
         };
     }
 }
