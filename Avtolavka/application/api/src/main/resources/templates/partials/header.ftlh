@@ -16,19 +16,35 @@
         </#list>
     </head>
     <body>
+
     <header class="header">
-        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-            <div class="container container-fluid">
-                <a class="d-flex justify-content-around navbar-brand" href="#">Avtolavka</a>
-                <div class="d-flex justify-content-end collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav">
+        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">Avtolavka</a>
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <ul class="navbar-nav me-auto mb-2 mb-md-0">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="/">Home</a>
+                            <a class="nav-link active" href="/">Главная</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" href="/clients">Клиенты</a>
+                            <a class="nav-link" href="#">Заявки (КП)</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/clients">Клиенты</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Товары</a>
                         </li>
                     </ul>
+                    <form class="d-flex">
+                        <label>
+                        <input class="form-control me-2" type="search" placeholder="Найти">
+                        </label>
+                        <button class="btn btn-outline-success" type="submit" aria-label="Search">Найти</button>
+                        <button type="submit" class="btn btn-outline-success btn-sm">
+                            <span class="glyphicon glyphicon-log-out">Выйти</span>
+                        </button>
+                    </form>
                 </div>
             </div>
         </nav>
