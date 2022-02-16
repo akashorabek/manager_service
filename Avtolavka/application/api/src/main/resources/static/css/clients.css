@@ -1,0 +1,23 @@
+.as-button {
+    text-transform: uppercase;
+    text-decoration: none;
+    background-color: #007bff;
+    color: white;
+    padding: 10px;
+    margin: 5px;
+    font-size: 11px;
+}
+
+.as-button:hover {
+    color: white;
+}
+
+table {
+    border-collapse: collapse;
+    border: 1px solid grey;
+}
+
+th, td {
+    border: 1px solid grey;
+    padding: 5px;
+}

@@ -16,8 +16,8 @@ public class ClientController {
 
     @GetMapping("/clients")
     public String showClientsPage(Model model) {
-        List<ClientDto> clients = clientService.findAll();
-        model.addAttribute("clients", clients);
+        //List<ClientDto> clients = clientService.findAll();
+        //model.addAttribute("clients", clients);
         return "clients";
     }
 }
