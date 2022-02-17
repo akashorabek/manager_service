@@ -2,8 +2,10 @@ package kz.attractor.datamodel.util;
 
 import kz.attractor.datamodel.model.Client;
 import kz.attractor.datamodel.model.ClientStatus;
+import kz.attractor.datamodel.model.Supplier;
 import kz.attractor.datamodel.repository.ClientRepository;
 import kz.attractor.datamodel.repository.ClientStatusRepository;
+import kz.attractor.datamodel.repository.SupplierRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
@@ -17,12 +19,14 @@ import java.util.stream.Stream;
 public class DataInit {
     private final ClientStatusRepository clientStatusRepository;
     private final ClientRepository clientRepository;
+    private final SupplierRepository supplierRepository;
 
     @Bean
     public CommandLineRunner init() {
         try {
             initClientStatuses().run();
             initClients().run();
+            initSuppliers().run();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -46,6 +50,12 @@ public class DataInit {
         return (args) -> Stream.of(clients())
                 .peek(System.out::println)
                 .forEach(clientRepository::save);
+    }
+
+    private CommandLineRunner initSuppliers() {
+        return (args) -> Stream.of(suppliers())
+                .peek(System.out::println)
+                .forEach(supplierRepository::save);
     }
 
     private Client[] clients() {
@@ -86,6 +96,32 @@ public class DataInit {
                         "444",
                         "test5@gmail.com",
                         statuses.get(0))
+        };
+    }
+
+    private Supplier[] suppliers() {
+        return new Supplier[]{
+                new Supplier(1L,
+                        "Company",
+                        "Тестов Тест Тестович",
+                        "test@mail.ru",
+                        "14"),
+                new Supplier(2L,
+                        "Company2",
+                        "Поставщик Поставкович",
+                        "supply@mail.ru",
+                        "30"),
+                new Supplier(3L,
+                        "Company3",
+                        "Peter Parker",
+                        "spiderman@mail.ru",
+                        "7"),
+                new Supplier(4L,
+                        "Company4",
+                        "Naruto Uzumaki",
+                        "saske@mail.ru",
+                        "8")
+
         };
     }
 }

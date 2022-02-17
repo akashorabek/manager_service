@@ -7,7 +7,8 @@ import javax.persistence.*;
 @Entity
 @Getter
 @Setter
-@RequiredArgsConstructor
+@NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "suppliers")
 public class Supplier {
     @Id
@@ -15,7 +16,7 @@ public class Supplier {
     private Long id;
     @Column(name = "name")
     private String name;
-    @Column(name = "partnerName")
+    @Column(name = "partner")
     private String partnerName;
     @Column(name = "email")
     private String email;
