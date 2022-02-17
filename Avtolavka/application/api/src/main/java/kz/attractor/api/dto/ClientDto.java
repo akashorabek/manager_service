@@ -2,7 +2,11 @@ package kz.attractor.api.dto;
 
 import kz.attractor.datamodel.model.Client;
 import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
 
+@Getter
+@Setter
 @Builder
 public class ClientDto {
     private long id;
