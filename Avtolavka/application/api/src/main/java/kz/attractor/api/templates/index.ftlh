@@ -39,9 +39,8 @@
                 <form>
                     <select required>
                         <option value="" hidden>Выбрать</option>
-                        <option>По наименованию</option>
-                        <option>По уникальному номеру</option>
-                        <option>По цене</option>
+                        <option>По индексу</option>
+                        <option>Пропустить</option>
                     </select>
                     <input type="submit" value="Отправить">
                 </form>
