@@ -5,27 +5,42 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
+import javax.validation.constraints.NotBlank;
+
 @Getter
 @Setter
 @Builder
 public class ClientDto {
     private long id;
+
+    @NotBlank(message = "Поле не должно быть пустым")
     private String name;
+
+    @NotBlank(message = "Поле не должно быть пустым")
     private String accountNumber;
+
+    @NotBlank(message = "Поле не должно быть пустым")
     private String address;
+
+    @NotBlank(message = "Поле не должно быть пустым")
     private String phone;
+
+    @NotBlank(message = "Поле не должно быть пустым")
     private String email;
+
     private String status;
+    private long statusId;
 
     public static ClientDto from(Client client) {
-       return ClientDto.builder()
-               .id(client.getId())
-              .name(client.getName())
-              .accountNumber(client.getAccountNumber())
-              .address(client.getAddress())
-              .phone(client.getPhone())
-               .email(client.getEmail())
-              .status(client.getStatus().getStatus())
-             .build();
+        return ClientDto.builder()
+                .id(client.getId())
+                .name(client.getName())
+                .accountNumber(client.getAccountNumber())
+                .address(client.getAddress())
+                .phone(client.getPhone())
+                .email(client.getEmail())
+                .status(client.getStatus().getStatus())
+                .statusId(client.getStatus().getId())
+                .build();
     }
 }
