@@ -19,4 +19,19 @@ public class SupplierService {
                 .map(SupplierDto::from)
                 .collect(Collectors.toList());
     }
+
+    public String create(String name, String email, String partner, String shipment){
+        var supplier = Supplier.builder()
+                .name(name)
+                .email(email)
+                .partnerName(partner)
+                .shipment(shipment)
+                .build();
+
+        repository.save(supplier);
+
+        return "redirect:/suppliers";
+    }
+
+
 }
