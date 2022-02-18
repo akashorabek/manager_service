@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 
 @Getter
 @Setter
@@ -18,15 +19,17 @@ public class Product {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+    @Column(name = "name")
     private String name;
 
+    @Column(name = "quantity")
     private int quantity;
 
     @Column(name = "purchase_price")
-    private double purchasePrice;
+    private BigDecimal purchasePrice;
 
     @Column(name = "selling_price")
-    private double sellingPrice;
+    private BigDecimal sellingPrice;
 
     @Column(name = "in_stock")
     private boolean inStock;

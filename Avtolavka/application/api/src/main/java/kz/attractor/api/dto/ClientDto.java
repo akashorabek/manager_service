@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Getter
+@Setter
 @Builder
 public class ClientDto {
     private long id;
