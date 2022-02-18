@@ -11,6 +11,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.stream.Stream;
 
@@ -64,32 +65,32 @@ public class DataInit {
                 new Product(1,
                         "ВТУЛКА КОЛЕНВАЛА",
                         10,
-                        3312,
-                        5378.7,
+                        new BigDecimal(3312),
+                        new BigDecimal(5378.7),
                         true),
                 new Product(2,
                         "Втулка коленчатого вала без шпон. паза 406.1005038-11 100504",
                         10,
-                        1580,
-                        2565.92,
+                        new BigDecimal(1580),
+                        new BigDecimal(2565.92),
                         true),
                 new Product(3,
                         "Адаптер для дрели М14",
                         10,
-                        406,
-                        659.34,
+                        new BigDecimal(406),
+                        new BigDecimal(659.34),
                         true),
                 new Product(4,
                         "Масло Газпромнефть Супер 10W40 SG/CD 5л.",
                         10,
-                        4679,
-                        7598.7,
+                        new BigDecimal(4679),
+                        new BigDecimal(7598.7),
                         true),
                 new Product(5,
                         "ET-912-YE",
                         10,
-                        173,
-                        280.95,
+                        new BigDecimal(173),
+                        new BigDecimal(280.95),
                         true)
         };
     }
