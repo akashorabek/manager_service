@@ -37,11 +37,13 @@
         <div class="title-control">
             <div class="sort">
                 <form>
-                    <select required>
-                        <option value="" hidden>Выбрать</option>
-                        <option>По индексу</option>
-                        <option>Пропустить</option>
-                    </select>
+                    <label for="select_view">
+                        <select name="view" id="select_view" required>
+                            <option value="" hidden>Выбрать</option>
+                            <option>По индексу</option>
+                            <option>Пропустить</option>
+                        </select>
+                    </label>
                     <input type="submit" value="Отправить">
                 </form>
             </div>
@@ -132,10 +134,10 @@
         </p>
         <h3 class="section-title text-default" style="visibility: visible;">Наши контакты: </h3>
         <div class="contact__phone">
-            <p class="font-default-bold">+7 (707) 582 50 70</p>
+            <p class="font-default-bold">+7 (707) 617 22 94</p>
         </div>
         <div class="contact__email">
-            <p class="font-default-bold">Email: </p>
+            <p class="font-default-bold">Email: example@mail.ru</p>
             <p class="font-default-bold">web@auto-lavka.kz</p>
         </div>
     </div>

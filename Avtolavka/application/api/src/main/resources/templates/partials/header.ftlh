@@ -27,7 +27,7 @@
                             <a class="nav-link active" href="/">Главная</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Заявки (КП)</a>
+                            <a class="nav-link" href="/orders">Заявки (КП)</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="/clients">Клиенты</a>
