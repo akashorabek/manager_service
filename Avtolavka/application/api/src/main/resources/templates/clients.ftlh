@@ -9,6 +9,7 @@
         <a class="as-button rounded-2" href="/orders/add">Создать КП</a>
         <a class="as-button rounded-2" href="/prices/send">Отправить прайс</a>
         <br>
+        <br>
         <table class="mt-3">
             <tr>
                 <th>Id клиента</th>
@@ -17,15 +18,19 @@
                 <th>Адрес</th>
                 <th>Телефон</th>
                 <th>E-mail</th>
+                <th>Статус</th>
             </tr>
             <#list clients as client>
                 <tr>
                     <td>${client.id}</td>
-                    <td>${client.name}</td>
+                    <td>
+                        <a href="/clients/${client.id}">${client.name}</a>
+                    </td>
                     <td>${client.accountNumber}</td>
                     <td>${client.address}</td>
                     <td>${client.phone}</td>
                     <td>${client.email}</td>
+                    <td>${client.status}</td>
                 </tr>
             </#list>
         </table>
