@@ -6,11 +6,14 @@ import kz.attractor.datamodel.model.Supplier;
 import kz.attractor.datamodel.repository.ClientRepository;
 import kz.attractor.datamodel.repository.ClientStatusRepository;
 import kz.attractor.datamodel.repository.SupplierRepository;
+import kz.attractor.datamodel.model.Product;
+import kz.attractor.datamodel.repository.ProductRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.stream.Stream;
 
@@ -20,6 +23,7 @@ public class DataInit {
     private final ClientStatusRepository clientStatusRepository;
     private final ClientRepository clientRepository;
     private final SupplierRepository supplierRepository;
+    private final ProductRepository productRepository;
 
     @Bean
     public CommandLineRunner init() {
@@ -27,6 +31,7 @@ public class DataInit {
             initClientStatuses().run();
             initClients().run();
             initSuppliers().run();
+            initProducts().run();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -46,6 +51,12 @@ public class DataInit {
         };
     }
 
+    private CommandLineRunner initProducts() {
+        return (args -> Stream.of(products())
+                .peek(System.out::println)
+                .forEach(productRepository::save));
+    }
+
     private CommandLineRunner initClients() {
         return (args) -> Stream.of(clients())
                 .peek(System.out::println)
@@ -56,6 +67,42 @@ public class DataInit {
         return (args) -> Stream.of(suppliers())
                 .peek(System.out::println)
                 .forEach(supplierRepository::save);
+    }
+
+    private Product[] products() {
+        List<Product> product = productRepository.findAll();
+        return new Product[]{
+                new Product(1,
+                        "ВТУЛКА КОЛЕНВАЛА",
+                        10,
+                        new BigDecimal(3312),
+                        new BigDecimal(5378.7),
+                        true),
+                new Product(2,
+                        "Втулка коленчатого вала без шпон. паза 406.1005038-11 100504",
+                        10,
+                        new BigDecimal(1580),
+                        new BigDecimal(2565.92),
+                        true),
+                new Product(3,
+                        "Адаптер для дрели М14",
+                        10,
+                        new BigDecimal(406),
+                        new BigDecimal(659.34),
+                        true),
+                new Product(4,
+                        "Масло Газпромнефть Супер 10W40 SG/CD 5л.",
+                        10,
+                        new BigDecimal(4679),
+                        new BigDecimal(7598.7),
+                        true),
+                new Product(5,
+                        "ET-912-YE",
+                        10,
+                        new BigDecimal(173),
+                        new BigDecimal(280.95),
+                        true)
+        };
     }
 
     private Client[] clients() {
