@@ -1,19 +1,14 @@
 package kz.attractor.datamodel.util;
 
-import kz.attractor.datamodel.model.Client;
-import kz.attractor.datamodel.model.ClientStatus;
-import kz.attractor.datamodel.model.Supplier;
-import kz.attractor.datamodel.repository.ClientRepository;
-import kz.attractor.datamodel.repository.ClientStatusRepository;
-import kz.attractor.datamodel.repository.SupplierRepository;
-import kz.attractor.datamodel.model.Product;
-import kz.attractor.datamodel.repository.ProductRepository;
+import kz.attractor.datamodel.model.*;
+import kz.attractor.datamodel.repository.*;
 import lombok.AllArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Stream;
 
@@ -24,6 +19,8 @@ public class DataInit {
     private final ClientRepository clientRepository;
     private final SupplierRepository supplierRepository;
     private final ProductRepository productRepository;
+    private final OrderRepository orderRepository;
+    private final OrderProductsRepository orderProductsRepository;
 
     @Bean
     public CommandLineRunner init() {
@@ -32,6 +29,8 @@ public class DataInit {
             initClients().run();
             initSuppliers().run();
             initProducts().run();
+            initOrders().run();
+            initOrdersProducts().run();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -69,6 +68,18 @@ public class DataInit {
                 .forEach(supplierRepository::save);
     }
 
+    private CommandLineRunner initOrders() {
+        return (args) -> Stream.of(orders())
+                .peek(System.out::println)
+                .forEach(orderRepository::save);
+    }
+
+    private CommandLineRunner initOrdersProducts() {
+        return (args) -> Stream.of(ordersProducts())
+                .peek(System.out::println)
+                .forEach(orderProductsRepository::save);
+    }
+
     private Product[] products() {
         List<Product> product = productRepository.findAll();
         return new Product[]{
@@ -102,6 +113,44 @@ public class DataInit {
                         new BigDecimal(173),
                         new BigDecimal(280.95),
                         true)
+        };
+    }
+
+    private Order[] orders() {
+        return new Order[]{
+                new Order(1L, LocalDateTime.now().minusDays(15),
+                        clientRepository.getById(1L)),
+                new Order(2L, LocalDateTime.now().minusDays(13),
+                        clientRepository.getById(1L)),
+                new Order(3L, LocalDateTime.now().minusDays(10),
+                        clientRepository.getById(2L)),
+        };
+    }
+
+    private OrderProducts[] ordersProducts() {
+        return new OrderProducts[]{
+                new OrderProducts(1L,
+                        orderRepository.getById(1L),
+                        productRepository.getById(1), 10),
+                new OrderProducts(2L,
+                        orderRepository.getById(1L),
+                        productRepository.getById(2), 2),
+                new OrderProducts(3L,
+                        orderRepository.getById(1L),
+                        productRepository.getById(3), 1),
+                new OrderProducts(4L,
+                        orderRepository.getById(1L),
+                        productRepository.getById(4), 1),
+                new OrderProducts(5L,
+                        orderRepository.getById(1L),
+                        productRepository.getById(5), 3),
+                // next order
+                new OrderProducts(6L,
+                        orderRepository.getById(2L),
+                        productRepository.getById(1), 1),
+                new OrderProducts(7L,
+                        orderRepository.getById(2L),
+                        productRepository.getById(2), 5)
         };
     }
 
