@@ -31,7 +31,6 @@ public class Client {
     @Column(name = "email")
     private String email;
 
-    @ManyToOne
-    @JoinColumn(name = "client_status_id")
+    @Column(name = "status")
     private ClientStatus status;
 }

@@ -29,7 +29,6 @@ public class ClientDto {
     private String email;
 
     private String status;
-    private long statusId;
 
     public static ClientDto from(Client client) {
         return ClientDto.builder()
@@ -39,8 +38,7 @@ public class ClientDto {
                 .address(client.getAddress())
                 .phone(client.getPhone())
                 .email(client.getEmail())
-                .status(client.getStatus().getStatus())
-                .statusId(client.getStatus().getId())
+                .status(client.getStatus().label)
                 .build();
     }
 }

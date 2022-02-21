@@ -85,17 +85,17 @@
             <div class="row mt-2">
                 <label class="flex flex-v-center">
                     <span class="label-input-text mb-1">Статус:</span>
-                    <select name="statusId">
+                    <select name="status">
                         <option value="" hidden>Выберите статус</option>
-                        <#if form.statusId==1>
-                            <option value="1" selected>Новый</option>
-                            <option value="2">Постоянный</option>
-                        <#elseif form.statusId==2>
-                            <option value="1">Новый</option>
-                            <option value="2" selected>Постоянный</option>
+                        <#if form.status=="Новый">
+                            <option value="Новый" selected>Новый</option>
+                            <option value="Постоянный">Постоянный</option>
+                        <#elseif form.status=="Постоянный">
+                            <option value="Новый">Новый</option>
+                            <option value="Постоянный" selected>Постоянный</option>
                         <#else>
-                            <option value="1">Новый</option>
-                            <option value="2">Постоянный</option>
+                            <option value="Новый">Новый</option>
+                            <option value="Постоянный">Постоянный</option>
                         </#if>
                     </select>
                 </label>
