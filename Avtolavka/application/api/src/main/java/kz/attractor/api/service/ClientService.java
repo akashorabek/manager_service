@@ -26,16 +26,12 @@ public class ClientService {
     }
 
     public ClientDto findById(long id) {
-        Optional<Client> clientOpt = clientRepository.findById(id);
-        ClientDto client = null;
-        if (clientOpt.isPresent()) {
-            client = ClientDto.from(clientOpt.get());
-        }
-        return client;
+        var client = clientRepository.findById(id).orElse(null);
+        return ClientDto.from(client);
     }
 
-    public ClientDto editClient(ClientDto form) {
-        Optional<Client> clientOpt = clientRepository.findById(form.getId());
+    public ClientDto update(ClientDto form) {
+        var clientOpt = clientRepository.findById(form.getId());
         if (clientOpt.isEmpty()) {
             return null;
         }
@@ -51,7 +47,7 @@ public class ClientService {
         return ClientDto.from(clientRepository.save(client));
     }
 
-    public void addClient(ClientDtoAdd form) {
+    public void add(ClientDtoAdd form) {
         Client client = Client.builder()
                 .name(form.getName())
                 .accountNumber(form.getAccountNumber())
