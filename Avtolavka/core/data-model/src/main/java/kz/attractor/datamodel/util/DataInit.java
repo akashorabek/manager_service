@@ -15,7 +15,6 @@ import java.util.stream.Stream;
 @Configuration
 @AllArgsConstructor
 public class DataInit {
-    private final ClientStatusRepository clientStatusRepository;
     private final ClientRepository clientRepository;
     private final SupplierRepository supplierRepository;
     private final ProductRepository productRepository;
@@ -25,7 +24,6 @@ public class DataInit {
     @Bean
     public CommandLineRunner init() {
         try {
-            initClientStatuses().run();
             initClients().run();
             initSuppliers().run();
             initProducts().run();
@@ -35,19 +33,6 @@ public class DataInit {
             e.printStackTrace();
         }
         return null;
-    }
-
-    private CommandLineRunner initClientStatuses() {
-        return (args) -> Stream.of(clientStatuses())
-                .peek(System.out::println)
-                .forEach(clientStatusRepository::save);
-    }
-
-    private ClientStatus[] clientStatuses() {
-        return new ClientStatus[]{
-                new ClientStatus(1L, "Новый"),
-                new ClientStatus(2L, "Постоянный")
-        };
     }
 
     private CommandLineRunner initProducts() {
@@ -155,7 +140,6 @@ public class DataInit {
     }
 
     private Client[] clients() {
-        List<ClientStatus> statuses = clientStatusRepository.findAll();
         return new Client[]{
                 new Client(1L,
                         "Тест клиент новый",
@@ -163,35 +147,35 @@ public class DataInit {
                         "Almaty",
                         "777",
                         "test1@gmail.com",
-                        statuses.get(0)),
+                        ClientStatus.CLIENT_NEW),
                 new Client(2L,
                         "Тест клиент постоянный",
                         "ск ном 2",
                         "Boston",
                         "555",
                         "test2@gmail.com",
-                        statuses.get(1)),
+                        ClientStatus.CLIENT_CONSTANT),
                 new Client(3L,
                         "Тест клиент новый",
                         "ск ном 3",
                         "Shymkent",
                         "888",
                         "test3@gmail.com",
-                        statuses.get(0)),
+                        ClientStatus.CLIENT_NEW),
                 new Client(4L,
                         "Тест клиент новый",
                         "ск ном 4",
                         "Saint-Peterburg",
                         "999",
                         "test4@gmail.com",
-                        statuses.get(0)),
+                        ClientStatus.CLIENT_NEW),
                 new Client(5L,
                         "Тест клиент новый",
                         "ск ном 5",
                         "Nur-Sultan",
                         "444",
                         "test5@gmail.com",
-                        statuses.get(0))
+                        ClientStatus.CLIENT_CONSTANT)
         };
     }
 

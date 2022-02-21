@@ -1,23 +1,25 @@
 package kz.attractor.datamodel.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import java.util.HashMap;
+import java.util.Map;
 
-import javax.persistence.*;
+public enum ClientStatus {
+    CLIENT_NEW("Новый"),
+    CLIENT_CONSTANT("Постоянный");
 
-@Getter
-@Setter
-@Entity
-@Table(name = "clients_statuses")
-@NoArgsConstructor
-@AllArgsConstructor
-public class ClientStatus {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    public final String label;
+    private static final Map<String, ClientStatus> BY_LABEL = new HashMap<>();
 
-    @Column(name = "status", length = 50)
-    private String status;
+    static {
+        for(ClientStatus status: values()) {
+            BY_LABEL.put(status.label, status);
+        }
+    }
+    private ClientStatus(String label) {
+        this.label = label;
+    }
+
+    public static ClientStatus valueOfLabel(String label) {
+        return BY_LABEL.get(label);
+    }
 }

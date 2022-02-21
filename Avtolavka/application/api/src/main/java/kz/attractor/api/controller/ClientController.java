@@ -21,28 +21,28 @@ public class ClientController {
     private final ClientService clientService;
 
     @GetMapping("/clients")
-    public String showClientsPage(Model model) {
+    public String showClients(Model model) {
         List<ClientDto> clients = clientService.findAll();
         model.addAttribute("clients", clients);
         return "clients";
     }
 
     @GetMapping("/clients/{id}")
-    public String showClientPage(@PathVariable long id, Model model) {
+    public String showClient(@PathVariable long id, Model model) {
         ClientDto client = clientService.findById(id);
         model.addAttribute("client", client);
         return "client";
     }
 
     @GetMapping("/clients/{id}/edit")
-    public String showClientEditPage(@PathVariable long id, Model model) {
+    public String edit(@PathVariable long id, Model model) {
         ClientDto client = clientService.findById(id);
         model.addAttribute("form", client);
         return "client-edit";
     }
 
     @PostMapping("client-edit")
-    public String editClient(@Valid ClientDto form,
+    public String edit(@Valid ClientDto form,
                              BindingResult validationResult,
                              RedirectAttributes attributes) {
         attributes.addFlashAttribute("form", form);
@@ -50,17 +50,17 @@ public class ClientController {
             attributes.addFlashAttribute("errors", validationResult.getFieldErrors());
             return "redirect:/clients/" + form.getId() + "/edit";
         }
-        clientService.editClient(form);
+        clientService.update(form);
         return "redirect:/clients/" + form.getId();
     }
 
     @GetMapping("/clients/add")
-    public String addClient() {
+    public String add() {
         return "client-add";
     }
 
     @PostMapping("client-add")
-    public String addClient(@Valid ClientDtoAdd form,
+    public String add(@Valid ClientDtoAdd form,
                             BindingResult validationResult,
                             RedirectAttributes attributes) {
         attributes.addFlashAttribute("form", form);
@@ -68,7 +68,7 @@ public class ClientController {
             attributes.addFlashAttribute("errors", validationResult.getFieldErrors());
             return "redirect:/clients/add";
         }
-        clientService.addClient(form);
+        clientService.add(form);
         return "redirect:/clients";
     }
 }
