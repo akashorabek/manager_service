@@ -50,11 +50,13 @@
         </nav>
     </header>
 
-    <div class="container">
+    <div class="container mt-5">
         <#nested>
     </div>
 
     <#list scripts as scriptSource>
+        <script src="/js/jquery.min.js"></script>
+        <script src="/js/bootstrap.min.js"></script>
         <script src="${scriptSource}"></script>
     </#list>
 
