@@ -9,6 +9,7 @@ import kz.attractor.api.dto.ClientDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -19,10 +20,12 @@ public class ClientService {
     private final ClientRepository clientRepository;
 
     public List<ClientDto> findAll() {
-        List<Client> clients = clientRepository.findAll();
-        return clients.stream()
+        var clients = clientRepository.findAll()
+                .stream()
                 .map(ClientDto::from)
                 .collect(Collectors.toList());
+        clients.sort(Comparator.comparing(ClientDto::getStatus).reversed());
+        return clients;
     }
 
     public ClientDto findById(long id) {
