@@ -10,10 +10,11 @@
         <a class="btn btn-primary" href="/clients/${form.clientId}">Отменить редактирование</a>
         <br>
         <br>
-        <form action="/client-edit" method="post">
+        <form action="/contact-edit" method="post">
             <div class="row">
                 <label class="flex flex-v-center">
                     <input type="text" name="id" value="${(form.id)!''}" hidden>
+                    <input type="text" name="clientId" value="${(form.clientId)!''}" hidden>
                 </label>
             </div>
             <div class="row mt-2">

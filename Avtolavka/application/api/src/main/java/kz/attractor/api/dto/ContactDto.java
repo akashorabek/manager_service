@@ -9,7 +9,7 @@ import lombok.Setter;
 @Setter
 @Builder
 public class ContactDto {
-    private Long id;
+    private long id;
     private String name;
     private String phone;
     private String email;

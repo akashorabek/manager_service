@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 @RequiredArgsConstructor
@@ -19,5 +20,11 @@ public class ContactController {
         ContactDto contact = contactService.findById(id);
         model.addAttribute("form", contact);
         return "contact-edit";
+    }
+
+    @PostMapping("contact-edit")
+    public String edit(ContactDto form) {
+        contactService.update(form);
+        return "redirect:/clients/" + form.getClientId();
     }
 }
