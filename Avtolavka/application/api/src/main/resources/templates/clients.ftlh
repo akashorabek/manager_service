@@ -2,8 +2,9 @@
 
 <@main.renderWith scripts=[] styles=["/css/clients.css"]>
 
+    <br>
+    <br>
     <h1 class="my-3">Клиенты</h1>
-
     <div class="container">
         <a class="as-button rounded-2" href="/clients/add">Создать клиента</a>
         <a class="as-button rounded-2" href="/orders/add">Создать КП</a>
