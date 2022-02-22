@@ -1,6 +1,5 @@
 package kz.attractor.api.controller;
 
-import kz.attractor.api.dto.ClientDto;
 import kz.attractor.api.dto.ContactDto;
 import kz.attractor.api.service.ContactService;
 import lombok.RequiredArgsConstructor;
