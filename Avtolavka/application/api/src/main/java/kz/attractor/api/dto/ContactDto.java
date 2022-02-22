@@ -14,7 +14,7 @@ public class ContactDto {
     private String phone;
     private String email;
     private String status;
-    private String client;
+    private long clientId;
 
     public static ContactDto from (Contact contact) {
         return ContactDto.builder()
@@ -23,7 +23,7 @@ public class ContactDto {
                 .phone(contact.getPhone())
                 .email(contact.getEmail())
                 .status(contact.getStatus().label)
-                .client(contact.getClient().getName())
+                .clientId(contact.getClient().getId())
                 .build();
     }
 }
