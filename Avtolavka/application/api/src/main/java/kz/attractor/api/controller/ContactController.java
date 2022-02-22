@@ -1,6 +1,7 @@
 package kz.attractor.api.controller;
 
 import kz.attractor.api.dto.ContactDto;
+import kz.attractor.api.dto.ContactDtoAdd;
 import kz.attractor.api.service.ContactService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -24,6 +25,18 @@ public class ContactController {
     @PostMapping("contact-edit")
     public String edit(ContactDto form) {
         contactService.update(form);
+        return "redirect:/clients/" + form.getClientId();
+    }
+
+    @GetMapping("/clients/{id}/contacts/add")
+    public String add(@PathVariable long id, Model model) {
+        model.addAttribute("clientId", id);
+        return "contact-add";
+    }
+
+    @PostMapping("contact-add")
+    public String add(ContactDtoAdd form) {
+        contactService.add(form);
         return "redirect:/clients/" + form.getClientId();
     }
 }

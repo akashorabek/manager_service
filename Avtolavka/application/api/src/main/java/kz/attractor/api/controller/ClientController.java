@@ -5,8 +5,7 @@ import kz.attractor.api.dto.ClientDtoAdd;
 import kz.attractor.api.dto.ContactDto;
 import kz.attractor.api.service.ClientService;
 import kz.attractor.api.service.ContactService;
-import kz.attractor.datamodel.model.Contact;
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -19,7 +18,7 @@ import javax.validation.Valid;
 import java.util.List;
 
 @Controller
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class ClientController {
     private final ClientService clientService;
     private final ContactService contactService;

@@ -1,6 +1,7 @@
 package kz.attractor.api.service;
 
 import kz.attractor.api.dto.ContactDto;
+import kz.attractor.api.dto.ContactDtoAdd;
 import kz.attractor.datamodel.model.Contact;
 import kz.attractor.datamodel.model.ContactStatus;
 import kz.attractor.datamodel.repository.ClientRepository;
@@ -46,5 +47,16 @@ public class ContactService {
                 .client(clientRepository.findById(form.getClientId()).get())
                 .build();
         return ContactDto.from(contactRepository.save(contact));
+    }
+
+    public void add(ContactDtoAdd form) {
+        Contact contact = Contact.builder()
+                .name(form.getName())
+                .phone(form.getPhone())
+                .email(form.getEmail())
+                .status(ContactStatus.CONTACT_NEW)
+                .client(clientRepository.findById(form.getClientId()).get())
+                .build();
+        contactRepository.save(contact);
     }
 }

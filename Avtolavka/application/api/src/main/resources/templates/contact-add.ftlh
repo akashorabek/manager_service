@@ -4,17 +4,16 @@
 
     <br>
     <br>
-    <h1 class="my-3">Редактирование карточки контактного лица</h1>
+    <h1 class="my-3">Добавление карточки контактного лица</h1>
 
     <div class="container">
-        <a class="btn btn-primary" href="/clients/${form.clientId}">Отменить редактирование</a>
+        <a class="btn btn-primary" href="/clients/${clientId}">Отменить добавление</a>
         <br>
         <br>
-        <form action="/contact-edit" method="post">
+        <form action="/contact-add" method="post">
             <div class="row">
                 <label class="flex flex-v-center">
-                    <input type="text" name="id" value="${(form.id)!''}" hidden>
-                    <input type="text" name="clientId" value="${(form.clientId)!''}" hidden>
+                    <input type="text" name="clientId" value="${clientId}" hidden>
                 </label>
             </div>
             <div class="row mt-2">
@@ -56,29 +55,8 @@
                     </#if>
                 </label>
             </div>
-            <div class="row mt-2">
-                <label class="flex flex-v-center">
-                    <span class="label-input-text mb-1">Статус:</span>
-                    <select name="status">
-                        <option value="" hidden>Выберите статус</option>
-                        <#if form.status=="Постоянный">
-                            <option value="Постоянный" selected>Постоянный</option>
-                            <option value="Новый">Новый</option>
-                            <option value="Архивный">Архивный</option>
-                        <#elseif form.status=="Новый">
-                            <option value="Постоянный">Постоянный</option>
-                            <option value="Новый" selected>Новый</option>
-                            <option value="Архивный">Архивный</option>
-                        <#elseif form.status=="Архивный">
-                            <option value="Постоянный">Постоянный</option>
-                            <option value="Новый">Новый</option>
-                            <option value="Архивный" selected>Архивный</option>
-                        </#if>
-                    </select>
-                </label>
-            </div>
             <div class="mt-3">
-                <button class="btn btn-primary" type="submit">Завершить</button>
+                <button class="btn btn-primary" type="submit">Добавить</button>
             </div>
         </form>
     </div>

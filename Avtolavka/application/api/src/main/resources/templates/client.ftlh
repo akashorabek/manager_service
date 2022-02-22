@@ -9,7 +9,7 @@
     <div class="container">
         <a class="btn btn-primary" href="/clients">К списку клиентов</a>
         <a class="btn btn-primary" href="/clients/${client.id}/edit">Редактировать карточку</a>
-        <a class="btn btn-primary" href="/contacts/add">Добавить контакт</a>
+        <a class="btn btn-primary" href="/clients/${client.id}/contacts/add">Добавить контакт</a>
         <br>
         <br>
         <div class="row flex-wrap">
