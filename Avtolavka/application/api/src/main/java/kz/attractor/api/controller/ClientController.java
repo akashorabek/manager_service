@@ -3,6 +3,8 @@ package kz.attractor.api.controller;
 import kz.attractor.api.dto.ClientDto;
 import kz.attractor.api.dto.ClientDtoAdd;
 import kz.attractor.api.service.ClientService;
+import kz.attractor.api.service.ContactService;
+import kz.attractor.datamodel.model.Contact;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,6 +21,7 @@ import java.util.List;
 @AllArgsConstructor
 public class ClientController {
     private final ClientService clientService;
+    private final ContactService contactService;
 
     @GetMapping("/clients")
     public String showClients(Model model) {
@@ -30,7 +33,9 @@ public class ClientController {
     @GetMapping("/clients/{id}")
     public String showClient(@PathVariable long id, Model model) {
         ClientDto client = clientService.findById(id);
+        List<Contact> contacts = contactService.findByClientId(client.getId());
         model.addAttribute("client", client);
+        model.addAttribute("contacts", contacts);
         return "client";
     }
 
