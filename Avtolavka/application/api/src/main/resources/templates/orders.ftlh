@@ -2,6 +2,9 @@
 
 <@main.renderWith scripts=["/js/orders.js"] styles=["/css/orders.css"]>
 
+    <div class="pt-5">
+        <button class="btn btn-primary" data-toggle="modal" data-target="#createOrderModal">Создать КП</button>
+    </div>
 
     <div class="row pt-5">
         <#if orders??>
@@ -53,11 +56,43 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="orderDetailsModalTitle"></h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body"></div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="createOrderModal" tabindex="-1" role="dialog" aria-labelledby="createOrderModal" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Создание КП</h5>
+                    <button type="button" class="btn btn-primary" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label class="form-label">Выбрать клиента</label>
+                        <select class="form-select">
+                            <#if clients??>
+                                <#list clients as client>
+                                    <option value="${client.id}">${client.name}</option>
+                                </#list>
+                            </#if>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Выбрать товар</label>
+                        <input class="form-control" placeholder="Поиск товаров">
+                    </div>
+                </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
                 </div>

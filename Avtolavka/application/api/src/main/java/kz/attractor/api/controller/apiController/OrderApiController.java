@@ -17,7 +17,7 @@ public class OrderApiController {
     private final OrderService orderService;
 
     @GetMapping("/api/orders/{id}")
-    public HashMap<String, Object> showOrdersPage(@PathVariable Long id) {
+    public HashMap<String, Object> getOrderById(@PathVariable Long id) {
         Order order = orderService.findById(id);
         List<OrderProducts> orderProducts = orderService.findOrderProductsByOrderId(id);
         HashMap<String, Object> hashMap = new HashMap<>();

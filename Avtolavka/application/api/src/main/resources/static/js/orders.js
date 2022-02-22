@@ -2,7 +2,7 @@ $(document).ready(function (){
 
     function handleOrderDetails(response) {
         $('#orderDetailsModalTitle').empty()
-        $('.modal-body').empty()
+        $('#orderDetailsModal').find('.modal-body').empty()
         $('#orderDetailsModalTitle').text(`Заявка №${response.order.id}`)
         let orderDetails = $(`
             <p>Имя клиента: ${response.order.client.name}</p>
@@ -13,7 +13,7 @@ $(document).ready(function (){
                     <tr>
                         <th scope="col">#</th>
                         <th scope="col">Название</th>
-                        <th scope="col">Колисчетво</th>
+                        <th scope="col">Количество</th>
                         <th scope="col">Цена продажи</th>
                         <th scope="col">В наличий</th>
                     </tr>
@@ -31,7 +31,7 @@ $(document).ready(function (){
                 <td>${response.orderProducts[i].product.inStock?"Да":"Нет"}</td>
             </tr>`))
         }
-        $('.modal-body').append(orderDetails)
+        $('#orderDetailsModal').find('.modal-body').append(orderDetails)
     }
 
     $('.order_card').click(function (){
