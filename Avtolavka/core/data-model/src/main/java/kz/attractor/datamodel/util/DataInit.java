@@ -16,6 +16,7 @@ import java.util.stream.Stream;
 @AllArgsConstructor
 public class DataInit {
     private final ClientRepository clientRepository;
+    private final ContactRepository contactRepository;
     private final SupplierRepository supplierRepository;
     private final ProductRepository productRepository;
     private final OrderRepository orderRepository;
@@ -25,6 +26,7 @@ public class DataInit {
     public CommandLineRunner init() {
         try {
             initClients().run();
+            initContacts().run();
             initSuppliers().run();
             initProducts().run();
             initOrders().run();
@@ -47,6 +49,12 @@ public class DataInit {
                 .forEach(clientRepository::save);
     }
 
+    private CommandLineRunner initContacts() {
+        return (args) -> Stream.of(contacts())
+                .peek(System.out::println)
+                .forEach(contactRepository::save);
+    }
+
     private CommandLineRunner initSuppliers() {
         return (args) -> Stream.of(suppliers())
                 .peek(System.out::println)
@@ -63,6 +71,38 @@ public class DataInit {
         return (args) -> Stream.of(ordersProducts())
                 .peek(System.out::println)
                 .forEach(orderProductsRepository::save);
+    }
+
+    private Contact[] contacts() {
+        return new Contact[]{
+                new Contact(1L, "Рыжова Оксана", "222", "a@mail.ru",
+                        ContactStatus.CONTACT_ARCHIVE,
+                        clientRepository.getById(1L)),
+                new Contact(2L, "Скаков Баур", "333", "b@mail.ru",
+                        ContactStatus.CONTACT_NEW,
+                        clientRepository.getById(1L)),
+                new Contact(3L, "Утепова Алия", "111", "c@mail.ru",
+                        ContactStatus.CONTACT_CONSTANT,
+                        clientRepository.getById(1L)),
+                new Contact(4L, "Иванов Иван", "3232", "d@mail.ru",
+                        ContactStatus.CONTACT_ARCHIVE,
+                        clientRepository.getById(2L)),
+                new Contact(5L, "Петров Петя", "45234", "e@mail.ru",
+                        ContactStatus.CONTACT_CONSTANT,
+                        clientRepository.getById(2L)),
+                new Contact(6L, "Гоги", "343", "x@mail.ru",
+                        ContactStatus.CONTACT_NEW,
+                        clientRepository.getById(2L)),
+                new Contact(7L, "Зеленая Ольга", "543", "a2@mail.ru",
+                        ContactStatus.CONTACT_CONSTANT,
+                        clientRepository.getById(3L)),
+                new Contact(8L, "Синяя Хельга", "324", "a4@mail.ru",
+                        ContactStatus.CONTACT_CONSTANT,
+                        clientRepository.getById(4L)),
+                new Contact(9L, "Желтая Анна", "543", "a8@mail.ru",
+                        ContactStatus.CONTACT_CONSTANT,
+                        clientRepository.getById(5L))
+        };
     }
 
     private Product[] products() {
