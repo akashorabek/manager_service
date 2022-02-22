@@ -2,6 +2,7 @@ package kz.attractor.api.controller;
 
 import kz.attractor.api.dto.ClientDto;
 import kz.attractor.api.dto.ClientDtoAdd;
+import kz.attractor.api.dto.ContactDto;
 import kz.attractor.api.service.ClientService;
 import kz.attractor.api.service.ContactService;
 import kz.attractor.datamodel.model.Contact;
@@ -33,8 +34,8 @@ public class ClientController {
     @GetMapping("/clients/{id}")
     public String showClient(@PathVariable long id, Model model) {
         ClientDto client = clientService.findById(id);
-        List<Contact> contacts = contactService.findByClientId(client.getId());
         model.addAttribute("client", client);
+        List<ContactDto> contacts = contactService.findByClientId(client.getId());
         model.addAttribute("contacts", contacts);
         return "client";
     }

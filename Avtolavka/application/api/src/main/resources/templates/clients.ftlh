@@ -6,9 +6,9 @@
     <br>
     <h1 class="my-3">Клиенты</h1>
     <div class="container">
-        <a class="as-button rounded-2" href="/clients/add">Создать клиента</a>
-        <a class="as-button rounded-2" href="/orders/add">Создать КП</a>
-        <a class="as-button rounded-2" href="/prices/send">Отправить прайс</a>
+        <a class="btn btn-primary" href="/clients/add">Создать клиента</a>
+        <a class="btn btn-primary" href="/orders/add">Создать КП</a>
+        <a class="btn btn-primary" href="/prices/send">Отправить прайс</a>
         <br>
         <br>
         <table class="mt-3">

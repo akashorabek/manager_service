@@ -7,7 +7,7 @@
     <h1 class="my-3">Добавление карточки клиента</h1>
 
     <div class="container">
-        <a class="as-button rounded-2" href="/clients">Отменить добавление</a>
+        <a class="btn btn-primary" href="/clients">Отменить добавление</a>
         <br>
         <br>
         <form action="/client-add" method="post">

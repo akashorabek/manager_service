@@ -7,8 +7,8 @@
     <h1 class="my-3">Редактирование карточки клиента</h1>
 
     <div class="container">
-        <a class="as-button rounded-2" href="/clients">К списку клиентов</a>
-        <a class="as-button rounded-2" href="/clients/${form.id}">Отменить редактирование</a>
+        <a class="btn btn-primary" href="/clients">К списку клиентов</a>
+        <a class="btn btn-primary" href="/clients/${form.id}">Отменить редактирование</a>
         <br>
         <br>
         <form action="/client-edit" method="post">
