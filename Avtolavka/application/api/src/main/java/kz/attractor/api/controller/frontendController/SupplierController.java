@@ -1,4 +1,4 @@
-package kz.attractor.api.controller;
+package kz.attractor.api.controller.frontendController;
 
 import kz.attractor.api.dto.SupplierDto;
 import kz.attractor.api.service.SupplierService;
