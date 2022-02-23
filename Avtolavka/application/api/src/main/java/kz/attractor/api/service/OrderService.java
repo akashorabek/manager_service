@@ -3,6 +3,7 @@ package kz.attractor.api.service;
 import kz.attractor.api.dto.OrderDto;
 import kz.attractor.datamodel.model.Client;
 import kz.attractor.datamodel.model.Order;
+import kz.attractor.datamodel.model.OrderProducts;
 import kz.attractor.datamodel.repository.ClientRepository;
 import kz.attractor.datamodel.repository.OrderProductsRepository;
 import kz.attractor.datamodel.repository.OrderRepository;
@@ -34,5 +35,13 @@ public class OrderService {
                 .client(client)
                 .build();
         orderRepository.save(order);
+    }
+
+    public Order findById(Long id) {
+        return orderRepository.getById(id);
+    }
+
+    public List<OrderProducts> findOrderProductsByOrderId(Long id) {
+        return orderProductsRepository.findAllByOrderId(id);
     }
 }
