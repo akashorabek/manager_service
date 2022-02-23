@@ -1,49 +1,28 @@
 <#import "partials/header.ftlh" as main>
 
-<@main.renderWith scripts=[] styles=["/css/clients.css"]>
+<@main.renderWith scripts=[] styles=[]>
 
     <br>
     <br>
-    <h1 class="my-3">Добавление карточки клиента</h1>
+    <h1 class="my-3">Добавление карточки контактного лица</h1>
 
     <div class="container">
-        <a class="btn btn-primary" href="/clients">Отменить добавление</a>
+        <a class="btn btn-primary" href="/clients/${clientId}">Отменить добавление</a>
         <br>
         <br>
-        <form action="/client-add" method="post">
+        <form action="/contact-add" method="post">
+            <div class="row">
+                <label class="flex flex-v-center">
+                    <input type="text" name="clientId" value="${clientId}" hidden>
+                </label>
+            </div>
             <div class="row mt-2">
                 <label class="flex flex-v-center">
-                    <span class="label-input-text mb-1">Наименование:</span>
+                    <span class="label-input-text mb-1">Полное имя:</span>
                     <input type="text" name="name" value="${(form.name)!''}">
                     <#if errors?? >
                         <#list errors as fieldError>
                             <#if fieldError.field == 'name'>
-                                <p class="text-danger my-0">${fieldError.defaultMessage!'-- no message --'}</p>
-                            </#if>
-                        </#list>
-                    </#if>
-                </label>
-            </div>
-            <div class="row mt-2">
-                <label class="flex flex-v-center">
-                    <span class="label-input-text mb-1">Номер счета:</span>
-                    <input type="text" name="accountNumber" value="${(form.accountNumber)!''}">
-                    <#if errors?? >
-                        <#list errors as fieldError>
-                            <#if fieldError.field == 'accountNumber'>
-                                <p class="text-danger my-0">${fieldError.defaultMessage!'-- no message --'}</p>
-                            </#if>
-                        </#list>
-                    </#if>
-                </label>
-            </div>
-            <div class="row mt-2">
-                <label class="flex flex-v-center">
-                    <span class="label-input-text mb-1">Адрес:</span>
-                    <input type="text" name="address" value="${(form.address)!''}">
-                    <#if errors?? >
-                        <#list errors as fieldError>
-                            <#if fieldError.field == 'address'>
                                 <p class="text-danger my-0">${fieldError.defaultMessage!'-- no message --'}</p>
                             </#if>
                         </#list>

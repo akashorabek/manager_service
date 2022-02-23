@@ -2,8 +2,10 @@ package kz.attractor.api.controller.frontendController;
 
 import kz.attractor.api.dto.ClientDto;
 import kz.attractor.api.dto.ClientDtoAdd;
+import kz.attractor.api.dto.ContactDto;
 import kz.attractor.api.service.ClientService;
-import lombok.AllArgsConstructor;
+import kz.attractor.api.service.ContactService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -16,9 +18,10 @@ import javax.validation.Valid;
 import java.util.List;
 
 @Controller
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class ClientController {
     private final ClientService clientService;
+    private final ContactService contactService;
 
     @GetMapping("/clients")
     public String showClients(Model model) {
@@ -31,6 +34,8 @@ public class ClientController {
     public String showClient(@PathVariable long id, Model model) {
         ClientDto client = clientService.findById(id);
         model.addAttribute("client", client);
+        List<ContactDto> contacts = contactService.findByClientId(client.getId());
+        model.addAttribute("contacts", contacts);
         return "client";
     }
 
