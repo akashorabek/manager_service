@@ -1,55 +1,29 @@
 <#import "partials/header.ftlh" as main>
 
-<@main.renderWith scripts=[] styles=["/css/clients.css"]>
+<@main.renderWith scripts=[] styles=[]>
 
     <br>
     <br>
-    <h1 class="my-3">Редактирование карточки клиента</h1>
+    <h1 class="my-3">Редактирование карточки контактного лица</h1>
 
     <div class="container">
-        <a class="btn btn-primary" href="/clients">К списку клиентов</a>
-        <a class="btn btn-primary" href="/clients/${form.id}">Отменить редактирование</a>
+        <a class="btn btn-primary" href="/clients/${form.clientId}">Отменить редактирование</a>
         <br>
         <br>
-        <form action="/client-edit" method="post">
+        <form action="/contact-edit" method="post">
             <div class="row">
                 <label class="flex flex-v-center">
                     <input type="text" name="id" value="${(form.id)!''}" hidden>
+                    <input type="text" name="clientId" value="${(form.clientId)!''}" hidden>
                 </label>
             </div>
             <div class="row mt-2">
                 <label class="flex flex-v-center">
-                    <span class="label-input-text mb-1">Наименование:</span>
+                    <span class="label-input-text mb-1">Полное имя:</span>
                     <input type="text" name="name" value="${(form.name)!''}">
                     <#if errors?? >
                         <#list errors as fieldError>
                             <#if fieldError.field == 'name'>
-                                <p class="text-danger my-0">${fieldError.defaultMessage!'-- no message --'}</p>
-                            </#if>
-                        </#list>
-                    </#if>
-                </label>
-            </div>
-            <div class="row mt-2">
-                <label class="flex flex-v-center">
-                    <span class="label-input-text mb-1">Номер счета:</span>
-                    <input type="text" name="accountNumber" value="${(form.accountNumber)!''}">
-                    <#if errors?? >
-                        <#list errors as fieldError>
-                            <#if fieldError.field == 'accountNumber'>
-                                <p class="text-danger my-0">${fieldError.defaultMessage!'-- no message --'}</p>
-                            </#if>
-                        </#list>
-                    </#if>
-                </label>
-            </div>
-            <div class="row mt-2">
-                <label class="flex flex-v-center">
-                    <span class="label-input-text mb-1">Адрес:</span>
-                    <input type="text" name="address" value="${(form.address)!''}">
-                    <#if errors?? >
-                        <#list errors as fieldError>
-                            <#if fieldError.field == 'address'>
                                 <p class="text-danger my-0">${fieldError.defaultMessage!'-- no message --'}</p>
                             </#if>
                         </#list>
@@ -87,15 +61,18 @@
                     <span class="label-input-text mb-1">Статус:</span>
                     <select name="status">
                         <option value="" hidden>Выберите статус</option>
-                        <#if form.status=="Новый">
-                            <option value="Новый" selected>Новый</option>
-                            <option value="Постоянный">Постоянный</option>
-                        <#elseif form.status=="Постоянный">
-                            <option value="Новый">Новый</option>
+                        <#if form.status=="Постоянный">
                             <option value="Постоянный" selected>Постоянный</option>
-                        <#else>
                             <option value="Новый">Новый</option>
+                            <option value="Архивный">Архивный</option>
+                        <#elseif form.status=="Новый">
                             <option value="Постоянный">Постоянный</option>
+                            <option value="Новый" selected>Новый</option>
+                            <option value="Архивный">Архивный</option>
+                        <#elseif form.status=="Архивный">
+                            <option value="Постоянный">Постоянный</option>
+                            <option value="Новый">Новый</option>
+                            <option value="Архивный" selected>Архивный</option>
                         </#if>
                     </select>
                 </label>
