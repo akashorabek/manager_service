@@ -2,6 +2,7 @@ package kz.attractor.api.controller.frontendController;
 
 import kz.attractor.api.service.ProductService;
 import lombok.AllArgsConstructor;
+import lombok.extern.jbosslog.JBossLog;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
