@@ -2,13 +2,11 @@
 
 <@main.renderWith scripts=[] styles=[]>
 
-    <br>
-    <br>
-    <h1 class="my-3">Клиенты</h1>
+    <h1 class="my-3 pt-4">Клиенты</h1>
     <div class="container">
         <a class="btn btn-primary" href="/clients/add">Создать клиента</a>
         <a class="btn btn-primary" href="/orders/add">Создать КП</a>
-        <a class="btn btn-primary" href="/prices/send">Отправить прайс</a>
+        <a class="btn btn-primary" href="/products/send-price">Отправить прайс</a>
         <br>
         <br>
         <table class="table table-hover mt-3">
