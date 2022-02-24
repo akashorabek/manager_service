@@ -4,7 +4,15 @@
 
     <h4 class="title text-center pt-5">Все товары</h4>
 
-    <div class="pt-4">
+    <div class="mt-3">
+        <label>Поиск по названию</label>
+        <form action="/products" method="post" class="d-flex">
+            <input name="query" type="text" class="form-control search_input" placeholder="Введите название товара" required>
+            <button class="btn btn-primary" type="submit">Искать</button>
+        </form>
+    </div>
+
+    <div class="pt-3">
         <table class="table table-bordered table-hover">
             <thead>
             <tr>
