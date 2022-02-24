@@ -21,6 +21,7 @@ public class DataInit {
     private final ProductRepository productRepository;
     private final OrderRepository orderRepository;
     private final OrderProductsRepository orderProductsRepository;
+    private final WarehouseRepository warehouseRepository;
 
     @Bean
     public CommandLineRunner init() {
@@ -31,10 +32,17 @@ public class DataInit {
             initProducts().run();
             initOrders().run();
             initOrdersProducts().run();
+            initWarehouses().run();
         } catch (Exception e) {
             e.printStackTrace();
         }
         return null;
+    }
+
+    private CommandLineRunner initWarehouses() {
+        return (args -> Stream.of(warehouses())
+                .peek(System.out::println)
+                .forEach(warehouseRepository::save));
     }
 
     private CommandLineRunner initProducts() {
@@ -71,6 +79,14 @@ public class DataInit {
         return (args) -> Stream.of(ordersProducts())
                 .peek(System.out::println)
                 .forEach(orderProductsRepository::save);
+    }
+
+    private Warehouse[] warehouses() {
+        return new Warehouse[]{
+                new Warehouse(1L, "Склад в Алматы", true),
+                new Warehouse(2L, "Склад в Шымкенте", true),
+                new Warehouse(3L, "Нет склада", false)
+        };
     }
 
     private Contact[] contacts() {
