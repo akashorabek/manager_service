@@ -33,7 +33,7 @@
                             <a class="nav-link" href="/clients">Клиенты</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Товары</a>
+                            <a class="nav-link" href="/products">Товары</a>
                         </li>
                     </ul>
                     <form class="d-flex">

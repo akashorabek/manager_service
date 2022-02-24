@@ -15,7 +15,10 @@ public class ProductService {
     }
 
     public Iterable<Product> findAllByName(String name) {
-//        return repository.findAllByName(name);
         return null;
+    }
+
+    public Product findById(int id) {
+        return repository.getById(id);
     }
 }
