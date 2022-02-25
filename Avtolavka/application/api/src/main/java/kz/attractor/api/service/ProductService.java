@@ -22,11 +22,11 @@ public class ProductService {
 
     public Iterable<Product> findAllByName(String name) {
         ProductSpecification nameLike = new ProductSpecification(new SearchCriteria("name", ":", name ));
-        return repository.findAll(nameLike);
+        return productRepository.findAll(nameLike);
     }
 
     public Product findById(int id) {
-        return repository.getById(id);
+        return productRepository.getById(id);
     }
 
     public List<ProductDto> findAllForPriceSend() {

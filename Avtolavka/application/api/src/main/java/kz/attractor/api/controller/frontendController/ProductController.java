@@ -22,13 +22,13 @@ public class ProductController {
 
     @GetMapping("/products")
     public String showProductsPage(Model model) {
-        model.addAttribute("products", service.findAll());
+        model.addAttribute("products", productService.findAll());
         return "products";
     }
 
     @PostMapping("/products")
     public String searchProducts(@RequestParam String query, Model model) {
-        model.addAttribute("products", service.findAllByName(query));
+        model.addAttribute("products", productService.findAllByName(query));
         return "products";
     }
 }
