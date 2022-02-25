@@ -2,7 +2,6 @@ package kz.attractor.api.dto;
 
 
 import kz.attractor.datamodel.model.Task;
-import kz.attractor.datamodel.model.TaskStatus;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
