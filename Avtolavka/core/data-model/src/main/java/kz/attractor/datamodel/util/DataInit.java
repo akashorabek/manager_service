@@ -21,6 +21,7 @@ public class DataInit {
     private final ProductRepository productRepository;
     private final OrderRepository orderRepository;
     private final OrderProductsRepository orderProductsRepository;
+    private final WarehouseRepository warehouseRepository;
 
     @Bean
     public CommandLineRunner init() {
@@ -28,6 +29,7 @@ public class DataInit {
             initClients().run();
             initContacts().run();
             initSuppliers().run();
+            initWarehouses().run();
             initProducts().run();
             initOrders().run();
             initOrdersProducts().run();
@@ -35,6 +37,12 @@ public class DataInit {
             e.printStackTrace();
         }
         return null;
+    }
+
+    private CommandLineRunner initWarehouses() {
+        return (args -> Stream.of(warehouses())
+                .peek(System.out::println)
+                .forEach(warehouseRepository::save));
     }
 
     private CommandLineRunner initProducts() {
@@ -71,6 +79,14 @@ public class DataInit {
         return (args) -> Stream.of(ordersProducts())
                 .peek(System.out::println)
                 .forEach(orderProductsRepository::save);
+    }
+
+    private Warehouse[] warehouses() {
+        return new Warehouse[]{
+                new Warehouse(1L, "Склад в Алматы", true),
+                new Warehouse(2L, "Склад в Шымкенте", true),
+                new Warehouse(3L, "Нет склада", false)
+        };
     }
 
     private Contact[] contacts() {
@@ -113,31 +129,36 @@ public class DataInit {
                         10,
                         new BigDecimal(3312),
                         new BigDecimal(5378.7),
-                        true),
+                        true,
+                        warehouseRepository.getById(1L)),
                 new Product(2,
                         "Втулка коленчатого вала без шпон. паза 406.1005038-11 100504",
                         10,
                         new BigDecimal(1580),
                         new BigDecimal(2565.92),
-                        true),
+                        true,
+                        warehouseRepository.getById(3L)),
                 new Product(3,
                         "Адаптер для дрели М14",
                         10,
                         new BigDecimal(406),
                         new BigDecimal(659.34),
-                        true),
+                        true,
+                        warehouseRepository.getById(2L)),
                 new Product(4,
                         "Масло Газпромнефть Супер 10W40 SG/CD 5л.",
                         10,
                         new BigDecimal(4679),
                         new BigDecimal(7598.7),
-                        true),
+                        true,
+                        warehouseRepository.getById(2L)),
                 new Product(5,
                         "ET-912-YE",
                         10,
                         new BigDecimal(173),
                         new BigDecimal(280.95),
-                        true)
+                        true,
+                        warehouseRepository.getById(3L))
         };
     }
 

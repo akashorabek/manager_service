@@ -1,4 +1,4 @@
-package kz.attractor.api.controller;
+package kz.attractor.api.controller.frontendController;
 
 import kz.attractor.api.dto.ContactDto;
 import kz.attractor.api.dto.ContactDtoAdd;

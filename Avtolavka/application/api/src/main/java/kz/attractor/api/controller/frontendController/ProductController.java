@@ -12,11 +12,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 @AllArgsConstructor
 public class ProductController {
-    private ProductService service;
+    private ProductService productService;
 
     @GetMapping
     public String root() {
-        service.findAll().forEach(System.out::println);
+        productService.findAll().forEach(System.out::println);
         return "index";
     }
 
