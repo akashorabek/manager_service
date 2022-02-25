@@ -31,4 +31,11 @@ public class ProductController {
         model.addAttribute("products", productService.findAllByName(query));
         return "products";
     }
+
+    @GetMapping("products/send-price")
+    public String showProductPrices(Model model) {
+        var products = productService.findAllForPriceSend();
+        model.addAttribute("products", products);
+        return "products-with-prices";
+    }
 }
