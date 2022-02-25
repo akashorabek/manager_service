@@ -2,11 +2,12 @@
 
 <@main.renderWith scripts=["/js/orders.js"] styles=["/css/orders.css"]>
 
-    <div class="pt-5">
-        <button class="btn btn-primary" data-toggle="modal" data-target="#createOrderModal">Создать КП</button>
+    <div class="pt-3">
+        <a href="/orders/add" class="btn btn-primary">Создать КП</a>
+<#--        data-toggle="modal" data-target="#createOrderModal"-->
     </div>
 
-    <div class="row pt-5">
+    <div class="row pt-3">
         <#if orders??>
             <#list orders as order>
                 <div class="col-4 gap-2">

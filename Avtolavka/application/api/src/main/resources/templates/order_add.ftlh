@@ -1,63 +1,69 @@
 <#import "partials/header.ftlh" as main>
 
-<@main.renderWith scripts=[] styles=["/css/clients.css"]>
+<@main.renderWith scripts=["/js/orders.js"] styles=["/css/orders.css"]>
 
-<div class="modal modal-sign position-static d-block bg-secondary py-5" role="dialog" id="modalSignin">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content rounded-5 shadow">
-            <div class="modal-header p-5 pb-4 border-bottom-0">
-                <h2 class="fw-bold mb-0">Введите данные</h2>
-            </div>
-            <div class="modal-body p-5 pt-0">
-                <#list orders as order>
-                <form class>
-                    <div class="form-floating mb-1">
-                        <p class="title__order_id">${order.id}</p>
-                    </div>
-                    <div class="form-floating mb-2">
-                        <input type="text" class="form-control rounded-2" id="floatingInput" placeholder="Клиент">
-                        <label for="floatingInput">Имя клиента</label>
-                    </div>
-                    <div class="title__select_client">
-                        <#list clients as client>
-                        <form action="/clients">
-                            <label for="clients">Выберите клиента</label>
-                            <select name="clients" id="clients">
-                                <option value="${client.name}"></option>
-                                <option value="${client.name}"></option>
-                                <option value="${client.name}"></option>
-                            </select>
-                        </form>
-                        </#list>
-                    </div>
-                    <div class="container py-3 text-center">
-                        <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#modal">КП</button>
-                    </div>
-                    <div class="modal fade" id="modal" tabindex="-1" aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="modalLabel">Информация</h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
-                                </div>
-                                <div class="modal-body">
-                                    <img src="img/engineer_order.jpg" class="img-fluid" width="250" alt="">
-                                    <p class="title__order_id">${order.id}</p>
-                                    <p class="title__order_name">${order.name}</p>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-outline-success" data-bs-dismiss="modal">Ок</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <button class="w-100 mb-2 btn btn-outline-success" type="submit">Подтвердить</button>
-                    <small class="text-muted">Нажимая на кнопку "подтвердить" непременно будет создана заявка (КП)</small>
-                </form>
-            </#list>
+    <div class="order_add_wrapper row">
+        <div class="order_add_left col-6 pt-5">
+            <select class="form-control form-control-lg">
+                <#if clients??>
+                    <#list clients as client>
+                        <option>${client.name}</option>
+                    </#list>
+                </#if>
+            </select>
+            <div class="mt-4">
+                <h4 class="title">Список товаров:</h4>
+                <div class="mt-3">
+                    <table class="table">
+                        <thead class="table-light">
+                        <tr>
+                            <th>#</th>
+                            <th>Название</th>
+                            <th>Конечная цена</th>
+                            <th>Количество</th>
+                        </tr>
+                        </thead>
+                        <tbody class="order_add_left_products"></tbody>
+                    </table>
+                </div>
             </div>
         </div>
+        <div class="col-6 pt-5">
+            <div class="row gap-1 mb-4">
+                <div class="col-8">
+                    <input type="text" class="form-control form-control-lg" placeholder="Введите название товара">
+                </div>
+                <div class="col-3">
+                    <button id="find_products_btn" class="btn btn-primary btn-lg">Искать</button>
+                </div>
+            </div>
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Название</th>
+                    <th>Конечная цена</th>
+                    <th>Количество</th>
+                    <th>В наличий</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody class="order_add_right_products">
+                <#if products??>
+                    <#list products as product>
+                        <tr>
+                            <td>${product.id}</td>
+                            <td>${product.name}</td>
+                            <td>${product.sellingPrice}</td>
+                            <td>${product.quantity}</td>
+                            <td>${product.inStock?string("Да", "Нет")}</td>
+                            <td><input type="checkbox" value="${product.id}" class="form-check-input product_checkbox"></td>
+                        </tr>
+                    </#list>
+                </#if>
+                </tbody>
+            </table>
+        </div>
     </div>
-</div>
 
 </@main.renderWith>
