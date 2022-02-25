@@ -32,7 +32,7 @@ public class TaskDto {
 
     private LocalDate finish;
 
-    private TaskStatus status;
+    private String status;
 
     public static TaskDto from(Task task){
         return TaskDto.builder()
@@ -42,7 +42,7 @@ public class TaskDto {
                 .create(task.getCreate())
                 .deadline(task.getDeadline())
                 .finish(task.getFinish())
-                .status(task.getStatus())
+                .status(task.getStatus().label)
                 .build();
     }
 }

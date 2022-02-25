@@ -1,12 +1,13 @@
 package kz.attractor.api.service;
 
-import kz.attractor.api.dto.ClientDto;
 import kz.attractor.api.dto.TaskDto;
 import kz.attractor.datamodel.model.Task;
+import kz.attractor.datamodel.model.TaskStatus;
 import kz.attractor.datamodel.repository.TaskRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -42,9 +43,21 @@ public class TaskService {
                 .description(dto.getDescription())
                 .create(dto.getCreate())
                 .deadline(dto.getDeadline())
+                .status(TaskStatus.valueOfLabel(dto.getStatus()))
                 .finish(dto.getFinish())
                 .build();
         return TaskDto.from(repository.save(task));
+    }
+
+    public void add(TaskDto dto){
+        Task task = Task.builder()
+                .name(dto.getName())
+                .description(dto.getDescription())
+                .create(LocalDate.now())
+                .deadline(dto.getDeadline())
+                .status(TaskStatus.TASK_NEW)
+                .build();
+        repository.save(task);
     }
 
 }
