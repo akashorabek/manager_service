@@ -33,4 +33,8 @@ public class Product {
 
     @Column(name = "in_stock")
     private boolean inStock;
+
+    @ManyToOne
+    @JoinColumn(name = "warehouse_id")
+    private Warehouse warehouse;
 }

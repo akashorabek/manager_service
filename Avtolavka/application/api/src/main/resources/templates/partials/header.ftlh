@@ -33,12 +33,12 @@
                             <a class="nav-link" href="/clients">Клиенты</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Товары</a>
+                            <a class="nav-link" href="/products">Товары</a>
                         </li>
                     </ul>
-                    <form class="d-flex">
+                    <form action="/products" method="post" class="d-flex">
                         <label>
-                        <input class="form-control me-2" type="search" placeholder="Найти">
+                        <input name="query" class="form-control me-2" type="search" placeholder="Найти" required>
                         </label>
                         <button class="btn btn-outline-success" type="submit" aria-label="Search">Найти</button>
                         <button type="submit" class="btn btn-outline-success btn-sm">
