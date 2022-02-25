@@ -1,5 +1,6 @@
 package kz.attractor.api.dto;
 
+import kz.attractor.api.config.Param;
 import kz.attractor.datamodel.model.Product;
 import kz.attractor.datamodel.model.Warehouse;
 import lombok.Builder;
@@ -25,8 +26,8 @@ public class ProductDto {
                 .name(product.getName())
                 .quantity(product.getQuantity())
                 .price(Math.round(product.getPurchasePrice()
-                        .multiply(BigDecimal.valueOf(1 + 0.45))
-                        .multiply(BigDecimal.valueOf(1 + 0.12))
+                        .multiply(BigDecimal.valueOf(1 + Param.RATE_FIRST))
+                        .multiply(BigDecimal.valueOf(1 + Param.RATE_SECOND))
                         .doubleValue()))
                 .inStock(product.isInStock())
                 .warehouse(product.getWarehouse().getName())
