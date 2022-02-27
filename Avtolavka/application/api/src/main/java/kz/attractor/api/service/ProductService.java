@@ -1,11 +1,15 @@
 package kz.attractor.api.service;
 
+import kz.attractor.api.dto.OrderDto;
 import kz.attractor.api.dto.ProductDto;
 import kz.attractor.datamodel.model.Product;
 import kz.attractor.datamodel.model.ProductSpecification;
 import kz.attractor.datamodel.repository.ProductRepository;
 import kz.attractor.datamodel.util.SearchCriteria;
 import lombok.AllArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,13 +20,28 @@ import java.util.stream.Collectors;
 public class ProductService {
     private final ProductRepository productRepository;
 
-    public Iterable<Product> findAll() {
-        return productRepository.findAll();
+    public Page<ProductDto> findAll(String query, Pageable pageable) {
+        if (query != null) {
+            ProductSpecification nameLike = new ProductSpecification(new SearchCriteria("name", ":", query));
+            Page<Product> productPage = productRepository.findAll(nameLike, pageable);
+            return new PageImpl<ProductDto>(
+                    productPage.getContent().stream()
+                            .map(ProductDto::from)
+                            .collect(Collectors.toList()),
+                    pageable, productPage.getTotalElements()
+            );
+        }
+        Page<Product> productPage = productRepository.findAll(pageable);
+        return new PageImpl<ProductDto>(
+                productPage.getContent().stream()
+                        .map(ProductDto::from)
+                        .collect(Collectors.toList()),
+                pageable, productPage.getTotalElements()
+        );
     }
 
-    public Iterable<Product> findAllByName(String name) {
-        ProductSpecification nameLike = new ProductSpecification(new SearchCriteria("name", ":", name ));
-        return productRepository.findAll(nameLike);
+    public Iterable<Product> findAll() {
+        return productRepository.findAll();
     }
 
     public Product findById(int id) {

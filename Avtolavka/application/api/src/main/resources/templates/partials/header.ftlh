@@ -36,7 +36,7 @@
                             <a class="nav-link" href="/products">Товары</a>
                         </li>
                     </ul>
-                    <form action="/products" method="post" class="d-flex">
+                    <form action="/products" method="get" class="d-flex">
                         <label>
                         <input name="query" class="form-control me-2" type="search" placeholder="Найти" required>
                         </label>

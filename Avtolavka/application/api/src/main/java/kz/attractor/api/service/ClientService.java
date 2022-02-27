@@ -1,12 +1,16 @@
 package kz.attractor.api.service;
 
 import kz.attractor.api.dto.ClientDtoAdd;
+import kz.attractor.api.dto.OrderDto;
 import kz.attractor.datamodel.model.Client;
 import kz.attractor.datamodel.model.ClientStatus;
 import kz.attractor.datamodel.repository.ClientRepository;
 import kz.attractor.api.dto.ClientDto;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.Comparator;
@@ -17,6 +21,17 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class ClientService {
     private final ClientRepository clientRepository;
+
+    public Page<ClientDto> findAll(Pageable pageable) {
+        Page<Client> clients = clientRepository.findAll(pageable);
+        return new PageImpl<ClientDto>(
+                clients.getContent().stream()
+                        .map(ClientDto::from)
+                        .sorted(Comparator.comparing(ClientDto::getStatus).reversed())
+                        .collect(Collectors.toList()),
+                pageable, clients.getTotalElements()
+        );
+    }
 
     public List<ClientDto> findAll() {
         var clients = clientRepository.findAll()

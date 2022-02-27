@@ -1,56 +1,27 @@
 <#import "partials/header.ftlh" as main>
+<#import "partials/pagination.ftlh" as pagination>
 
 <@main.renderWith scripts=["/js/orders.js"] styles=["/css/orders.css"]>
 
     <div class="pt-3">
         <a href="/orders/add" class="btn btn-primary">Создать КП</a>
-<#--        data-toggle="modal" data-target="#createOrderModal"-->
     </div>
 
-    <div class="row pt-3">
-        <#if orders??>
-            <#list orders as order>
-                <div class="col-4 gap-2">
-                    <div class="card shadow-sm order_card" data-toggle="modal" data-target="#orderDetailsModal">
-                        <div class="card-body">
-                            <h2 class="title_order">Заявка (КП) №<span class="order_card_id">${order.id}</span></h2>
-                            <p class="card-text">Имя клиента: ${order.client}</p>
-                            <p class="card-text">Дата создания: ${order.dateCreation}</p>
-                        </div>
+    <div class="row pt-3 mb-3">
+        <#list page.content as order>
+            <div class="col-4 gap-2">
+                <div class="card shadow-sm order_card" data-toggle="modal" data-target="#orderDetailsModal">
+                    <div class="card-body">
+                        <h2 class="title_order">Заявка (КП) №<span class="order_card_id">${order.id}</span></h2>
+                        <p class="card-text">Имя клиента: ${order.client}</p>
+                        <p class="card-text">Дата создания: ${order.dateCreation}</p>
                     </div>
                 </div>
-            </#list>
-        </#if>
+            </div>
+        </#list>
     </div>
 
-    <ul class="pagination justify-content-center mt-4">
-        <li class="page-item">
-            <a class="page-link" href="#" tabindex="-1">Назад</a>
-        </li>
-        <li class="page-item"><a class="page-link" href="#">1</a></li>
-        <li class="page-item"><a class="page-link" href="#">2</a></li>
-        <li class="page-item"><a class="page-link" href="#">3</a></li>
-        <li class="page-item">
-            <a class="page-link" href="#">Вперёд</a>
-        </li>
-    </ul>
-
-    <footer class="text-muted py-5">
-        <div class="container">
-            <p class="float-end mb-1">
-                <a href="#">Вернуться наверх</a>
-            </p>
-            <h3 class="section-title text-default" style="visibility: visible;">Наши контакты: </h3>
-            <div class="contact__phone">
-                <p class="font-default-bold">+7 (707) 617 22 94</p>
-            </div>
-            <div class="contact__email">
-                <p class="font-default-bold">Email: example@mail.ru</p>
-                <p class="font-default-bold">web@auto-lavka.kz</p>
-            </div>
-        </div>
-    </footer>
-
+    <@pagination.pagination page=page link="/orders?"></@pagination.pagination>
 
     <div class="modal fade" id="orderDetailsModal" tabindex="-1" role="dialog" aria-labelledby="orderDetailsModalTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
