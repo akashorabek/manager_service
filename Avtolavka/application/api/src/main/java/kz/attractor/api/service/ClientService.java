@@ -3,10 +3,12 @@ package kz.attractor.api.service;
 import kz.attractor.api.dto.ClientDtoAdd;
 import kz.attractor.api.dto.OrderDto;
 import kz.attractor.datamodel.model.Client;
+import kz.attractor.datamodel.model.ClientSpecification;
 import kz.attractor.datamodel.model.ClientStatus;
 import kz.attractor.datamodel.repository.ClientRepository;
 import kz.attractor.api.dto.ClientDto;
 
+import kz.attractor.datamodel.util.SearchCriteria;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
@@ -35,6 +37,16 @@ public class ClientService {
 
     public List<ClientDto> findAll() {
         var clients = clientRepository.findAll()
+                .stream()
+                .map(ClientDto::from)
+                .collect(Collectors.toList());
+        clients.sort(Comparator.comparing(ClientDto::getStatus).reversed());
+        return clients;
+    }
+
+    public List<ClientDto> findAllSearched(String query) {
+        ClientSpecification nameLike = new ClientSpecification(new SearchCriteria("name", ":", query));
+        var clients = clientRepository.findAll(nameLike)
                 .stream()
                 .map(ClientDto::from)
                 .collect(Collectors.toList());

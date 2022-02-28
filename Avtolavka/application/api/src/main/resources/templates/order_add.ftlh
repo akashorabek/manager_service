@@ -4,13 +4,18 @@
 
     <div class="order_add_wrapper row">
         <div class="order_add_left col-6 pt-5">
-            <select class="form-control form-control-lg">
-                <#if clients??>
-                    <#list clients as client>
-                        <option>${client.name}</option>
-                    </#list>
-                </#if>
-            </select>
+            <form id="find_client_form" class="row mb-4">
+                <div class="col-9">
+                    <input id="clientInput" name="client" type="text" class="form-control" placeholder="Введите название клиента" required>
+                </div>
+                <div class="col-3">
+                    <button type="submit" class="btn btn-primary w-100">Искать</button>
+                </div>
+            </form>
+            <div class="client_names_wrapper mb-4"></div>
+            <div class="client_name mb-4">
+                <p>Клиент: <b id="client_name">Не выбран</b></p>
+            </div>
             <div class="mt-4">
                 <h4 class="title">Список товаров:</h4>
                 <div class="mt-3">
@@ -29,12 +34,12 @@
             </div>
         </div>
         <div class="col-6 pt-5">
-            <div class="row gap-1 mb-4">
-                <div class="col-8">
-                    <input type="text" class="form-control form-control-lg" placeholder="Введите название товара">
+            <div class="row mb-4">
+                <div class="col-9">
+                    <input type="text" class="form-control" placeholder="Введите название товара">
                 </div>
                 <div class="col-3">
-                    <button id="find_products_btn" class="btn btn-primary btn-lg">Искать</button>
+                    <button id="find_products_btn" class="btn btn-primary w-100">Искать</button>
                 </div>
             </div>
             <table class="table table-bordered">
