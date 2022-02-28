@@ -14,6 +14,7 @@
             <tr>
                 <th>Id клиента</th>
                 <th>Наименование</th>
+                <th>Краткое наименовние</th>
                 <th>Номер счета</th>
                 <th>Адрес</th>
                 <th>Телефон</th>
@@ -30,6 +31,7 @@
                             ${client.name}
                         </a>
                     </td>
+                    <td>${client.shortName}</td>
                     <td>${client.accountNumber}</td>
                     <td>${client.address}</td>
                     <td>${client.phone}</td>

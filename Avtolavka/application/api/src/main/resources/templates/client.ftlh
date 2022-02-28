@@ -33,6 +33,14 @@
                         </div>
                         <div class="row">
                             <div class="col-4">
+                                <p>Краткое наименование: </p>
+                            </div>
+                            <div class="col-6">
+                                <p>${client.shortName}</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-4">
                                 <p>Номер счета: </p>
                             </div>
                             <div class="col-6">

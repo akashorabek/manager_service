@@ -67,6 +67,7 @@ public class ClientService {
         Client client = Client.builder()
                 .id(form.getId())
                 .name(form.getName())
+                .shortName(form.getShortName())
                 .accountNumber(form.getAccountNumber())
                 .address(form.getAddress())
                 .phone(form.getPhone())
@@ -79,6 +80,7 @@ public class ClientService {
     public void add(ClientDtoAdd form) {
         Client client = Client.builder()
                 .name(form.getName())
+                .shortName(form.getShortName())
                 .accountNumber(form.getAccountNumber())
                 .address(form.getAddress())
                 .phone(form.getPhone())
