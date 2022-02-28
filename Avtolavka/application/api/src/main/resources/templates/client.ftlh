@@ -71,6 +71,14 @@
                                 <p>${client.status}</p>
                             </div>
                         </div>
+                        <div class="row">
+                            <div class="col-4">
+                                <p>Банк: </p>
+                            </div>
+                            <div class="col-6">
+                                <p>${client.bank}</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
