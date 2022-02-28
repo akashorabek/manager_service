@@ -76,7 +76,7 @@
                                 <p>Банк: </p>
                             </div>
                             <div class="col-6">
-                                <p>${client.bank}</p>
+                                <p>${client.bank.bankName}</p>
                             </div>
                         </div>
                     </div>

@@ -1,8 +1,11 @@
 package kz.attractor.datamodel.model;
 
+import lombok.Getter;
+
 import java.util.HashMap;
 import java.util.Map;
 
+@Getter
 public enum ClientBank {
     ALTYN_BANK("АО Altyn Bank", "050008, г. Алматы, пр. Абая, 109 ", "ATYNKZKA", "KZ97125KZT1001300327", "980740000057"),
     BANK_RBK("Bank RBK", "050012, г. Алматы, ул. Ади Шарипова, 84", "KINCKZKA", "KZ57125KZT1002300244", "920440001102"),
