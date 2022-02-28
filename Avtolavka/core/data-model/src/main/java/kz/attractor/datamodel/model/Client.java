@@ -33,4 +33,7 @@ public class Client {
 
     @Column(name = "status")
     private ClientStatus status;
+
+    @Column(name = "bank")
+    private ClientBank bank;
 }
