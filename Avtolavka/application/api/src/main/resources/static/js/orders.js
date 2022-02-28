@@ -47,4 +47,44 @@ $(document).ready(function (){
             }
         })
     })
+
+    function handleClients(response) {
+        $('.client_names_wrapper').empty()
+
+        if (response.length != 0) {
+            $('.client_names_wrapper').append($('<h5 class="mb-2">Выберите клиента:</h5>'))
+            response.map(i => {
+                console.log(response)
+                let client_item = $(`<div class="client_item">
+                    <input type="hidden" value="${i.id}"/>
+                    <h5>${i.name}</h5>
+                </div>`)
+                client_item.click(function (){
+                    $('.client_names_wrapper').empty()
+                    $('#client_name').text(client_item.find('h5').text())
+                    $('#client_name').append($(`<input type="hidden" value="${client_item.find('input').val()}" name="chosen_client_id" id="chosen_client_id" />`))
+                })
+                $('.client_names_wrapper').append(client_item)
+            })
+
+        } else {
+            $('.client_names_wrapper').append($('<div class="alert alert-primary" role="alert">Клиенты не найдены</div>'))
+        }
+
+    }
+
+    $('#find_client_form').submit(function (e){
+        e.preventDefault()
+        let query = $('#clientInput').val();
+        $.ajax({
+            method: "GET",
+            url: `http://localhost:8500/api/clients?query=${query}`,
+            success: (response) => {
+                handleClients(response)
+            },
+            error: (error) => {
+                alert(error)
+            }
+        })
+    })
 })
