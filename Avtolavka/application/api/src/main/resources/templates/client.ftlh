@@ -85,7 +85,7 @@
             <div class="col-6">
                 <h3>Менеджеры компании</h3>
                 <#list contacts as contact>
-                    <div class="card">
+                    <div class="card mb-3" style="background-color:<#if contact.status == "Постоянный">rgba(40, 167, 69, .3);</#if><#if contact.status == "Архивный">rgba(108, 117, 125, .3);</#if><#if contact.status == "Новый">rgba(0, 123, 255, .3);</#if>">
                         <div class="card-body">
                             <h5 class="card-title">${contact.name}</h5>
                             <div class="row">
