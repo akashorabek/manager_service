@@ -17,6 +17,9 @@ public class ClientDto {
     private String name;
 
     @NotBlank(message = "Поле не должно быть пустым")
+    private String shortName;
+
+    @NotBlank(message = "Поле не должно быть пустым")
     private String accountNumber;
 
     @NotBlank(message = "Поле не должно быть пустым")
@@ -34,6 +37,7 @@ public class ClientDto {
         return ClientDto.builder()
                 .id(client.getId())
                 .name(client.getName())
+                .shortName(client.getShortName())
                 .accountNumber(client.getAccountNumber())
                 .address(client.getAddress())
                 .phone(client.getPhone())

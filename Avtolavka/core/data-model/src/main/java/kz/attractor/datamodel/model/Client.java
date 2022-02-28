@@ -19,6 +19,9 @@ public class Client {
     @Column(name = "name")
     private String name;
 
+    @Column(name = "short_name")
+    private String shortName;
+
     @Column(name = "account_number")
     private String accountNumber;
 
