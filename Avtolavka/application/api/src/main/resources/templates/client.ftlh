@@ -73,10 +73,42 @@
                         </div>
                         <div class="row">
                             <div class="col-4">
-                                <p>Банк: </p>
+                                <p>Название банка: </p>
                             </div>
                             <div class="col-6">
                                 <p>${client.bank.bankName}</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-4">
+                                <p>Адрес банк: </p>
+                            </div>
+                            <div class="col-6">
+                                <p>${client.bank.bankAddress}</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-4">
+                                <p>БИК: </p>
+                            </div>
+                            <div class="col-6">
+                                <p>${client.bank.bankBik}</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-4">
+                                <p>БИН: </p>
+                            </div>
+                            <div class="col-6">
+                                <p>${client.bank.bankBin}</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-4">
+                                <p>Номер счета: </p>
+                            </div>
+                            <div class="col-6">
+                                <p>${client.bank.accountNumber}</p>
                             </div>
                         </div>
                     </div>
