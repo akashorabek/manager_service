@@ -1,7 +1,6 @@
 package kz.attractor.api.service;
 
 import kz.attractor.api.dto.ClientDtoAdd;
-import kz.attractor.api.dto.OrderDto;
 import kz.attractor.datamodel.model.Client;
 import kz.attractor.datamodel.model.ClientSpecification;
 import kz.attractor.datamodel.model.ClientStatus;
