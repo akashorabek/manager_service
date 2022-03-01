@@ -83,7 +83,15 @@
                             <option value="${bank}">${bank}</option>
                         </#list>
                     </select>
+                    <#if errors?? >
+                        <#list errors as fieldError>
+                            <#if fieldError.field == 'bank'>
+                                <p class="text-danger my-0">${fieldError.defaultMessage!'-- no message --'}</p>
+                            </#if>
+                        </#list>
+                    </#if>
                 </label>
+
             </div>
             <div class="mt-3">
                 <button class="btn btn-primary" type="submit">Добавить</button>

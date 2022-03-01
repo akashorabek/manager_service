@@ -6,6 +6,7 @@ import lombok.Setter;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 @Getter
 @Setter
@@ -26,5 +27,6 @@ public class ClientDtoAdd {
     @Email(message = "В поле должен находиться email")
     private String email;
 
+    @NotNull(message = "Поле не должно быть пустым")
     private ClientBank bank;
 }
