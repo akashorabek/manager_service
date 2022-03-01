@@ -16,6 +16,7 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class TaskService {
 
+
     private final TaskRepository repository;
 
     public List<TaskDto> findAll(){
