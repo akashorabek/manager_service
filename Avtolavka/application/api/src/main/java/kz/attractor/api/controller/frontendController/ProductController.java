@@ -2,11 +2,12 @@ package kz.attractor.api.controller.frontendController;
 
 import kz.attractor.api.service.ProductService;
 import lombok.AllArgsConstructor;
-import lombok.extern.jbosslog.JBossLog;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
@@ -16,19 +17,24 @@ public class ProductController {
 
     @GetMapping
     public String root() {
-        productService.findAll().forEach(System.out::println);
         return "index";
     }
 
     @GetMapping("/products")
-    public String showProductsPage(Model model) {
-        model.addAttribute("products", service.findAll());
+    public String showProductsPage(Model model,
+                                   @RequestParam(required = false) String query,
+                                   @PageableDefault(sort = {"id"}, direction = Sort.Direction.ASC, size = 10) Pageable pageable) {
+        model.addAttribute("page", productService.findAll(query, pageable));
+        if(query != null) {
+            model.addAttribute("link", query);
+        }
         return "products";
     }
 
-    @PostMapping("/products")
-    public String searchProducts(@RequestParam String query, Model model) {
-        model.addAttribute("products", service.findAllByName(query));
-        return "products";
+    @GetMapping("products/send-price")
+    public String showProductPrices(Model model) {
+        var products = productService.findAllForPriceSend();
+        model.addAttribute("products", products);
+        return "products-with-prices";
     }
 }

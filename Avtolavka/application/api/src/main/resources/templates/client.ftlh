@@ -33,6 +33,14 @@
                         </div>
                         <div class="row">
                             <div class="col-4">
+                                <p>Краткое наименование: </p>
+                            </div>
+                            <div class="col-6">
+                                <p>${client.shortName}</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-4">
                                 <p>Номер счета: </p>
                             </div>
                             <div class="col-6">
@@ -77,15 +85,19 @@
             <div class="col-6">
                 <h3>Менеджеры компании</h3>
                 <#list contacts as contact>
-                    <div class="card">
+                    <div class="card mb-3" style="background-color:<#if contact.status == "Постоянный">rgba(40, 167, 69, .3);</#if><#if contact.status == "Архивный">rgba(108, 117, 125, .3);</#if><#if contact.status == "Новый">rgba(0, 123, 255, .3);</#if>">
                         <div class="card-body">
                             <h5 class="card-title">${contact.name}</h5>
                             <div class="row">
                                 <div class="col-9">
                                     <p class="card-text">
-                                        Status: ${contact.status};
-                                        Phone: ${contact.phone};
-                                        E-mail: ${contact.email}<br>
+                                        Status: ${contact.status}; <br>
+                                        Phone: <#if contact.phone1??>${contact.phone1} <#else>Не указано</#if>; <br>
+                                        <#if contact.phone2??><#if contact.phone2 != ''>Phone 2: ${contact.phone2}; <br></#if></#if>
+                                        <#if contact.phone3??><#if contact.phone3 != ''>Phone 2: ${contact.phone3}; <br></#if></#if>
+                                        E-mail: <#if contact.email1??>${contact.email1} <#else>Не указано</#if>; <br>
+                                        <#if contact.email2??><#if contact.email2 != ''>E-mail 2: ${contact.email2}; <br></#if></#if>
+                                        <#if contact.email3??><#if contact.email3 != ''>E-mail 3: ${contact.email3}; <br></#if></#if>
                                     </p>
                                 </div>
                                 <div class="col-3">

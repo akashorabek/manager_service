@@ -11,6 +11,7 @@
         <title>${title}</title>
 
         <link rel="stylesheet" href="/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/css/font.css">
         <#list styles as styleSource>
             <link rel="stylesheet" href="${styleSource}">
         </#list>
@@ -36,7 +37,7 @@
                             <a class="nav-link" href="/products">Товары</a>
                         </li>
                     </ul>
-                    <form action="/products" method="post" class="d-flex">
+                    <form action="/products" method="get" class="d-flex">
                         <label>
                         <input name="query" class="form-control me-2" type="search" placeholder="Найти" required>
                         </label>

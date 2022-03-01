@@ -19,11 +19,23 @@ public class Contact {
     @Column(name = "name")
     private String name;
 
-    @Column(name = "phone")
-    private String phone;
+    @Column(name = "phone1")
+    private String phone1;
 
-    @Column(name = "email")
-    private String email;
+    @Column(name = "phone2")
+    private String phone2;
+
+    @Column(name = "phone3")
+    private String phone3;
+
+    @Column(name = "email1")
+    private String email1;
+
+    @Column(name = "email2")
+    private String email2;
+
+    @Column(name = "email3")
+    private String email3;
 
     @Column(name = "status")
     private ContactStatus status;

@@ -8,6 +8,9 @@ import kz.attractor.datamodel.repository.ClientRepository;
 import kz.attractor.datamodel.repository.OrderProductsRepository;
 import kz.attractor.datamodel.repository.OrderRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -21,11 +24,14 @@ public class OrderService {
     private final OrderProductsRepository orderProductsRepository;
     private final ClientRepository clientRepository;
 
-    public List<OrderDto> findAll() {
-        var orders = orderRepository.findAll();
-        return orders.stream()
-                .map(OrderDto::from)
-                .collect(Collectors.toList());
+    public Page<OrderDto> findAll(Pageable pageable) {
+        Page<Order> ordersPage = orderRepository.findAll(pageable);
+        return new PageImpl<OrderDto>(
+                ordersPage.getContent().stream()
+                        .map(OrderDto::from)
+                        .collect(Collectors.toList()),
+                pageable, ordersPage.getTotalElements()
+        );
     }
 
     public void add(OrderDto form) {

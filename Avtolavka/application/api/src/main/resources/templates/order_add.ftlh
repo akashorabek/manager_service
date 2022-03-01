@@ -1,63 +1,62 @@
 <#import "partials/header.ftlh" as main>
 
-<@main.renderWith scripts=[] styles=["/css/clients.css"]>
+<@main.renderWith scripts=["/js/orders_add.js"] styles=["/css/orders.css"]>
 
-<div class="modal modal-sign position-static d-block bg-secondary py-5" role="dialog" id="modalSignin">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content rounded-5 shadow">
-            <div class="modal-header p-5 pb-4 border-bottom-0">
-                <h2 class="fw-bold mb-0">Введите данные</h2>
+    <div class="order_add_wrapper row">
+        <div class="order_add_left col-6 pt-5">
+            <form id="find_client_form" class="row mb-4">
+                <div class="col-9">
+                    <input id="clientInput" name="client" type="text" class="form-control" placeholder="Введите название клиента" required>
+                </div>
+                <div class="col-3">
+                    <button type="submit" class="btn btn-primary w-100">Искать</button>
+                </div>
+            </form>
+            <div class="client_names_wrapper mb-4"></div>
+            <div class="client_name mb-4">
+                <p>Клиент: <b id="client_name">Не выбран</b></p>
             </div>
-            <div class="modal-body p-5 pt-0">
-                <#list orders as order>
-                <form class>
-                    <div class="form-floating mb-1">
-                        <p class="title__order_id">${order.id}</p>
-                    </div>
-                    <div class="form-floating mb-2">
-                        <input type="text" class="form-control rounded-2" id="floatingInput" placeholder="Клиент">
-                        <label for="floatingInput">Имя клиента</label>
-                    </div>
-                    <div class="title__select_client">
-                        <#list clients as client>
-                        <form action="/clients">
-                            <label for="clients">Выберите клиента</label>
-                            <select name="clients" id="clients">
-                                <option value="${client.name}"></option>
-                                <option value="${client.name}"></option>
-                                <option value="${client.name}"></option>
-                            </select>
-                        </form>
-                        </#list>
-                    </div>
-                    <div class="container py-3 text-center">
-                        <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#modal">КП</button>
-                    </div>
-                    <div class="modal fade" id="modal" tabindex="-1" aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="modalLabel">Информация</h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
-                                </div>
-                                <div class="modal-body">
-                                    <img src="img/engineer_order.jpg" class="img-fluid" width="250" alt="">
-                                    <p class="title__order_id">${order.id}</p>
-                                    <p class="title__order_name">${order.name}</p>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-outline-success" data-bs-dismiss="modal">Ок</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <button class="w-100 mb-2 btn btn-outline-success" type="submit">Подтвердить</button>
-                    <small class="text-muted">Нажимая на кнопку "подтвердить" непременно будет создана заявка (КП)</small>
-                </form>
-            </#list>
+            <div class="mt-4">
+                <h4 class="title">Список товаров:</h4>
+                <div class="mt-3">
+                    <table class="table">
+                        <thead class="table-light">
+                        <tr>
+                            <th>#</th>
+                            <th>Название</th>
+                            <th>Конечная цена</th>
+                            <th>Количество</th>
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody class="order_add_left_products"></tbody>
+                    </table>
+                </div>
             </div>
         </div>
+        <div class="col-6 pt-5">
+            <form id="find_product_form" class="row mb-4">
+                <div class="col-9">
+                    <input type="text" id="productInput" class="form-control" placeholder="Введите название товара" required>
+                </div>
+                <div class="col-3">
+                    <button type="submit" class="btn btn-primary w-100">Искать</button>
+                </div>
+            </form>
+            <table class="table table-hover table-bordered">
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Название</th>
+                    <th>Конечная цена</th>
+                    <th>Количество</th>
+                    <th>В наличий</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody class="order_add_right_products"></tbody>
+            </table>
+        </div>
     </div>
-</div>
 
 </@main.renderWith>

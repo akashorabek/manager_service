@@ -1,4 +1,5 @@
 <#import "partials/header.ftlh" as main>
+<#import "partials/pagination.ftlh" as pagination>
 
 <@main.renderWith scripts=[] styles=[]>
 
@@ -7,12 +8,13 @@
     <a class="btn btn-primary" href="/orders/add">Создать КП</a>
     <a class="btn btn-primary" href="/products/send-price">Отправить прайс</a>
     <br>
-    <div class="container">
+    <div class="container mb-3">
         <table class="table table-hover mt-3">
             <thead class="table-light">
             <tr>
                 <th>Id клиента</th>
                 <th>Наименование</th>
+                <th>Краткое наименовние</th>
                 <th>Номер счета</th>
                 <th>Адрес</th>
                 <th>Телефон</th>
@@ -21,7 +23,7 @@
             </tr>
             </thead>
 
-            <#list clients as client>
+            <#list page.content as client>
                 <tr class="position-relative">
                     <td>${client.id}</td>
                     <td>
@@ -29,6 +31,7 @@
                             ${client.name}
                         </a>
                     </td>
+                    <td>${client.shortName}</td>
                     <td>${client.accountNumber}</td>
                     <td>${client.address}</td>
                     <td>${client.phone}</td>
@@ -39,4 +42,5 @@
             </#list>
         </table>
     </div>
+    <@pagination.pagination page=page link="/clients?"></@pagination.pagination>
 </@main.renderWith>
