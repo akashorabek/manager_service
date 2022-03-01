@@ -40,8 +40,18 @@ public class ProductService {
         );
     }
 
-    public Iterable<Product> findAll() {
-        return productRepository.findAll();
+    public List<ProductDto> findAll(String query) {
+        ProductSpecification nameLike = new ProductSpecification(new SearchCriteria("name", ":", query));
+        List<Product> products = productRepository.findAll(nameLike);
+        return products.stream()
+                .map(ProductDto::from)
+                .collect(Collectors.toList());
+    }
+
+    public List<ProductDto> findAll() {
+        return productRepository.findAll().stream()
+                .map(ProductDto::from)
+                .collect(Collectors.toList());
     }
 
     public Product findById(int id) {
