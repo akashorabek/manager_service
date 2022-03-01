@@ -5,6 +5,7 @@ import kz.attractor.api.dto.ClientDtoAdd;
 import kz.attractor.api.dto.ContactDto;
 import kz.attractor.api.service.ClientService;
 import kz.attractor.api.service.ContactService;
+import kz.attractor.datamodel.model.ClientBank;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -65,7 +66,8 @@ public class ClientController {
     }
 
     @GetMapping("/clients/add")
-    public String add() {
+    public String add(Model model) {
+        model.addAttribute("banks", ClientBank.values());
         return "client-add";
     }
 

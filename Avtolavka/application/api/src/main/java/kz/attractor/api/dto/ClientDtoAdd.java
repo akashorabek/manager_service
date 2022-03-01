@@ -1,5 +1,6 @@
 package kz.attractor.api.dto;
 
+import kz.attractor.datamodel.model.ClientBank;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -24,4 +25,6 @@ public class ClientDtoAdd {
     @NotBlank(message = "Поле не должно быть пустым")
     @Email(message = "В поле должен находиться email")
     private String email;
+
+    private ClientBank bank;
 }

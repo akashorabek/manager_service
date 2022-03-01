@@ -72,6 +72,7 @@ public class ClientService {
                 .phone(form.getPhone())
                 .email(form.getEmail())
                 .status(ClientStatus.CLIENT_NEW)
+                .bank(form.getBank())
                 .build();
         clientRepository.save(client);
     }
