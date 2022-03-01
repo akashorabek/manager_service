@@ -32,9 +32,7 @@ public class OrderController {
     }
 
     @GetMapping("/orders/add")
-    public String showAddOrdersPage(Model model) {
-        model.addAttribute("clients", clientService.findAll());
-        model.addAttribute("products", productService.findAll());
+    public String showAddOrdersPage() {
         return "order_add";
     }
 }

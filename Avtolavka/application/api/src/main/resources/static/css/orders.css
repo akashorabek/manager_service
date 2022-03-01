@@ -25,3 +25,10 @@
 .client_item:hover {
     box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, .2);
 }
+.product_row_item {
+    cursor: pointer;
+}
+.product_checkbox {
+    position: relative;
+    z-index: -1;
+}
