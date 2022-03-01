@@ -24,6 +24,19 @@
             </div>
             <div class="row mt-2">
                 <label class="flex flex-v-center">
+                    <span class="label-input-text mb-1">Краткое наименование:</span>
+                    <input type="text" name="shortName" value="${(form.shortName)!''}">
+                    <#if errors?? >
+                        <#list errors as fieldError>
+                            <#if fieldError.field == 'shortName'>
+                                <p class="text-danger my-0">${fieldError.defaultMessage!'-- no message --'}</p>
+                            </#if>
+                        </#list>
+                    </#if>
+                </label>
+            </div>
+            <div class="row mt-2">
+                <label class="flex flex-v-center">
                     <span class="label-input-text mb-1">Номер счета:</span>
                     <input type="text" name="accountNumber" value="${(form.accountNumber)!''}">
                     <#if errors?? >

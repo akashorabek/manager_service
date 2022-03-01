@@ -15,6 +15,9 @@ public class ClientDtoAdd {
     private String name;
 
     @NotBlank(message = "Поле не должно быть пустым")
+    private String shortName;
+
+    @NotBlank(message = "Поле не должно быть пустым")
     private String accountNumber;
 
     @NotBlank(message = "Поле не должно быть пустым")
