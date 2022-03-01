@@ -165,11 +165,11 @@ public class DataInit {
     private Order[] orders() {
         return new Order[]{
                 new Order(1L, LocalDateTime.now().minusDays(15),
-                        clientRepository.getById(1L)),
+                        clientRepository.getById(1L), false),
                 new Order(2L, LocalDateTime.now().minusDays(13),
-                        clientRepository.getById(1L)),
+                        clientRepository.getById(1L), false),
                 new Order(3L, LocalDateTime.now().minusDays(10),
-                        clientRepository.getById(2L)),
+                        clientRepository.getById(2L), true),
         };
     }
 
