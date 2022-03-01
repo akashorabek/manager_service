@@ -60,6 +60,7 @@ public class ClientService {
                 .phone(form.getPhone())
                 .email(form.getEmail())
                 .status(ClientStatus.valueOfLabel(form.getStatus()))
+                .bank(form.getBank())
                 .build();
         return ClientDto.from(clientRepository.save(client));
     }

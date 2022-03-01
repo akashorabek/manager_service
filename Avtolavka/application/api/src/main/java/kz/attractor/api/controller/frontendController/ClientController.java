@@ -49,6 +49,7 @@ public class ClientController {
     public String edit(@PathVariable long id, Model model) {
         ClientDto client = clientService.findById(id);
         model.addAttribute("form", client);
+        model.addAttribute("banks", ClientBank.values());
         return "client-edit";
     }
 

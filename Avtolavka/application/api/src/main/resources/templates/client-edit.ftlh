@@ -98,6 +98,19 @@
                     </select>
                 </label>
             </div>
+            <div class="row mt-2">
+                <label class="flex flex-v-center">
+                    <span class="label-input-text mb-1">Банк:</span>
+                    <select name="bank">
+                        <option value="" hidden>Выберите банк</option>
+                        <#list banks as bank>
+                            <option value="${bank}" <#if form.bank==bank>selected</#if>>
+                                ${bank.bankName}
+                            </option>
+                        </#list>
+                    </select>
+                </label>
+            </div>
             <div class="mt-3">
                 <button class="btn btn-primary" type="submit">Завершить</button>
             </div>

@@ -80,7 +80,7 @@
                     <select name="bank">
                         <option value="" hidden>Выберите банк</option>
                         <#list banks as bank>
-                            <option value="${bank}">${bank}</option>
+                            <option value="${bank}">${bank.bankName}</option>
                         </#list>
                     </select>
                     <#if errors?? >
