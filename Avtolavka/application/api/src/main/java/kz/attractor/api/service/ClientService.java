@@ -1,6 +1,7 @@
 package kz.attractor.api.service;
 
 import kz.attractor.api.dto.ClientDtoAdd;
+import kz.attractor.api.exception.ClientDontExistException;
 import kz.attractor.datamodel.model.Client;
 import kz.attractor.datamodel.model.ClientSpecification;
 import kz.attractor.datamodel.model.ClientStatus;
@@ -55,6 +56,9 @@ public class ClientService {
 
     public ClientDto findById(long id) {
         var client = clientRepository.findById(id).orElse(null);
+        if (client == null) {
+            throw new ClientDontExistException("Клиент с id " + id + " отсутствует");
+        }
         return ClientDto.from(client);
     }
 

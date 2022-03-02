@@ -5,6 +5,6 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class Info {
-    private String message;
+public class ExceptionInfo {
+    private String info;
 }
