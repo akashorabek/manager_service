@@ -9,15 +9,40 @@
 
     <div class="row pt-3 mb-3">
         <#list page.content as order>
-            <div class="col-4 gap-2">
-                <div class="card shadow-sm order_card" data-toggle="modal" data-target="#orderDetailsModal">
-                    <div class="card-body">
-                        <h2 class="title_order">Заявка (КП) №<span class="order_card_id">${order.id}</span></h2>
-                        <p class="card-text">Имя клиента: ${order.client}</p>
-                        <p class="card-text">Дата создания: ${order.dateCreation}</p>
+            <#if order.closed == false>
+                <div class="col-4 gap-2">
+                    <div class="card shadow-sm order_card" data-toggle="modal" data-target="#orderDetailsModal">
+                        <div class="card-body">
+                            <h2 class="title_order">Заявка (КП) №<span class="order_card_id">${order.id}</span></h2>
+                            <p class="card-text">Имя клиента: ${order.client}</p>
+                            <p class="card-text">Дата создания: ${order.dateCreation}</p>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </#if>
+            <br>
+            <#if order.closed == true>
+                <div class="container mb-3">
+                    <table class="table table-hover mt-3">
+                        <thead class="table-light">
+                        <tr>
+                            <th>Заявка (КП) №</th>
+                            <th>Имя клиента</th>
+                            <th>Дата создания</th>
+                            <th>Статус</th>
+                        </tr>
+                        </thead>
+                        <tr class="position-relative">
+                            <td>${order.id}</td>
+                            <td> ${order.client}</td>
+                            <td> ${order.dateCreation}</td>
+                            <td>Закрыт</td>
+                        </tr>
+                    </table>
+                </div>
+            </#if>
+
+
         </#list>
     </div>
 
