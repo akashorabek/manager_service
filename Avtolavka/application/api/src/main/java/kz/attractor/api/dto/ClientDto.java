@@ -1,6 +1,7 @@
 package kz.attractor.api.dto;
 
 import kz.attractor.datamodel.model.Client;
+import kz.attractor.datamodel.model.ClientBank;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
@@ -33,6 +34,8 @@ public class ClientDto {
 
     private String status;
 
+    private ClientBank bank;
+
     public static ClientDto from(Client client) {
         return ClientDto.builder()
                 .id(client.getId())
@@ -43,6 +46,7 @@ public class ClientDto {
                 .phone(client.getPhone())
                 .email(client.getEmail())
                 .status(client.getStatus().label)
+                .bank(client.getBank())
                 .build();
     }
 }

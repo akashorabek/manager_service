@@ -263,7 +263,8 @@ public class DataInit {
                         "Almaty",
                         "777",
                         "test1@gmail.com",
-                        ClientStatus.CLIENT_NEW),
+                        ClientStatus.CLIENT_NEW,
+                        ClientBank.ALFA_BANK),
                 new Client(2L,
                         "Тест клиент 2 постоянный",
                         "Краткое название 2 клиента",
@@ -271,7 +272,8 @@ public class DataInit {
                         "Boston",
                         "555",
                         "test2@gmail.com",
-                        ClientStatus.CLIENT_CONSTANT),
+                        ClientStatus.CLIENT_CONSTANT,
+                        ClientBank.HALYK_BANK),
                 new Client(3L,
                         "Тест клиент 3 новый",
                         "Тест клиент 3 новый",
@@ -279,7 +281,8 @@ public class DataInit {
                         "Shymkent",
                         "888",
                         "test3@gmail.com",
-                        ClientStatus.CLIENT_NEW),
+                        ClientStatus.CLIENT_NEW,
+                        ClientBank.KASPI_BANK),
                 new Client(4L,
                         "Тест клиент 4 новый",
                         "короткое название 4 клиента",
@@ -287,7 +290,8 @@ public class DataInit {
                         "Saint-Peterburg",
                         "999",
                         "test4@gmail.com",
-                        ClientStatus.CLIENT_NEW),
+                        ClientStatus.CLIENT_NEW,
+                        ClientBank.HOME_CREDIT_BANK),
                 new Client(5L,
                         "Тест клиент 5 постоянный",
                         "Пятый клиент",
@@ -295,7 +299,8 @@ public class DataInit {
                         "Nur-Sultan",
                         "444",
                         "test5@gmail.com",
-                        ClientStatus.CLIENT_CONSTANT)
+                        ClientStatus.CLIENT_CONSTANT,
+                        ClientBank.SBERBANK)
         };
     }
 
