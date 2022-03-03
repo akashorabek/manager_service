@@ -2,7 +2,7 @@
 
 <@main.renderWith scripts=[] styles=[]>
 
-    <h1 class="my-3 pt-4">Редактирование карточки клиента</h1>
+    <h1 class="my-3">Редактирование карточки клиента</h1>
 
     <div class="container">
         <a class="btn btn-primary" href="/clients">К списку клиентов</a>
