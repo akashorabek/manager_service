@@ -2,6 +2,7 @@ package kz.attractor.api.service;
 
 import kz.attractor.api.dto.OrderDto;
 import kz.attractor.api.dto.ProductDto;
+import kz.attractor.api.exception.ObjectDontExistException;
 import kz.attractor.datamodel.model.Product;
 import kz.attractor.datamodel.model.ProductSpecification;
 import kz.attractor.datamodel.repository.ProductRepository;
@@ -54,8 +55,10 @@ public class ProductService {
                 .collect(Collectors.toList());
     }
 
-    public Product findById(int id) {
-        return productRepository.getById(id);
+    public ProductDto findById(int id) {
+        var product = productRepository.findById(id).orElseThrow( () ->
+                new ObjectDontExistException("Товар с id " + id + " отсутствует"));
+        return ProductDto.from(product);
     }
 
     public List<ProductDto> findAllForPriceSend() {

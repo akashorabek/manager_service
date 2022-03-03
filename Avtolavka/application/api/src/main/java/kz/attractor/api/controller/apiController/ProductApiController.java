@@ -21,7 +21,7 @@ public class ProductApiController {
     private final ProductService service;
 
     @GetMapping("/api/products/{id}")
-    public Product getProductById(@PathVariable int id) {
+    public ProductDto getProductById(@PathVariable int id) {
         return service.findById(id);
     }
 
