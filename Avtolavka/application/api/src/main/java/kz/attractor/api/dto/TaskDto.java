@@ -23,10 +23,10 @@ public class TaskDto{
     private String description;
 
     @NotBlank(message = "Поле не должно быть пустым")
-    private LocalDate createDate;
+    private String createDate;
 
     @NotBlank(message = "Поле не должно быть пустым")
-    private LocalDate deadline;
+    private String deadline;
 
 
     private LocalDate finish;

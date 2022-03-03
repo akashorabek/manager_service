@@ -1,8 +1,7 @@
 package kz.attractor.api.service;
 
-import kz.attractor.api.dto.ClientDto;
 import kz.attractor.api.dto.TaskDto;
-import kz.attractor.datamodel.model.Client;
+import kz.attractor.api.dto.TaskDtoAdd;
 import kz.attractor.datamodel.model.Task;
 import kz.attractor.datamodel.model.TaskStatus;
 import kz.attractor.datamodel.repository.TaskRepository;
@@ -14,7 +13,6 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.util.Comparator;
-import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
@@ -34,14 +32,6 @@ public class TaskService {
                         .collect(Collectors.toList()),
                 pageable, tasks.getTotalElements()
         );
-    }
-    public List<TaskDto> findAll(){
-     var tasks = repository.findAll()
-             .stream()
-             .map(TaskDto::from)
-             .collect(Collectors.toList());
-        tasks.sort(Comparator.comparing(TaskDto::getCreateDate).reversed());
-        return tasks;
     }
 
     public TaskDto findById(long id) {
@@ -66,11 +56,11 @@ public class TaskService {
         return TaskDto.from(repository.save(task));
     }
 
-    public void add(TaskDto dto){
+    public void add(TaskDtoAdd dto){
         Task task = Task.builder()
                 .name(dto.getName())
                 .description(dto.getDescription())
-                .createDate(LocalDate.now())
+                .createDate(LocalDate.now().toString())
                 .deadline(dto.getDeadline())
                 .status(TaskStatus.TASK_NEW)
                 .build();

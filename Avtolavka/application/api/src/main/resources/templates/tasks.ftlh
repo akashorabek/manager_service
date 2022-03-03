@@ -8,8 +8,8 @@
 
 
     <div class="container mb-3">
-    <table class="table table-hover mt-3">
-    <thead class="table-light">
+       <table class="table table-hover mt-3">
+          <thead class="table-light">
     <tr>
         <th>Наименование</th>
         <th>Дата создания</th>
@@ -17,7 +17,7 @@
         <th>Статус</th>
     </tr>
     </thead>
-<#if tasks??>
+<#--<#if tasks??>-->
     <#list page.content as task>
         <tr class="position-relative">
             <td>
@@ -25,12 +25,12 @@
                     ${task.name}
                 </a>
             </td>
-            <td>${task.create}</td>
+            <td>${task.createDate}</td>
             <td>${task.deadline}</td>
             <td>${task.status}</td>
         </tr>
     </#list>
-</#if>
+<#--</#if>-->
 
     </table>
     </div>

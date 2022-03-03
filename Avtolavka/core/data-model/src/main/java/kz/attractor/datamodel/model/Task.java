@@ -26,10 +26,10 @@ public class Task {
     private String description;
 
     @Column(name = "createDate")
-    private LocalDate createDate;
+    private String createDate;
 
     @Column(name = "deadline")
-    private LocalDate deadline;
+    private String deadline;
 
     @Column(name = "finish")
     private LocalDate finish;

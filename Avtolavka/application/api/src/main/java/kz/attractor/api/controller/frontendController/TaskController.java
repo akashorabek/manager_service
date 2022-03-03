@@ -1,7 +1,7 @@
 package kz.attractor.api.controller.frontendController;
 
-import kz.attractor.api.dto.ClientDtoAdd;
 import kz.attractor.api.dto.TaskDto;
+import kz.attractor.api.dto.TaskDtoAdd;
 import kz.attractor.api.service.TaskService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -62,11 +62,11 @@ public class TaskController {
 
     @GetMapping("/tasks/add")
     public String add() {
-        return "tasks-add";
+        return "task-add";
     }
 
-    @PostMapping("tasks-add")
-    public String add(@Valid TaskDto form,
+    @PostMapping("task-add")
+    public String add(@Valid TaskDtoAdd form,
                       BindingResult validationResult,
                       RedirectAttributes attributes) {
         attributes.addFlashAttribute("form", form);
