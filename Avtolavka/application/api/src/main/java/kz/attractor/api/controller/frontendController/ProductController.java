@@ -15,10 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class ProductController {
     private ProductService productService;
 
-    @GetMapping
-    public String root() {
-        return "index";
-    }
+
 
     @GetMapping("/products")
     public String showProductsPage(Model model,
