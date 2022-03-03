@@ -12,12 +12,14 @@ public class OrderDto {
     private long id;
     private String dateCreation;
     private String client;
+    private boolean isClosed;
 
     public static OrderDto from(Order order) {
         return OrderDto.builder()
                 .id(order.getId())
                 .dateCreation(order.getDateCreation().toString())
                 .client(order.getClient().getName())
+                .isClosed(order.isClosed())
                 .build();
     }
 }

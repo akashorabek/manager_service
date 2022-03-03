@@ -3,7 +3,7 @@
 
 <@main.renderWith scripts=["/js/products.js"] styles=["/css/products.css"]>
 
-    <h4 class="title text-center pt-5">Все товары</h4>
+    <h4 class="title text-center">Все товары</h4>
 
     <div class="mt-3">
         <label>Поиск по названию</label>

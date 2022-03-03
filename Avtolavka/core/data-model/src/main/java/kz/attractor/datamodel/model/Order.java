@@ -23,4 +23,7 @@ public class Order {
     @ManyToOne
     @JoinColumn(name = "client_id")
     private Client client;
+
+    @Column(name = "is_closed")
+    private boolean isClosed;
 }

@@ -4,9 +4,6 @@
 .client_name p {
     font-size: 18px;
 }
-.order_add_wrapper {
-    height: 100vh;
-}
 .order_add_left {
     border-right: 2px solid #ecedee;
 }
@@ -18,6 +15,9 @@
     cursor: pointer;
     margin-bottom: 5px;
     box-sizing: border-box;
+}
+.title_order span {
+    font-size: calc(1.325rem + .9vw);
 }
 .client_item  h5 {
     margin-bottom: 0;
