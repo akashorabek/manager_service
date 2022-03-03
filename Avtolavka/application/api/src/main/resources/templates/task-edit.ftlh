@@ -65,7 +65,7 @@
                 </label>
             </div>
             <div class="mt-3">
-                <button class="btn btn-primary" type="submit">Завершить</button>
+                <button class="btn btn-secondary" type="submit">Завершить</button>
             </div>
         </form>
     </div>

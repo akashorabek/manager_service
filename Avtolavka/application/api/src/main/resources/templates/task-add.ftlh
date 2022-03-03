@@ -4,7 +4,7 @@
     <h1 class="my-3">Добавление новой задачи</h1>
 
     <div class="container">
-    <a class="btn btn-primary" href="/tasks">Отменить добавление</a>
+    <a class="btn btn-secondary" href="/tasks">Отменить добавление</a>
     <br>
     <br>
     <form action="/task-add" method="post">
@@ -48,7 +48,7 @@
         </label>
     </div>
         <div class="mt-3">
-            <button class="btn btn-primary" type="submit">Добавить</button>
+            <button class="btn btn-secondary" type="submit">Добавить</button>
         </div>
     </form>
     </div>
