@@ -16,6 +16,9 @@
     margin-bottom: 5px;
     box-sizing: border-box;
 }
+.title_order span {
+    font-size: calc(1.325rem + .9vw);
+}
 .client_item  h5 {
     margin-bottom: 0;
 }
