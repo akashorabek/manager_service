@@ -1,9 +1,13 @@
 package kz.attractor.api.controller.frontendController;
 
-import kz.attractor.api.dto.ClientDtoAdd;
 import kz.attractor.api.dto.TaskDto;
+import kz.attractor.api.dto.TaskDtoAdd;
 import kz.attractor.api.service.TaskService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -22,9 +26,10 @@ public class TaskController {
     private final TaskService service;
 
     @GetMapping("/tasks")
-    public String showTasksPage(Model model) {
-        List<TaskDto> tasks = service.findAll();
-        model.addAttribute("tasks", tasks);
+    public String showTasksPage(Model model,
+                                @PageableDefault(sort = {"status"}, direction = Sort.Direction.DESC, size = 10) Pageable pageable) {
+        Page<TaskDto> tasks = service.findAll(pageable);
+        model.addAttribute("page", tasks);
         return "tasks";
     }
 
@@ -38,30 +43,30 @@ public class TaskController {
     @GetMapping("/tasks/{id}/edit")
     public String edit(@PathVariable long id, Model model) {
         TaskDto task = service.findById(id);
-        model.addAttribute("task", task);
-        return "client-edit";
+        model.addAttribute("form", task);
+        return "task-edit";
     }
 
     @PostMapping("task-edit")
-    public String edit(@Valid TaskDto taskDto,
+    public String edit(@Valid TaskDto form,
                        BindingResult validationResult,
                        RedirectAttributes attributes) {
-        attributes.addFlashAttribute("task", taskDto);
+        attributes.addFlashAttribute("form", form);
         if (validationResult.hasFieldErrors()) {
             attributes.addFlashAttribute("errors", validationResult.getFieldErrors());
-            return "redirect:/tasks/" + taskDto.getId() + "/edit";
+            return "redirect:/tasks/" + form.getId() + "/edit";
         }
-        service.update(taskDto);
-        return "redirect:/tasks/" + taskDto.getId();
+        service.update(form);
+        return "redirect:/tasks/" + form.getId();
     }
 
     @GetMapping("/tasks/add")
     public String add() {
-        return "tasks-add";
+        return "task-add";
     }
 
-    @PostMapping("tasks-add")
-    public String add(@Valid TaskDto form,
+    @PostMapping("task-add")
+    public String add(@Valid TaskDtoAdd form,
                       BindingResult validationResult,
                       RedirectAttributes attributes) {
         attributes.addFlashAttribute("form", form);

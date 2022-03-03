@@ -12,7 +12,7 @@ import java.time.LocalDate;
 @Getter
 @Setter
 @Builder
-public class TaskDto {
+public class TaskDto{
 
     private Long id;
 
@@ -23,10 +23,10 @@ public class TaskDto {
     private String description;
 
     @NotBlank(message = "Поле не должно быть пустым")
-    private LocalDate create;
+    private String createDate;
 
     @NotBlank(message = "Поле не должно быть пустым")
-    private LocalDate deadline;
+    private String deadline;
 
 
     private LocalDate finish;
@@ -38,7 +38,7 @@ public class TaskDto {
                 .id(task.getId())
                 .name(task.getName())
                 .description(task.getDescription())
-                .create(task.getCreate())
+                .createDate(task.getCreateDate())
                 .deadline(task.getDeadline())
                 .finish(task.getFinish())
                 .status(task.getStatus().label)
