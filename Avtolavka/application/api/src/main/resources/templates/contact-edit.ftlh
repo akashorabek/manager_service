@@ -2,7 +2,7 @@
 
 <@main.renderWith scripts=[] styles=[]>
 
-    <h1 class="my-3 pt-4">Редактирование карточки контактного лица</h1>
+    <h1 class="my-3">Редактирование карточки контактного лица</h1>
 
     <div class="container">
         <a class="btn btn-primary" href="/clients/${form.clientId}">Отменить редактирование</a>

@@ -3,7 +3,7 @@
 <@main.renderWith scripts=["/js/orders_add.js"] styles=["/css/orders.css"]>
 
     <div class="order_add_wrapper row">
-        <div class="order_add_left col-6 pt-5">
+        <div class="order_add_left col-6">
             <form id="find_client_form" class="row mb-4">
                 <div class="col-9">
                     <input id="clientInput" name="client" type="text" class="form-control" placeholder="Введите название клиента" required>
@@ -34,7 +34,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-6 pt-5">
+        <div class="col-6">
             <form id="find_product_form" class="row mb-4">
                 <div class="col-9">
                     <input type="text" id="productInput" class="form-control" placeholder="Введите название товара" required>
