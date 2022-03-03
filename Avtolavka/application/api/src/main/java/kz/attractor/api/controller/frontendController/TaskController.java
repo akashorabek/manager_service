@@ -4,6 +4,10 @@ import kz.attractor.api.dto.ClientDtoAdd;
 import kz.attractor.api.dto.TaskDto;
 import kz.attractor.api.service.TaskService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -22,9 +26,10 @@ public class TaskController {
     private final TaskService service;
 
     @GetMapping("/tasks")
-    public String showTasksPage(Model model) {
-        List<TaskDto> tasks = service.findAll();
-        model.addAttribute("tasks", tasks);
+    public String showTasksPage(Model model,
+                                @PageableDefault(sort = {"status"}, direction = Sort.Direction.DESC, size = 10) Pageable pageable) {
+        Page<TaskDto> tasks = service.findAll(pageable);
+        model.addAttribute("page", tasks);
         return "tasks";
     }
 
