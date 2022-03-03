@@ -43,21 +43,21 @@ public class TaskController {
     @GetMapping("/tasks/{id}/edit")
     public String edit(@PathVariable long id, Model model) {
         TaskDto task = service.findById(id);
-        model.addAttribute("task", task);
-        return "client-edit";
+        model.addAttribute("form", task);
+        return "task-edit";
     }
 
     @PostMapping("task-edit")
-    public String edit(@Valid TaskDto taskDto,
+    public String edit(@Valid TaskDto form,
                        BindingResult validationResult,
                        RedirectAttributes attributes) {
-        attributes.addFlashAttribute("task", taskDto);
+        attributes.addFlashAttribute("form", form);
         if (validationResult.hasFieldErrors()) {
             attributes.addFlashAttribute("errors", validationResult.getFieldErrors());
-            return "redirect:/tasks/" + taskDto.getId() + "/edit";
+            return "redirect:/tasks/" + form.getId() + "/edit";
         }
-        service.update(taskDto);
-        return "redirect:/tasks/" + taskDto.getId();
+        service.update(form);
+        return "redirect:/tasks/" + form.getId();
     }
 
     @GetMapping("/tasks/add")

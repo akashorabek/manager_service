@@ -67,4 +67,21 @@ public class TaskService {
         repository.save(task);
     }
 
+//    public void execute(TaskDto dto){
+//        var taskOptional = repository.findById(dto.getId());
+//        if (taskOptional.isEmpty()){
+//            return null;
+//        }
+//        Task task = Task.builder()
+//                .id(dto.getId())
+//                .name(dto.getName())
+//                .description(dto.getDescription())
+//                .createDate(dto.getCreateDate())
+//                .deadline(dto.getDeadline())
+//                .status(TaskStatus.valueOfLabel(dto.setStatus(dto.getStatus(TaskStatus.TASK_IN_PROGRESS))))
+//                .finish(dto.getFinish())
+//                .build();
+//        return TaskDto.from(repository.save(task));
+//    }
+
 }

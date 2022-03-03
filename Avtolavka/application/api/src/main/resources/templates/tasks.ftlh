@@ -4,7 +4,7 @@
 <@main.renderWith scripts=[] styles=[]>
 
 
-    <a class="btn btn-secondary" href="/tasks/add">Создать клиента</a>
+    <a class="btn btn-secondary" href="/tasks/add">Создать задачу</a>
 
 
     <div class="container mb-3">
@@ -17,7 +17,7 @@
         <th>Статус</th>
     </tr>
     </thead>
-<#--<#if tasks??>-->
+
     <#list page.content as task>
         <tr class="position-relative">
             <td>
@@ -30,7 +30,7 @@
             <td>${task.status}</td>
         </tr>
     </#list>
-<#--</#if>-->
+
 
     </table>
     </div>
