@@ -2,6 +2,7 @@ package kz.attractor.api.service;
 
 import kz.attractor.api.dto.ContactDto;
 import kz.attractor.api.dto.ContactDtoAdd;
+import kz.attractor.api.exception.ObjectDontExistException;
 import kz.attractor.datamodel.model.Contact;
 import kz.attractor.datamodel.model.ContactStatus;
 import kz.attractor.datamodel.repository.ClientRepository;
@@ -29,7 +30,8 @@ public class ContactService {
     }
 
     public ContactDto findById(long id) {
-        var contact = contactRepository.findById(id).orElse(null);
+        var contact = contactRepository.findById(id).orElseThrow( () ->
+                new ObjectDontExistException("Контактное лицо с id " + id + " отсутствует"));
         return ContactDto.from(contact);
     }
 
