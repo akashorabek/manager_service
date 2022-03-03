@@ -3,7 +3,7 @@
 
 <@main.renderWith scripts=["/js/orders.js"] styles=["/css/orders.css"]>
 
-    <div class="pt-3">
+    <div>
         <a href="/orders/add" class="btn btn-primary">Создать КП</a>
     </div>
 
