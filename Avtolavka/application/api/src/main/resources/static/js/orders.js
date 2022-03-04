@@ -15,7 +15,7 @@ $(document).ready(function (){
                         <th scope="col">Название</th>
                         <th scope="col">Количество</th>
                         <th scope="col">Цена продажи</th>
-                        <th scope="col">В наличий</th>
+                        <th scope="col">Примечание</th>
                     </tr>
                 </thead>
                 <tbody></tbody>
@@ -28,7 +28,7 @@ $(document).ready(function (){
                 <td>${response.orderProducts[i].product.name}</td>
                 <td>${response.orderProducts[i].quantity}</td>
                 <td>${response.orderProducts[i].product.sellingPrice}</td>
-                <td>${response.orderProducts[i].product.inStock?"Да":"Нет"}</td>
+                <td>${response.orderProducts[i].product.inStock?"В наличии":"Под заказ"}</td>
             </tr>`))
         }
         $('#orderDetailsModal').find('.modal-body').append(orderDetails)
