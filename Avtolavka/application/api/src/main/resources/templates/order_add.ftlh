@@ -13,26 +13,29 @@
                 </div>
             </form>
             <div class="client_names_wrapper mb-4"></div>
-            <div class="client_name mb-4">
-                <p>Клиент: <b id="client_name">Не выбран</b></p>
-            </div>
-            <div class="mt-4">
-                <h4 class="title">Список товаров:</h4>
-                <div class="mt-3">
-                    <table class="table">
-                        <thead class="table-light">
-                        <tr>
-                            <th>#</th>
-                            <th>Название</th>
-                            <th>Конечная цена</th>
-                            <th>Количество</th>
-                            <th></th>
-                        </tr>
-                        </thead>
-                        <tbody class="order_add_left_products"></tbody>
-                    </table>
+            <form class="add_order_form">
+                <div class="client_name mb-4">
+                    <p>Клиент: <b id="client_name">Не выбран</b></p>
                 </div>
-            </div>
+                <div class="mt-4">
+                    <h4 class="title">Список товаров:</h4>
+                    <div class="mt-3">
+                        <table class="table">
+                            <thead class="table-light">
+                            <tr>
+                                <th>#</th>
+                                <th>Название</th>
+                                <th>Конечная цена</th>
+                                <th>Количество</th>
+                                <th></th>
+                            </tr>
+                            </thead>
+                            <tbody class="order_add_left_products"></tbody>
+                        </table>
+                    </div>
+                </div>
+                <button id="add_order_btn" disabled type="submit" class="btn btn-primary">Сохранить КП</button>
+            </form>
         </div>
         <div class="col-6">
             <form id="find_product_form" class="row mb-4">
