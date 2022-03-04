@@ -1,6 +1,7 @@
 package kz.attractor.api.service;
 
 import kz.attractor.api.dto.OrderDto;
+import kz.attractor.api.dto.OrderDtoAdd;
 import kz.attractor.datamodel.model.Client;
 import kz.attractor.datamodel.model.Order;
 import kz.attractor.datamodel.model.OrderProducts;
@@ -34,11 +35,12 @@ public class OrderService {
         );
     }
 
-    public void add(OrderDto form) {
-        Client client = clientRepository.findById(form.getId()).get();
+    public void add(OrderDtoAdd form) {
+        Client client = clientRepository.findById(form.getClientId()).get();
         Order order = Order.builder()
                 .dateCreation(LocalDateTime.now())
                 .client(client)
+                .isClosed(false)
                 .build();
         orderRepository.save(order);
     }
