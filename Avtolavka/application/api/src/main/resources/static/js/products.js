@@ -6,7 +6,7 @@ $(document).ready(function (){
         $('#productDetailsModalTitle').text(`Товар №${response.id}`)
         let productDetails = $(`
             <p>Название: ${response.name}</p>
-            <p>Цена: ${response.sellingPrice}</p>
+            <p>Цена: ${response.price}</p>
             <p>Количество: ${response.quantity}</p>
             <p>В наличий: ${response.quantity?"Да":"Нет"}</p>
            `)

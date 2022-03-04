@@ -20,7 +20,7 @@ public class OrderController {
 
     @GetMapping("/orders")
     public String showOrdersPage(Model model,
-                                 @PageableDefault(sort = {"id"}, direction = Sort.Direction.ASC, size = 3) Pageable pageable) {
+                                 @PageableDefault(sort = {"id"}, direction = Sort.Direction.ASC, size = 10) Pageable pageable) {
         Page<OrderDto> orders = orderService.findAll(pageable);
         model.addAttribute("page", orders);
         model.addAttribute("clients", clientService.findAll());

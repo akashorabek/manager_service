@@ -5,10 +5,12 @@ import kz.attractor.api.dto.OrderDtoAdd;
 import kz.attractor.api.exception.ObjectDontExistException;
 import kz.attractor.datamodel.model.Client;
 import kz.attractor.datamodel.model.Order;
-import kz.attractor.datamodel.model.OrderProducts;
+import kz.attractor.datamodel.model.OrderProduct;
+import kz.attractor.datamodel.model.Product;
 import kz.attractor.datamodel.repository.ClientRepository;
-import kz.attractor.datamodel.repository.OrderProductsRepository;
+import kz.attractor.datamodel.repository.OrderProductRepository;
 import kz.attractor.datamodel.repository.OrderRepository;
+import kz.attractor.datamodel.repository.ProductRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
@@ -23,8 +25,9 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class OrderService {
     private final OrderRepository orderRepository;
-    private final OrderProductsRepository orderProductsRepository;
+    private final OrderProductRepository orderProductRepository;
     private final ClientRepository clientRepository;
+    private final ProductRepository productRepository;
 
     public Page<OrderDto> findAll(Pageable pageable) {
         Page<Order> ordersPage = orderRepository.findAll(pageable);
@@ -44,6 +47,16 @@ public class OrderService {
                 .isClosed(false)
                 .build();
         orderRepository.save(order);
+
+        for(int i = 0; i < form.getQuantities().size(); i++) {
+            Product product = productRepository.findById(form.getProductIds().get(i)).get();
+            OrderProduct orderProduct = OrderProduct.builder()
+                    .product(product)
+                    .order(order)
+                    .quantity(form.getQuantities().get(i))
+                    .build();
+            orderProductRepository.save(orderProduct);
+        }
     }
 
     public Order findById(Long id) {
@@ -52,7 +65,7 @@ public class OrderService {
         return order;
     }
 
-    public List<OrderProducts> findOrderProductsByOrderId(Long id) {
-        return orderProductsRepository.findAllByOrderId(id);
+    public List<OrderProduct> findOrderProductsByOrderId(Long id) {
+        return orderProductRepository.findAllByOrderId(id);
     }
 }

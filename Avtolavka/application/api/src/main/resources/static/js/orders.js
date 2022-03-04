@@ -24,7 +24,7 @@ $(document).ready(function (){
         for (let i = 0; i < response.orderProducts.length; i++) {
             orderDetails.find('tbody').append($(`
             <tr>
-                <th scope="row">${response.orderProducts[i].id}</th>
+                <th scope="row">${response.orderProducts[i].product.id}</th>
                 <td>${response.orderProducts[i].product.name}</td>
                 <td>${response.orderProducts[i].quantity}</td>
                 <td>${response.orderProducts[i].product.sellingPrice}</td>

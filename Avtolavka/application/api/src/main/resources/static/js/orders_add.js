@@ -136,7 +136,7 @@ $(document).ready(function (){
                 method: "POST",
                 url: 'http://localhost:8500/orders/add',
                 data: {
-                    clientId: 2,
+                    clientId: clientId,
                     productIds: productIds,
                     quantities: quantities
                 },

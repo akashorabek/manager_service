@@ -20,7 +20,7 @@ public class DataInit {
     private final SupplierRepository supplierRepository;
     private final ProductRepository productRepository;
     private final OrderRepository orderRepository;
-    private final OrderProductsRepository orderProductsRepository;
+    private final OrderProductRepository orderProductRepository;
     private final WarehouseRepository warehouseRepository;
 
     @Bean
@@ -78,7 +78,7 @@ public class DataInit {
     private CommandLineRunner initOrdersProducts() {
         return (args) -> Stream.of(ordersProducts())
                 .peek(System.out::println)
-                .forEach(orderProductsRepository::save);
+                .forEach(orderProductRepository::save);
     }
 
     private Warehouse[] warehouses() {
@@ -227,28 +227,28 @@ public class DataInit {
         };
     }
 
-    private OrderProducts[] ordersProducts() {
-        return new OrderProducts[]{
-                new OrderProducts(1L,
+    private OrderProduct[] ordersProducts() {
+        return new OrderProduct[]{
+                new OrderProduct(1L,
                         orderRepository.getById(1L),
                         productRepository.getById(1), 10),
-                new OrderProducts(2L,
+                new OrderProduct(2L,
                         orderRepository.getById(1L),
                         productRepository.getById(2), 2),
-                new OrderProducts(3L,
+                new OrderProduct(3L,
                         orderRepository.getById(1L),
                         productRepository.getById(3), 1),
-                new OrderProducts(4L,
+                new OrderProduct(4L,
                         orderRepository.getById(1L),
                         productRepository.getById(4), 1),
-                new OrderProducts(5L,
+                new OrderProduct(5L,
                         orderRepository.getById(1L),
                         productRepository.getById(5), 3),
                 // next order
-                new OrderProducts(6L,
+                new OrderProduct(6L,
                         orderRepository.getById(2L),
                         productRepository.getById(1), 1),
-                new OrderProducts(7L,
+                new OrderProduct(7L,
                         orderRepository.getById(2L),
                         productRepository.getById(2), 5)
         };
