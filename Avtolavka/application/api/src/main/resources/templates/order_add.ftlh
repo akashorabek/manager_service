@@ -17,6 +17,12 @@
                 <div class="client_name mb-4">
                     <p>Клиент: <b id="client_name">Не выбран</b></p>
                 </div>
+
+                <div class="form-floating">
+                    <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
+                    <label for="floatingTextarea2">Оригинал КП</label>
+                </div>
+
                 <div class="mt-4">
                     <h4 class="title">Список товаров:</h4>
                     <div class="mt-3">
@@ -36,6 +42,10 @@
                 </div>
                 <button id="add_order_btn" disabled type="submit" class="btn btn-primary">Сохранить КП</button>
             </form>
+            <br>
+            <div class="col-3">
+                <button type="btn" class="btn btn-primary w-100">Счет на оплату</button>
+            </div>
         </div>
         <div class="col-6">
             <form id="find_product_form" class="row mb-4">
@@ -59,7 +69,11 @@
                 </thead>
                 <tbody class="order_add_right_products"></tbody>
             </table>
+            <div class="col-3">
+                <button type="btn" class="btn btn-primary w-100">Коммерческое предложение</button>
+            </div>
         </div>
+
     </div>
 
 </@main.renderWith>
