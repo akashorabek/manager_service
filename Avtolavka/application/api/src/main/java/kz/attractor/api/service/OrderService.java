@@ -2,6 +2,7 @@ package kz.attractor.api.service;
 
 import kz.attractor.api.dto.OrderDto;
 import kz.attractor.api.dto.OrderDtoAdd;
+import kz.attractor.api.exception.ObjectDontExistException;
 import kz.attractor.datamodel.model.Client;
 import kz.attractor.datamodel.model.Order;
 import kz.attractor.datamodel.model.OrderProducts;
@@ -46,7 +47,9 @@ public class OrderService {
     }
 
     public Order findById(Long id) {
-        return orderRepository.getById(id);
+        var order = orderRepository.findById(id).orElseThrow( () ->
+                new ObjectDontExistException("Заказ с id " + id + " отсутствует"));
+        return order;
     }
 
     public List<OrderProducts> findOrderProductsByOrderId(Long id) {
