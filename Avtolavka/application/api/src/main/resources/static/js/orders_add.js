@@ -77,7 +77,7 @@ $(document).ready(function (){
                     <td class="product_row_item_name">${product.name}</td>
                     <td class="product_row_item_price">${product.price}</td>
                     <td class="product_row_item_quantity">${product.quantity}</td>
-                    <td>${product.inStock?"Да":"Нет"}</td>
+                    <td>${product.inStock?"В наличии":"Под заказ"}</td>
                     <td><input type="checkbox" value="${product.id}" class="form-check-input product_checkbox"></td>
                 </tr>
             `)

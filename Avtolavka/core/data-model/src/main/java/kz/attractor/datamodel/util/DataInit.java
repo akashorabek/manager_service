@@ -190,7 +190,7 @@ public class DataInit {
                         10,
                         new BigDecimal(1580),
                         new BigDecimal(2565.92),
-                        true,
+                        false,
                         warehouseRepository.getById(3L)),
                 new Product(3,
                         "Адаптер для дрели М14",
@@ -211,7 +211,7 @@ public class DataInit {
                         10,
                         new BigDecimal(173),
                         new BigDecimal(280.95),
-                        true,
+                        false,
                         warehouseRepository.getById(3L))
         };
     }

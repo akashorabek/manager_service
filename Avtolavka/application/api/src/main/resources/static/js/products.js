@@ -8,7 +8,7 @@ $(document).ready(function (){
             <p>Название: ${response.name}</p>
             <p>Цена: ${response.price}</p>
             <p>Количество: ${response.quantity}</p>
-            <p>В наличий: ${response.quantity?"Да":"Нет"}</p>
+            <p>Примечание: ${response.inStock?"В наличии":"Под заказ"}</p>
            `)
         $('#productDetailsModal').find('.modal-body').append(productDetails)
     }

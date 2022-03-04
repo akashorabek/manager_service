@@ -21,7 +21,9 @@
                 <th scope="col">Название</th>
                 <th scope="col">Конечная цена</th>
                 <th scope="col">Количество</th>
-                <th scope="col">В наличий</th>
+                <th scope="col">Примечание</th>
+                <th scope="col">Склад товара</th>
+                <th scope="col">Время доставки</th>
             </tr>
             </thead>
             <tbody>
@@ -31,7 +33,9 @@
                     <td>${product.name}</td>
                     <td>${product.price}</td>
                     <td>${product.quantity}</td>
-                    <td>${product.inStock?string("Да", "Нет")}</td>
+                    <td>${product.inStock?string("В наличии", "Под заказ")}</td>
+                    <td>${product.warehouse}</td>
+                    <td>${product.inStock?string("3 дня", "9 дней")}</td>
                 </tr>
             </#list>
             </tbody>
