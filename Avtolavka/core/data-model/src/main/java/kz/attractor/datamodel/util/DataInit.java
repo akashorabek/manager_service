@@ -22,6 +22,7 @@ public class DataInit {
     private final OrderRepository orderRepository;
     private final OrderProductRepository orderProductRepository;
     private final WarehouseRepository warehouseRepository;
+    private final ProductNameRepository productNameRepository;
 
     @Bean
     public CommandLineRunner init() {
@@ -30,6 +31,7 @@ public class DataInit {
             initContacts().run();
             initSuppliers().run();
             initWarehouses().run();
+            initProductNames().run();
             initProducts().run();
             initOrders().run();
             initOrdersProducts().run();
@@ -43,6 +45,11 @@ public class DataInit {
         return (args -> Stream.of(warehouses())
                 .peek(System.out::println)
                 .forEach(warehouseRepository::save));
+    }
+    private CommandLineRunner initProductNames() {
+        return (args -> Stream.of(productNames())
+                .peek(System.out::println)
+                .forEach(productNameRepository::save));
     }
 
     private CommandLineRunner initProducts() {
@@ -184,35 +191,46 @@ public class DataInit {
                         new BigDecimal(3312),
                         new BigDecimal(5378.7),
                         true,
-                        warehouseRepository.getById(1L)),
+                        "втулка коленвал",
+                        warehouseRepository.getById(1L),
+                        productNameRepository.getById(1L)),
+
                 new Product(2,
                         "Втулка коленчатого вала без шпон. паза 406.1005038-11 100504",
                         10,
                         new BigDecimal(1580),
                         new BigDecimal(2565.92),
                         true,
-                        warehouseRepository.getById(3L)),
+                        "втулка вал шпон 406.1005038-11 100504 1005038 11 паз",
+                        warehouseRepository.getById(3L),
+                        productNameRepository.getById(2L)),
                 new Product(3,
                         "Адаптер для дрели М14",
                         10,
                         new BigDecimal(406),
                         new BigDecimal(659.34),
                         true,
-                        warehouseRepository.getById(2L)),
+                        "даптер дрель М14 м14",
+                        warehouseRepository.getById(2L),
+                        productNameRepository.getById(3L)),
                 new Product(4,
                         "Масло Газпромнефть Супер 10W40 SG/CD 5л.",
                         10,
                         new BigDecimal(4679),
                         new BigDecimal(7598.7),
                         true,
-                        warehouseRepository.getById(2L)),
+                        "масло газпром нефть супер 10W40 10 SG ",
+                        warehouseRepository.getById(2L),
+                        productNameRepository.getById(4L)),
                 new Product(5,
                         "ET-912-YE",
                         10,
                         new BigDecimal(173),
                         new BigDecimal(280.95),
                         true,
-                        warehouseRepository.getById(3L))
+                        "ET 912 YE",
+                        warehouseRepository.getById(3L),
+                        productNameRepository.getById(5L))
         };
     }
 
@@ -328,5 +346,21 @@ public class DataInit {
                         "8")
 
         };
+    }
+
+    private ProductName[] productNames(){
+        return new ProductName[]{
+                new ProductName(1L,
+                        "ВТУЛКА КОЛЕНВАЛА ГАЗ 3240" ),
+                new ProductName(2L,
+                        "Втулка коленчатого вала без шпон"),
+                new ProductName(3L,
+                        "Адаптер для дрели М14" ),
+                new ProductName(4L,
+                        "Масло Газпромнефть Супер 5л."  ),
+                new ProductName(5L,
+                        "ET-912" )
+        };
+
     }
 }
