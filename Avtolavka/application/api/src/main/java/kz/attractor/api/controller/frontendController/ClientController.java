@@ -30,7 +30,7 @@ public class ClientController {
 
     @GetMapping("/clients")
     public String showClients(Model model,
-                              @PageableDefault(sort = {"status"}, direction = Sort.Direction.DESC, size = 10) Pageable pageable) {
+                              @PageableDefault(sort = {"status"}, direction = Sort.Direction.DESC, size = 3) Pageable pageable) {
         Page<ClientDto> clients = clientService.findAll(pageable);
         model.addAttribute("page", clients);
         return "clients";
