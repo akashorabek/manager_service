@@ -26,7 +26,7 @@ $(document).ready(function (){
         let query = $('#clientInput').val();
         $.ajax({
             method: "GET",
-            url: `http://localhost:8500/api/clients?query=${query}`,
+            url: `http://localhost:8500/api/clients/search?query=${query}`,
             success: (response) => {
                 handleClients(response)
             },

@@ -7,7 +7,7 @@ $(document).ready(function (){
         let orderDetails = $(`
             <p>Имя клиента: ${response.order.client.name}</p>
             <p>Дата создания: ${response.order.dateCreation}</p>
-            <p>Товары:</p>
+                <p>Товары:</p>
             <table class="table">
                 <thead>
                     <tr>
