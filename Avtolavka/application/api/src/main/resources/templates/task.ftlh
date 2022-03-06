@@ -78,7 +78,14 @@
                 <#list comments as comment>
                     <div class="card mb-3" >
                         <div class="card-body">
-                            <p>${comment.description}</p>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-9">
+                                        <p class="card-text">
+                            ${comment.description}
+                                        </p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
