@@ -33,6 +33,8 @@ public class TaskDto{
 
     private String status;
 
+    private String comment;
+
     public static TaskDto from(Task task){
         return TaskDto.builder()
                 .id(task.getId())
@@ -42,6 +44,7 @@ public class TaskDto{
                 .deadline(task.getDeadline())
                 .finish(task.getFinish())
                 .status(task.getStatus().label)
+                .comment(task.getComment())
                 .build();
     }
 }
