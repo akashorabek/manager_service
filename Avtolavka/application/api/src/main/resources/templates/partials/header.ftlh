@@ -25,7 +25,7 @@
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <ul class="navbar-nav me-auto mb-2 mb-md-0">
                         <li class="nav-item">
-                            <a class="nav-link active" href="/tasks">Главная</a>
+                            <a class="nav-link active" href="/  ">Главная</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="/orders">Заявки (КП)</a>

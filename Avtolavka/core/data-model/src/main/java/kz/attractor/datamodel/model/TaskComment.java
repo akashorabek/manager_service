@@ -22,4 +22,8 @@ public class TaskComment {
 
     @Column(name = "createDate")
     private String createDate;
+
+    @ManyToOne
+    @JoinColumn(name = "task_id")
+    private Task task;
 }

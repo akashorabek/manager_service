@@ -1,7 +1,9 @@
 package kz.attractor.api.controller.frontendController;
 
+import kz.attractor.api.dto.TaskCommentDto;
 import kz.attractor.api.dto.TaskDto;
 import kz.attractor.api.dto.TaskDtoAdd;
+import kz.attractor.api.service.TaskCommentService;
 import kz.attractor.api.service.TaskService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -24,8 +26,9 @@ import java.util.List;
 public class TaskController {
 
     private final TaskService service;
+    private final TaskCommentService taskCommentService;
 
-    @GetMapping("/tasks")
+    @GetMapping("/")
     public String showTasksPage(Model model,
                                 @PageableDefault(sort = {"status"}, direction = Sort.Direction.DESC, size = 10) Pageable pageable) {
         Page<TaskDto> tasks = service.findAll(pageable);
@@ -37,6 +40,8 @@ public class TaskController {
     public String showTask(@PathVariable long id, Model model) {
         TaskDto task = service.findById(id);
         model.addAttribute("task", task);
+        List<TaskCommentDto> comments = taskCommentService.findAllByTask_Id(id);
+        model.addAttribute("comments", comments);
         return "task";
     }
 
@@ -54,10 +59,10 @@ public class TaskController {
         attributes.addFlashAttribute("form", form);
         if (validationResult.hasFieldErrors()) {
             attributes.addFlashAttribute("errors", validationResult.getFieldErrors());
-            return "redirect:/tasks/" + form.getId() + "/edit";
+            return "redirect:/" + form.getId() + "/edit";
         }
         service.update(form);
-        return "redirect:/tasks/" + form.getId();
+        return "redirect:/" + form.getId();
     }
 
     @GetMapping("/tasks/add")
@@ -72,10 +77,10 @@ public class TaskController {
         attributes.addFlashAttribute("form", form);
         if (validationResult.hasFieldErrors()) {
             attributes.addFlashAttribute("errors", validationResult.getFieldErrors());
-            return "redirect:/tasks/add";
+            return "redirect:/add";
         }
         service.add(form);
-        return "redirect:/tasks";
+        return "redirect:/";
     }
 
 }

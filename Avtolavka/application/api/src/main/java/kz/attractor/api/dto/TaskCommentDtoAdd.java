@@ -11,4 +11,7 @@ public class TaskCommentDtoAdd {
 
     @NotBlank(message = "Поле не должно быть пустым")
     private String description;
+
+    @NotBlank(message = "Поле не должно быть пустым")
+    private long taskId;
 }

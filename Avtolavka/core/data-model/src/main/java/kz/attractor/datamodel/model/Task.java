@@ -37,7 +37,6 @@ public class Task {
     @Column(name = "status")
     private TaskStatus status;
 
-    @Column(name= "comment")
-    private TaskComment comment;
+
 
 }

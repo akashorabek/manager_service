@@ -44,7 +44,6 @@ public class TaskDto{
                 .deadline(task.getDeadline())
                 .finish(task.getFinish())
                 .status(task.getStatus().label)
-                .comment(task.getComment().getDescription())
                 .build();
     }
 }
