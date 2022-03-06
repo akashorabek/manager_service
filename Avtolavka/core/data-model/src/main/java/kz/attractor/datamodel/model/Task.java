@@ -38,6 +38,6 @@ public class Task {
     private TaskStatus status;
 
     @Column(name= "comment")
-    private String comment;
+    private TaskComment comment;
 
 }
