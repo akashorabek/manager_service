@@ -67,9 +67,31 @@
         </#if>
 
         <a class="btn btn-secondary" href="/tasks/${task.id}/execute">В работу</a>
+        <a class="btn btn-secondary" href="/tasks/${task.id}/comments/add">Комментировать</a>
+
+    </div>
+
     </div>
     </div>
+            <div class="col-6">
+                <h3>Комментарии: </h3>
+                <#list comments as comment>
+                    <div class="card mb-3" >
+                        <div class="card-body">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-9">
+                                        <p class="card-text">
+                            ${comment.description}
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </#list>
+            </div>
     </div>
-    </div>
+
     </div>
 </@main.renderWith>

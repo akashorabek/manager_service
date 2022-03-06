@@ -33,6 +33,8 @@ public class TaskDto{
 
     private String status;
 
+    private String comment;
+
     public static TaskDto from(Task task){
         return TaskDto.builder()
                 .id(task.getId())
