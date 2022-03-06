@@ -16,7 +16,7 @@
     <div class="row mt-2">
         <label class="flex flex-v-center">
             <span class="label-input-text mb-1">Комментарий:</span>
-            <input type="text" name="description" value="${(form.description)!''}">
+            <textarea class="form-control" name="description" v placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
             <#if errors?? >
                 <#list errors as fieldError>
                     <#if fieldError.field == 'description'>
