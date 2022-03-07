@@ -5,6 +5,7 @@
     <h1 class="my-3">Редактирование задачи</h1>
 
     <div class="container">
+        <a class="btn btn-secondary" href="/tasks/${form.id}">Отменить редактирование</a>
         <br>
         <form action="/task-edit" method="post">
             <div class="row">
@@ -67,7 +68,7 @@
             <div class="row mt-2">
                 <label class="flex flex-v-center">
                     <span class="label-input-text mb-1">Статус:</span>
-                    <input type="text" name="status" value="${(form.status)!''}">
+                    <input type="text" name="status" value="${(form.status)!''}" disabled>
                     <#if errors?? >
                         <#list errors as fieldError>
                             <#if fieldError.field == 'status'>
