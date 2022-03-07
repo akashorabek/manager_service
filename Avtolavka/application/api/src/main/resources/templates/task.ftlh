@@ -6,7 +6,7 @@
 
 
     <div class="container">
-    <a class="btn btn-secondary" href="/tasks">К списку задач</a>
+    <a class="btn btn-secondary" href="/">К списку задач</a>
     <a class="btn btn-secondary" href="/tasks/${task.id}/edit">Редактировать задачу</a>
     <br>
     <br>

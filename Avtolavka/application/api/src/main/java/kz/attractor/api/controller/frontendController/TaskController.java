@@ -5,6 +5,7 @@ import kz.attractor.api.dto.TaskDto;
 import kz.attractor.api.dto.TaskDtoAdd;
 import kz.attractor.api.service.TaskCommentService;
 import kz.attractor.api.service.TaskService;
+import kz.attractor.datamodel.model.TaskStatus;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -49,6 +50,7 @@ public class TaskController {
     public String edit(@PathVariable long id, Model model) {
         TaskDto task = service.findById(id);
         model.addAttribute("form", task);
+        model.addAttribute("statuses", TaskStatus.values());
         return "task-edit";
     }
 
@@ -62,7 +64,7 @@ public class TaskController {
             return "redirect:/" + form.getId() + "/edit";
         }
         service.update(form);
-        return "redirect:/" + form.getId();
+        return "redirect:/";
     }
 
     @GetMapping("/tasks/add")

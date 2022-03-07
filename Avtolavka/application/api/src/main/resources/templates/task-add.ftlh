@@ -4,7 +4,7 @@
     <h1 class="my-3">Добавление новой задачи</h1>
 
     <div class="container">
-    <a class="btn btn-secondary" href="/tasks">Отменить добавление</a>
+    <a class="btn btn-secondary" href="/">Отменить добавление</a>
     <br>
     <br>
     <form action="/task-add" method="post">
