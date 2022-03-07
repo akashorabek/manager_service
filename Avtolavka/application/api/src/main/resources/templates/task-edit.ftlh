@@ -68,7 +68,7 @@
             <div class="row mt-2">
                 <label class="flex flex-v-center">
                     <span class="label-input-text mb-1">Статус:</span>
-                    <input type="text" name="status" value="${(form.status)!''}" disabled>
+                    <input type="text" name="status" value="${(form.status)!''}" >
                     <#if errors?? >
                         <#list errors as fieldError>
                             <#if fieldError.field == 'status'>
