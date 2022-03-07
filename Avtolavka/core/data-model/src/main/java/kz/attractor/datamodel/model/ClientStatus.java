@@ -5,7 +5,8 @@ import java.util.Map;
 
 public enum ClientStatus {
     CLIENT_NEW("Новый"),
-    CLIENT_CONSTANT("Постоянный");
+    CLIENT_CONSTANT("Постоянный"),
+    CLIENT_ARCHIVE("Архивный");
 
     public final String label;
     private static final Map<String, ClientStatus> BY_LABEL = new HashMap<>();

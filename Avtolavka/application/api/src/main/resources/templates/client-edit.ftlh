@@ -101,12 +101,19 @@
                         <#if form.status=="Новый">
                             <option value="Новый" selected>Новый</option>
                             <option value="Постоянный">Постоянный</option>
+                            <option value="Архивный">Архивный</option>
                         <#elseif form.status=="Постоянный">
                             <option value="Новый">Новый</option>
                             <option value="Постоянный" selected>Постоянный</option>
+                            <option value="Архивный">Архивный</option>
+                        <#elseif form.status=="Архивный">
+                            <option value="Новый">Новый</option>
+                            <option value="Постоянный">Постоянный</option>
+                            <option value="Архивный" selected>Архивный</option>
                         <#else>
                             <option value="Новый">Новый</option>
                             <option value="Постоянный">Постоянный</option>
+                            <option value="Архивный">Архивный</option>
                         </#if>
                     </select>
                 </label>
