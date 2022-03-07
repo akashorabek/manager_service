@@ -26,14 +26,15 @@ public class ClientDto {
     @NotBlank(message = "Поле не должно быть пустым")
     private String address;
 
-    @NotBlank(message = "Поле не должно быть пустым")
-    private String phone;
-
-    @NotBlank(message = "Поле не должно быть пустым")
-    private String email;
-
+    private String phoneMain;
+    private String phone1;
+    private String phone2;
+    private String phone3;
+    private String emailMain;
+    private String email1;
+    private String email2;
+    private String email3;
     private String status;
-
     private ClientBank bank;
 
     public static ClientDto from(Client client) {
@@ -43,8 +44,14 @@ public class ClientDto {
                 .shortName(client.getShortName())
                 .accountNumber(client.getAccountNumber())
                 .address(client.getAddress())
-                .phone(client.getPhone())
-                .email(client.getEmail())
+                .phoneMain(client.getPhoneMain())
+                .phone1(client.getPhone1())
+                .phone2(client.getPhone2())
+                .phone3(client.getPhone3())
+                .emailMain(client.getEmailMain())
+                .email1(client.getEmail1())
+                .email2(client.getEmail2())
+                .email3(client.getEmail3())
                 .status(client.getStatus().label)
                 .bank(client.getBank())
                 .build();

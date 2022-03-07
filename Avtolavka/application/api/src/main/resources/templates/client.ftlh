@@ -57,18 +57,66 @@
                         </div>
                         <div class="row">
                             <div class="col-4">
-                                <p>Телефон: </p>
+                                <p>Телефон основной: </p>
                             </div>
                             <div class="col-6">
-                                <p>${client.phone}</p>
+                                <p>${client.phoneMain}</p>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-4">
-                                <p>E-mail: </p>
+                                <p>Телефон 1: </p>
                             </div>
                             <div class="col-6">
-                                <p>${client.email}</p>
+                                <p>${client.phone1}</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-4">
+                                <p>Телефон 2: </p>
+                            </div>
+                            <div class="col-6">
+                                <p>${client.phone2}</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-4">
+                                <p>Телефон 3: </p>
+                            </div>
+                            <div class="col-6">
+                                <p>${client.phone3}</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-4">
+                                <p>E-mail основной: </p>
+                            </div>
+                            <div class="col-6">
+                                <p>${client.emailMain}</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-4">
+                                <p>E-mail 1: </p>
+                            </div>
+                            <div class="col-6">
+                                <p>${client.email1}</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-4">
+                                <p>E-mail 2: </p>
+                            </div>
+                            <div class="col-6">
+                                <p>${client.email2}</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-4">
+                                <p>E-mail 3: </p>
+                            </div>
+                            <div class="col-6">
+                                <p>${client.email3}</p>
                             </div>
                         </div>
                         <div class="row">
