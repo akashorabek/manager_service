@@ -62,7 +62,7 @@ public class TaskController {
             return "redirect:/" + form.getId() + "/edit";
         }
         service.update(form);
-        return "redirect:/" + form.getId();
+        return "redirect:/";
     }
 
     @GetMapping("/tasks/add")
