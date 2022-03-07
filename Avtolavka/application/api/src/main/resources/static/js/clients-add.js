@@ -2,8 +2,40 @@
 const server = "http://localhost:8500/api/";
 requestBankNames();
 
-function showClientsTable(data) {
-    console.log(data);
+function main(response) {
+    showPageLayout(response);
+    setHandlers()
+}
+
+function setHandlers () {
+    $('.phone1').find('.btnPhoneAdd').click(function () {
+        $('.phone2').removeAttr('hidden');
+        $(this).removeClass('btn');
+        $(this).removeClass('btn-primary');
+        $(this).empty();
+    })
+    $('.phone2').find('.btnPhoneAdd').click(function () {
+        $('.phone3').removeAttr('hidden');
+        $(this).removeClass('btn');
+        $(this).removeClass('btn-primary');
+        $(this).empty();
+    })
+    $('.phoneStatus').click(function () {
+        $('.phoneStatus').find('span').text('Сделать основным');
+        $('.phoneStatus').addClass('btn');
+        $('.phoneStatus').addClass('btn-primary');
+        $(this).find('span').text('Основной');
+        $(this).removeClass('btn');
+        $(this).removeClass('btn-primary');
+    })
+    $('.email1').find('.btn').click(function () {
+        $('.email2').removeAttr('hidden');
+        $(this).remove();
+    })
+    $('.email2').find('.btn').click(function () {
+        $('.email3').removeAttr('hidden');
+        $(this).remove();
+    })
 }
 
 function requestBankNames() {
@@ -11,12 +43,13 @@ function requestBankNames() {
         method: "GET",
         url: server + "banks",
         success: (response) => {
-            showPageLayout(response);
+            main(response);
         },
         error: (error) => {
             console.log(error);
         }
     })
+
 }
 
 function showPageLayout(banks) {
@@ -24,7 +57,7 @@ function showPageLayout(banks) {
         <h1 class="my-3">Добавление карточки клиента</h1>
         <a class="btn btn-primary" href="/clients">Отменить добавление</a>
         <br>
-        <form action="/client-add" method="post">
+        <form>
             <div class="row mt-2">
                 <div class="col-3">
                     <span class="label-input-text mb-1">Наименование:</span>
@@ -57,67 +90,84 @@ function showPageLayout(banks) {
                     <input type="text" name="address" style="width: 100%">
                 </div>                
             </div>
-            <div class="row mt-2">
+            <div class="row mt-2 phone1">
                 <div class="col-3">
                     <span class="label-input-text mb-1">Телефон 1:</span>
                 </div>
                 <div class="col-3">
                     <input type="text" name="phone1" style="width: 100%">
                 </div>
-                <div class="col-2">
+                <div class="col-1 btn btn-primary btnPhoneAdd">
+                    <span>+ тел</span>
+                </div>
+                <div class="col-2 mx-5 phoneStatus">
                     <span>Основной</span>
                 </div>
-                <div class="col-2">
-                    <span>Добавить телефон</span>
-                </div>
             </div>
-            <div class="row mt-2">
+            <div class="row mt-2 phone2" hidden>
                 <div class="col-3">
                     <span class="label-input-text mb-1">Телефон 2:</span>
                 </div>
                 <div class="col-3">
                     <input type="text" name="phone2" style="width: 100%">
                 </div>
-                <div class="col-2">
-                    <span>Основной</span>
+                <div class="col-1 btn btn-primary btnPhoneAdd">
+                    <span>+ тел</span>
                 </div>
-                <div class="col-2">
-                    <span>Добавить телефон</span>
+                <div class="col-2 mx-5 btn btn-primary phoneStatus">
+                    <span>Сделать основным</span>
                 </div>
             </div>
-            <div class="row mt-2">
+            <div class="row mt-2 phone3" hidden>
                 <div class="col-3">
                     <span class="label-input-text mb-1">Телефон 3:</span>
                 </div>
                 <div class="col-3">
                     <input type="text" name="phone3" style="width: 100%">
                 </div>
-                <div class="col-2">
-                    <span>Основной</span>
+                <div class="col-1">
+                </div>
+                <div class="col-2 mx-5 btn btn-primary phoneStatus">
+                    <span>Сделать основным</span>
                 </div>
             </div>
-            <div class="row mt-2">
+            <div class="row mt-2 email1">
                 <div class="col-3">
                     <span class="label-input-text mb-1">E-mail 1:</span>
                 </div>
-                <div class="col-9">
-                    <input type="text" name="email1" style="width: 50%">
+                <div class="col-3">
+                    <input type="text" name="email1" style="width: 100%">
+                </div>
+                <div class="col-2">
+                    <span>Основной</span>
+                </div>
+                <div class="col-1 btn btn-primary">
+                    <span>+ email</span>
                 </div>
             </div>
-            <div class="row mt-2" hidden>
+            <div class="row mt-2 email2" hidden>
                 <div class="col-3">
                     <span class="label-input-text mb-1">E-mail 2:</span>
                 </div>
-                <div class="col-9">
-                    <input type="text" name="email2" style="width: 50%">
+                <div class="col-3">
+                    <input type="text" name="email2" style="width: 100%">
+                </div>
+                <div class="col-2">
+                    <span>Основной</span>
+                </div>
+                <div class="col-1 btn btn-primary">
+                    <span>+ email</span>
                 </div>
             </div>
-            <div class="row mt-2" hidden>
+            <div class="row mt-2 email3" hidden>
                 <div class="col-3">
                     <span class="label-input-text mb-1">E-mail 3:</span>
                 </div>
-                <div class="col-9">
-                    <input type="text" name="email3" style="width: 50%">
+                <div class="col-3">
+                    <input type="text" name="email3" style="width: 100%">
+                </div>
+                <div class="col-2">
+                    <span>Основной</span>
                 </div>
             </div>
             <div class="row mt-2">
