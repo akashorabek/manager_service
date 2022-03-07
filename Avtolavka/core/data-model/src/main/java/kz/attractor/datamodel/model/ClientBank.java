@@ -2,8 +2,7 @@ package kz.attractor.datamodel.model;
 
 import lombok.Getter;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 @Getter
 public enum ClientBank {
@@ -46,5 +45,15 @@ public enum ClientBank {
 
     public static ClientBank valueOfBankName(String bankName) {
         return BY_BANK.get(bankName);
+    }
+
+    public static List<String> getNamesOfBanks() {
+        ClientBank[] banks = ClientBank.values();
+        List<String> banksNames = new ArrayList<>();
+        for (ClientBank bank : banks) {
+            banksNames.add(bank.getBankName());
+        }
+        Collections.sort(banksNames);
+        return banksNames;
     }
 }
