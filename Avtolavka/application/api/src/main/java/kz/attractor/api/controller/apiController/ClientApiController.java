@@ -1,16 +1,14 @@
 package kz.attractor.api.controller.apiController;
 
 import kz.attractor.api.dto.ClientDto;
+import kz.attractor.api.dto.ClientDtoAdd;
 import kz.attractor.api.service.ClientService;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -38,5 +36,8 @@ public class ClientApiController {
         return client;
     }
 
-
+    @PostMapping("/api/clients/add")
+    public ClientDto add(ClientDtoAdd form) {
+        return clientService.add(form);
+    }
 }
