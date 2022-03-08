@@ -7,12 +7,13 @@ $(document).ready(function (){
                 let client_item = $(`<div class="client_item">
                     <input type="hidden" value="${i.id}"/>
                     <h5>${i.name}</h5>
+                    <h6>${i.clientName}</h6>
                 </div>`)
                 client_item.click(function (){
                     $('#add_order_btn').attr('disabled', false)
                     $('.client_names_wrapper').empty()
-                    $('#client_name').text(client_item.find('h5').text())
-                    $('#client_name').append($(`<input type="hidden" value="${client_item.find('input').val()}" name="client_id" id="chosen_client_id" />`))
+                    $('#client_name').text(client_item.find('h5').text() + `(${i.clientName})`)
+                    $('#client_name').append($(`<input type="hidden" value="${client_item.find('input').val()}" name="contact_id" id="chosen_client_id" />`))
                 })
                 $('.client_names_wrapper').append(client_item)
             })
@@ -26,7 +27,7 @@ $(document).ready(function (){
         let query = $('#clientInput').val();
         $.ajax({
             method: "GET",
-            url: `http://localhost:8500/api/clients/search?query=${query}`,
+            url: `http://localhost:8500/api/contacts/search?query=${query}`,
             success: (response) => {
                 handleClients(response)
             },
@@ -136,7 +137,7 @@ $(document).ready(function (){
                 method: "POST",
                 url: 'http://localhost:8500/orders/add',
                 data: {
-                    clientId: clientId,
+                    contactId: clientId,
                     productIds: productIds,
                     quantities: quantities
                 },

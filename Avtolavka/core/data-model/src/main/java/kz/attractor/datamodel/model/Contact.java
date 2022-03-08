@@ -37,6 +37,9 @@ public class Contact {
     @Column(name = "email3")
     private String email3;
 
+    @Column(name = "position")
+    private String position;
+
     @Column(name = "status")
     private ContactStatus status;
 

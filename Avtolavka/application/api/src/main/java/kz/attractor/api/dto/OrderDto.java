@@ -18,7 +18,7 @@ public class OrderDto {
         return OrderDto.builder()
                 .id(order.getId())
                 .dateCreation(order.getDateCreation().toString())
-                .client(order.getClient().getName())
+                .client(order.getContact().getName())
                 .isClosed(order.isClosed())
                 .build();
     }

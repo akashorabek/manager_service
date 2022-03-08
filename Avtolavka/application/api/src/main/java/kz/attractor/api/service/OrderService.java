@@ -3,14 +3,8 @@ package kz.attractor.api.service;
 import kz.attractor.api.dto.OrderDto;
 import kz.attractor.api.dto.OrderDtoAdd;
 import kz.attractor.api.exception.ObjectDontExistException;
-import kz.attractor.datamodel.model.Client;
-import kz.attractor.datamodel.model.Order;
-import kz.attractor.datamodel.model.OrderProduct;
-import kz.attractor.datamodel.model.Product;
-import kz.attractor.datamodel.repository.ClientRepository;
-import kz.attractor.datamodel.repository.OrderProductRepository;
-import kz.attractor.datamodel.repository.OrderRepository;
-import kz.attractor.datamodel.repository.ProductRepository;
+import kz.attractor.datamodel.model.*;
+import kz.attractor.datamodel.repository.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
@@ -26,7 +20,7 @@ import java.util.stream.Collectors;
 public class OrderService {
     private final OrderRepository orderRepository;
     private final OrderProductRepository orderProductRepository;
-    private final ClientRepository clientRepository;
+    private final ContactRepository contactRepository;
     private final ProductRepository productRepository;
 
     public Page<OrderDto> findAll(Pageable pageable) {
@@ -40,10 +34,10 @@ public class OrderService {
     }
 
     public void add(OrderDtoAdd form) {
-        Client client = clientRepository.findById(form.getClientId()).get();
+        Contact contact = contactRepository.findById(form.getContactId()).get();
         Order order = Order.builder()
                 .dateCreation(LocalDateTime.now())
-                .client(client)
+                .contact(contact)
                 .isClosed(false)
                 .build();
         orderRepository.save(order);
@@ -67,5 +61,11 @@ public class OrderService {
 
     public List<OrderProduct> findOrderProductsByOrderId(Long id) {
         return orderProductRepository.findAllByOrderId(id);
+    }
+
+    public void closeStatus(long orderId) {
+        Order order = orderRepository.findById(orderId).get();
+        order.setClosed(true);
+        orderRepository.save(order);
     }
 }

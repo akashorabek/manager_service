@@ -8,7 +8,7 @@ import java.util.List;
 @Getter
 @Setter
 public class OrderDtoAdd {
-    private long clientId;
+    private long contactId;
     private List<Integer> productIds;
     private List<Integer> quantities;
 }

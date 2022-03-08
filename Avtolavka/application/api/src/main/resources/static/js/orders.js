@@ -5,7 +5,7 @@ $(document).ready(function (){
         $('#orderDetailsModal').find('.modal-body').empty()
         $('#orderDetailsModalTitle').text(`Заявка №${response.order.id}`)
         let orderDetails = $(`
-            <p>Имя клиента: ${response.order.client.name}</p>
+            <p>Имя менеджера: ${response.order.contact.name} (${response.order.contact.client.name})</p>
             <p>Дата создания: ${response.order.dateCreation}</p>
                 <p>Товары:</p>
             <table class="table">
@@ -31,6 +31,13 @@ $(document).ready(function (){
                 <td>${response.orderProducts[i].product.inStock?"В наличии":"Под заказ"}</td>
             </tr>`))
         }
+        if (!response.order.closed) {
+            $('#orderDetailsModalCloseForm').show()
+            $('#closingOrderId').attr('value', response.order.id)
+        } else {
+            $('#orderDetailsModalCloseForm').hide()
+        }
+
         $('#orderDetailsModal').find('.modal-body').append(orderDetails)
     }
 

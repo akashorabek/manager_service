@@ -64,7 +64,10 @@
                 </div>
                 <div class="modal-body"></div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
+                    <form id="orderDetailsModalCloseForm" method="post" action="/orders/close">
+                        <input type="hidden" name="orderId" id="closingOrderId">
+                        <button type="submit" class="btn btn-info">Закрыть КП</button>
+                    </form>
                 </div>
             </div>
         </div>

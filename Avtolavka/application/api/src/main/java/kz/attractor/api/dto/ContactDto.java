@@ -17,8 +17,10 @@ public class ContactDto {
     private String email1;
     private String email2;
     private String email3;
+    private String position;
     private String status;
     private long clientId;
+    private String clientName;
 
     public static ContactDto from (Contact contact) {
         return ContactDto.builder()
@@ -30,8 +32,10 @@ public class ContactDto {
                 .email1(contact.getEmail1())
                 .email2(contact.getEmail2())
                 .email3(contact.getEmail3())
+                .position(contact.getPosition())
                 .status(contact.getStatus().label)
                 .clientId(contact.getClient().getId())
+                .clientName(contact.getClient().getShortName())
                 .build();
     }
 }

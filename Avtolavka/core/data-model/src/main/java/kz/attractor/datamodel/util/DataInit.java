@@ -105,6 +105,7 @@ public class DataInit {
                         "a@mail.ru",
                         null,
                         null,
+                        "purchase manager",
                         ContactStatus.CONTACT_ARCHIVE,
                         clientRepository.getById(1L)),
                 new Contact(2L, "Скаков Баур",
@@ -114,6 +115,7 @@ public class DataInit {
                         "b@mail.ru",
                         null,
                         null,
+                        "logistics manager",
                         ContactStatus.CONTACT_NEW,
                         clientRepository.getById(1L)),
                 new Contact(3L, "Утепова Алия",
@@ -123,6 +125,7 @@ public class DataInit {
                         "c@mail.ru",
                         null,
                         null,
+                        "contract manager",
                         ContactStatus.CONTACT_CONSTANT,
                         clientRepository.getById(1L)),
                 new Contact(4L, "Иванов Иван",
@@ -132,6 +135,7 @@ public class DataInit {
                         "d@mail.ru",
                         null,
                         null,
+                        "механик",
                         ContactStatus.CONTACT_ARCHIVE,
                         clientRepository.getById(2L)),
                 new Contact(5L, "Петров Петя",
@@ -141,6 +145,7 @@ public class DataInit {
                         "e@mail.ru",
                         null,
                         null,
+                        "закупщик",
                         ContactStatus.CONTACT_CONSTANT,
                         clientRepository.getById(2L)),
                 new Contact(6L, "Гоги",
@@ -150,6 +155,7 @@ public class DataInit {
                         "x@mail.ru",
                         "mail@ru",
                         null,
+                        "офис-менеджер",
                         ContactStatus.CONTACT_NEW,
                         clientRepository.getById(2L)),
                 new Contact(7L, "Зеленая Ольга",
@@ -159,6 +165,7 @@ public class DataInit {
                         "a2@mail.ru",
                         "asdasdasd.@ru",
                         null,
+                        "purchase manager",
                         ContactStatus.CONTACT_CONSTANT,
                         clientRepository.getById(3L)),
                 new Contact(8L, "Синяя Хельга",
@@ -168,6 +175,7 @@ public class DataInit {
                         "a4@mail.ru",
                         null,
                         null,
+                        "логист",
                         ContactStatus.CONTACT_CONSTANT,
                         clientRepository.getById(4L)),
                 new Contact(9L, "Желтая Анна",
@@ -177,6 +185,7 @@ public class DataInit {
                         "a8@mail.ru",
                         null,
                         null,
+                        "операционный manager",
                         ContactStatus.CONTACT_CONSTANT,
                         clientRepository.getById(5L))
         };
@@ -237,11 +246,11 @@ public class DataInit {
     private Order[] orders() {
         return new Order[]{
                 new Order(1L, LocalDateTime.now().minusDays(15),
-                        clientRepository.getById(1L), false),
+                        contactRepository.getById(1L), false),
                 new Order(2L, LocalDateTime.now().minusDays(13),
-                        clientRepository.getById(1L), false),
+                        contactRepository.getById(1L), false),
                 new Order(3L, LocalDateTime.now().minusDays(10),
-                        clientRepository.getById(2L), true),
+                        contactRepository.getById(2L), true),
         };
     }
 

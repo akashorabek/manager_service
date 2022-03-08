@@ -29,7 +29,6 @@ public class OrderApiController {
     @PostMapping("/orders/add")
     @ResponseStatus(HttpStatus.CREATED)
     public void addOrder(OrderDtoAdd orderDtoAdd) {
-        System.out.println(orderDtoAdd.getClientId());
         orderService.add(orderDtoAdd);
     }
 }

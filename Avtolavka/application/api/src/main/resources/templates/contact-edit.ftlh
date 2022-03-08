@@ -108,6 +108,19 @@
             </div>
             <div class="row mt-2">
                 <label class="flex flex-v-center">
+                    <span class="label-input-text mb-1">Job position:</span>
+                    <input type="text" name="position" value="${(form.position)!''}">
+                    <#if errors?? >
+                        <#list errors as fieldError>
+                            <#if fieldError.field == 'position'>
+                                <p class="text-danger my-0">${fieldError.defaultMessage!'-- no message --'}</p>
+                            </#if>
+                        </#list>
+                    </#if>
+                </label>
+            </div>
+            <div class="row mt-2">
+                <label class="flex flex-v-center">
                     <span class="label-input-text mb-1">Статус:</span>
                     <select name="status">
                         <option value="" hidden>Выберите статус</option>
