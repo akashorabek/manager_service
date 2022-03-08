@@ -8,9 +8,13 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseStatus;
 
 @Controller
 @AllArgsConstructor
@@ -32,5 +36,11 @@ public class OrderController {
         return "order_add";
     }
 
+    @PostMapping("/orders/close")
+    @ResponseStatus(HttpStatus.SEE_OTHER)
+    public String closeOrderStatus(@RequestParam long orderId) {
+        orderService.closeStatus(orderId);
+        return "redirect:/orders";
+    }
 
 }

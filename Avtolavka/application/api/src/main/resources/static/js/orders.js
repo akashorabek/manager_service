@@ -31,6 +31,13 @@ $(document).ready(function (){
                 <td>${response.orderProducts[i].product.inStock?"В наличии":"Под заказ"}</td>
             </tr>`))
         }
+        if (!response.order.closed) {
+            $('#orderDetailsModalCloseForm').show()
+            $('#closingOrderId').attr('value', response.order.id)
+        } else {
+            $('#orderDetailsModalCloseForm').hide()
+        }
+
         $('#orderDetailsModal').find('.modal-body').append(orderDetails)
     }
 

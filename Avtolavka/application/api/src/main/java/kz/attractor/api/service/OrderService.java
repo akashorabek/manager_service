@@ -68,4 +68,10 @@ public class OrderService {
     public List<OrderProduct> findOrderProductsByOrderId(Long id) {
         return orderProductRepository.findAllByOrderId(id);
     }
+
+    public void closeStatus(long orderId) {
+        Order order = orderRepository.findById(orderId).get();
+        order.setClosed(true);
+        orderRepository.save(order);
+    }
 }
