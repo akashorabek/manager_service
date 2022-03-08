@@ -180,14 +180,13 @@
                                 <div class="col-9">
                                     <p class="card-text">
                                         Status: ${contact.status}; <br>
-                                        Job Position: ${contact.position}; <br>
                                         Phone: <#if contact.phone1??>${contact.phone1} <#else>Не указано</#if>; <br>
                                         <#if contact.phone2??><#if contact.phone2 != ''>Phone 2: ${contact.phone2}; <br></#if></#if>
                                         <#if contact.phone3??><#if contact.phone3 != ''>Phone 2: ${contact.phone3}; <br></#if></#if>
                                         E-mail: <#if contact.email1??>${contact.email1} <#else>Не указано</#if>; <br>
                                         <#if contact.email2??><#if contact.email2 != ''>E-mail 2: ${contact.email2}; <br></#if></#if>
                                         <#if contact.email3??><#if contact.email3 != ''>E-mail 3: ${contact.email3}; <br></#if></#if>
-
+                                        Job Position: ${contact.position}; <br>
                                     </p>
                                 </div>
                                 <div class="col-3">
