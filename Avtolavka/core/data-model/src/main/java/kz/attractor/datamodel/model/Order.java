@@ -21,8 +21,8 @@ public class Order {
     private LocalDateTime dateCreation;
 
     @ManyToOne
-    @JoinColumn(name = "client_id")
-    private Client client;
+    @JoinColumn(name = "contact_id")
+    private Contact contact;
 
     @Column(name = "is_closed")
     private boolean isClosed;

@@ -20,6 +20,7 @@ public class ContactDto {
     private String position;
     private String status;
     private long clientId;
+    private String clientName;
 
     public static ContactDto from (Contact contact) {
         return ContactDto.builder()
@@ -34,6 +35,7 @@ public class ContactDto {
                 .position(contact.getPosition())
                 .status(contact.getStatus().label)
                 .clientId(contact.getClient().getId())
+                .clientName(contact.getClient().getShortName())
                 .build();
     }
 }

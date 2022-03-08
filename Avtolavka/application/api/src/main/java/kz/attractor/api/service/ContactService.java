@@ -1,12 +1,16 @@
 package kz.attractor.api.service;
 
+import kz.attractor.api.dto.ClientDto;
 import kz.attractor.api.dto.ContactDto;
 import kz.attractor.api.dto.ContactDtoAdd;
 import kz.attractor.api.exception.ObjectDontExistException;
+import kz.attractor.datamodel.model.ClientSpecification;
 import kz.attractor.datamodel.model.Contact;
+import kz.attractor.datamodel.model.ContactSpecification;
 import kz.attractor.datamodel.model.ContactStatus;
 import kz.attractor.datamodel.repository.ClientRepository;
 import kz.attractor.datamodel.repository.ContactRepository;
+import kz.attractor.datamodel.util.SearchCriteria;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -70,5 +74,15 @@ public class ContactService {
                 .client(clientRepository.findById(form.getClientId()).get())
                 .build();
         contactRepository.save(contact);
+    }
+
+    public List<ContactDto> findAllSearched(String query) {
+        ContactSpecification nameLike = new ContactSpecification(new SearchCriteria("name", ":", query));
+        var contacts = contactRepository.findAll(nameLike)
+                .stream()
+                .map(ContactDto::from)
+                .collect(Collectors.toList());
+        contacts.sort(Comparator.comparing(ContactDto::getStatus).reversed());
+        return contacts;
     }
 }

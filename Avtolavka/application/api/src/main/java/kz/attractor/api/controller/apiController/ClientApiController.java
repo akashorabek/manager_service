@@ -21,7 +21,6 @@ public class ClientApiController {
 
     @GetMapping("/api/clients/search")
     public List<ClientDto> getClients(@RequestParam String query) {
-
         return clientService.findAllSearched(query);
     }
 
