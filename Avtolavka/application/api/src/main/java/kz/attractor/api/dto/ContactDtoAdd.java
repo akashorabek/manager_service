@@ -15,6 +15,7 @@ public class ContactDtoAdd {
     private String email1;
     private String email2;
     private String email3;
+    private String position;
     private String status;
     private long clientId;
 }

@@ -49,6 +49,7 @@ public class ContactService {
                 .email1(form.getEmail1())
                 .email2(form.getEmail2())
                 .email3(form.getEmail3())
+                .position(form.getPosition())
                 .status(ContactStatus.valueOfLabel(form.getStatus()))
                 .client(clientRepository.findById(form.getClientId()).get())
                 .build();
@@ -64,6 +65,7 @@ public class ContactService {
                 .email1(form.getEmail1())
                 .email2(form.getEmail2())
                 .email3(form.getEmail3())
+                .position(form.getPosition())
                 .status(ContactStatus.CONTACT_NEW)
                 .client(clientRepository.findById(form.getClientId()).get())
                 .build();

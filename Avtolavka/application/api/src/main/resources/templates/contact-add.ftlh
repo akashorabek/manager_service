@@ -105,6 +105,19 @@
                     </#if>
                 </label>
             </div>
+            <div class="row mt-2">
+                <label class="flex flex-v-center">
+                    <span class="label-input-text mb-1">Job Position:</span>
+                    <input type="text" name="position" value="${(form.position)!''}">
+                    <#if errors?? >
+                        <#list errors as fieldError>
+                            <#if fieldError.field == 'position'>
+                                <p class="text-danger my-0">${fieldError.defaultMessage!'-- no message --'}</p>
+                            </#if>
+                        </#list>
+                    </#if>
+                </label>
+            </div>
             <div class="mt-3">
                 <button class="btn btn-primary" type="submit">Добавить</button>
             </div>
