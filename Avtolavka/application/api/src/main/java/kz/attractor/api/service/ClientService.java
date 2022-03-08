@@ -3,6 +3,7 @@ package kz.attractor.api.service;
 import kz.attractor.api.dto.ClientDtoAdd;
 import kz.attractor.api.exception.ObjectDontExistException;
 import kz.attractor.datamodel.model.Client;
+import kz.attractor.datamodel.model.ClientBank;
 import kz.attractor.datamodel.model.ClientSpecification;
 import kz.attractor.datamodel.model.ClientStatus;
 import kz.attractor.datamodel.repository.ClientRepository;
@@ -71,25 +72,38 @@ public class ClientService {
                 .shortName(form.getShortName())
                 .accountNumber(form.getAccountNumber())
                 .address(form.getAddress())
-                .phone(form.getPhone())
-                .email(form.getEmail())
+                .phoneMain(form.getPhoneMain())
+                .phone1(form.getPhone1())
+                .phone2(form.getPhone2())
+                .phone3(form.getPhone3())
+                .emailMain(form.getEmailMain())
+                .email1(form.getEmail1())
+                .email2(form.getEmail2())
+                .email3(form.getEmail3())
                 .status(ClientStatus.valueOfLabel(form.getStatus()))
                 .bank(form.getBank())
                 .build();
         return ClientDto.from(clientRepository.save(client));
     }
 
-    public void add(ClientDtoAdd form) {
+    public ClientDto add(ClientDtoAdd form) {
         Client client = Client.builder()
                 .name(form.getName())
                 .shortName(form.getShortName())
                 .accountNumber(form.getAccountNumber())
                 .address(form.getAddress())
-                .phone(form.getPhone())
-                .email(form.getEmail())
+                .phoneMain(form.getPhoneMain())
+                .phone1(form.getPhone1())
+                .phone2(form.getPhone2())
+                .phone3(form.getPhone3())
+                .emailMain(form.getEmailMain())
+                .email1(form.getEmail1())
+                .email2(form.getEmail2())
+                .email3(form.getEmail3())
                 .status(ClientStatus.CLIENT_NEW)
-                .bank(form.getBank())
+                .bank(ClientBank.valueOfBankName(form.getBank()))
                 .build();
-        clientRepository.save(client);
+        Client savedClient = clientRepository.save(client);
+        return ClientDto.from(savedClient);
     }
 }

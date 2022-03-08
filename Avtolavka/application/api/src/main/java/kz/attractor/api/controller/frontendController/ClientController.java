@@ -1,7 +1,6 @@
 package kz.attractor.api.controller.frontendController;
 
 import kz.attractor.api.dto.ClientDto;
-import kz.attractor.api.dto.ClientDtoAdd;
 import kz.attractor.api.dto.ContactDto;
 import kz.attractor.api.service.ClientService;
 import kz.attractor.api.service.ContactService;
@@ -70,18 +69,5 @@ public class ClientController {
     public String add(Model model) {
         model.addAttribute("banks", ClientBank.values());
         return "client-add";
-    }
-
-    @PostMapping("client-add")
-    public String add(@Valid ClientDtoAdd form,
-                            BindingResult validationResult,
-                            RedirectAttributes attributes) {
-        attributes.addFlashAttribute("form", form);
-        if (validationResult.hasFieldErrors()) {
-            attributes.addFlashAttribute("errors", validationResult.getFieldErrors());
-            return "redirect:/clients/add";
-        }
-        clientService.add(form);
-        return "redirect:/clients";
     }
 }

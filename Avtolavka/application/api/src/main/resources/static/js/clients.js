@@ -1,4 +1,5 @@
 'use strict';
+const server = "http://localhost:8500/api/"
 showPageLayout();
 makeRequest(0);
 
@@ -12,7 +13,7 @@ $('.page-item').click(function (){
 function makeRequest(page) {
     $.ajax({
         method: "GET",
-        url: "http://localhost:8500/api/clients?page=" + page,
+        url: server + "clients?page=" + page,
         success: (response) => {
             showClientsTable(response.content);
         },
@@ -63,8 +64,8 @@ function showClientsTable(clients) {
                 <td>${clients[i].shortName}</td>
                 <td>${clients[i].accountNumber}</td>
                 <td>${clients[i].address}</td>
-                <td>${clients[i].phone}</td>
-                <td>${clients[i].email}</td>
+                <td>${clients[i].phoneMain}</td>
+                <td>${clients[i].emailMain}</td>
                 <td>${clients[i].status}</td>
             </tr>`));
     }
