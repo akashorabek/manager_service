@@ -5,8 +5,9 @@ import java.util.Map;
 
 public enum TaskStatus {
 
-    TASK_NEW("Новый"),
-    TASK_COMPLETED("Закрытый");
+    TASK_CURRENT("Текущий"),
+    TASK_MEDIUM("Средний"),
+    TASK_HIGH("Высокий");
 
     public final String label;
     private static final Map<String, TaskStatus> BY_LABEL = new HashMap<>();
