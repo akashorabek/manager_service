@@ -67,15 +67,23 @@
             </div>
             <div class="row mt-2">
                 <label class="flex flex-v-center">
-                    <span class="label-input-text mb-1">Статус:</span>
-                    <input type="text" name="status" value="${(form.status)!''}" >
-                    <#if errors?? >
-                        <#list errors as fieldError>
-                            <#if fieldError.field == 'status'>
-                                <p class="text-danger my-0">${fieldError.defaultMessage!'-- no message --'}</p>
-                            </#if>
-                        </#list>
-                    </#if>
+                    <span class="label-input-text mb-1">Приоритет:</span>
+                    <select name="status">
+                        <option value="" hidden>Выберите приоритетность: </option>
+                        <#if form.status=="Текущий">
+                            <option value="Текущий" selected>Текущий</option>
+                            <option value="Средний">Средний</option>
+                            <option value="Высокий">Высокий</option>
+                        <#elseif form.status=="Средний">
+                            <option value="Текущий">Текущий</option>
+                            <option value="Средний" selected>Средний</option>
+                            <option value="Высокий">Высокий</option>
+                        <#elseif form.status=="Высокий">
+                            <option value="Текущий">Текущий</option>
+                            <option value="Средний">Средний</option>
+                            <option value="Высокий" selected>Высокий</option>
+                        </#if>
+                    </select>
                 </label>
             </div>
             <div class="mt-3">

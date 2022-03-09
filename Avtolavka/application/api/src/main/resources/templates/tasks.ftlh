@@ -14,12 +14,12 @@
         <th>Наименование</th>
         <th>Дата создания</th>
         <th>Срок выполнения</th>
-        <th>Статус</th>
+        <th>Приоритет</th>
     </tr>
     </thead>
 
     <#list page.content as task>
-        <tr class="position-relative">
+        <tr class="position-relative" style="background-color:<#if task.status == "Высокий">rgba(243, 216, 87);</#if><#if task.status == "Средний">rgba(255, 248, 138);</#if><#if task.status == "Текущий">rgba(255, 255, 222);</#if>">
             <td>
                 <a href="/tasks/${task.id}" class="stretched-link" style="text-decoration: none; color: black">
                     ${task.name}

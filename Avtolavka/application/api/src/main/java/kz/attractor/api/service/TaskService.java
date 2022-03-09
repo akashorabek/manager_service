@@ -62,7 +62,7 @@ public class TaskService {
                 .description(dto.getDescription())
                 .createDate(LocalDate.now().toString())
                 .deadline(dto.getDeadline())
-                .status(TaskStatus.TASK_NEW)
+                .status(TaskStatus.TASK_CURRENT)
                 .build();
         repository.save(task);
     }
