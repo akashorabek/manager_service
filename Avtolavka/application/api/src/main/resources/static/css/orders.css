@@ -1,0 +1,41 @@
+.order_card {
+    cursor: pointer;
+}
+.client_name p {
+    font-size: 18px;
+}
+.order_add_left {
+    border-right: 2px solid #ecedee;
+}
+.client_item {
+    padding: 10px 15px;
+    border-radius: 5px;
+    border: 1px solid #dee2e6;
+    transition: .2s;
+    cursor: pointer;
+    margin-bottom: 5px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.title_order span {
+    font-size: calc(1.325rem + .9vw);
+}
+.client_item  h5 {
+    margin-bottom: 0;
+}
+.client_item:hover {
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, .2);
+}
+.product_row_item {
+    cursor: pointer;
+}
+.product_checkbox {
+    position: relative;
+    z-index: -1;
+}
+.order_product_item_input {
+    max-width: 100px;
+    min-width: 50px;
+}
