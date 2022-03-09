@@ -20,7 +20,7 @@ public class ProductController {
     @GetMapping("/products")
     public String showProductsPage(Model model,
                                    @RequestParam(required = false) String query,
-                                   @PageableDefault(sort = {"id"}, direction = Sort.Direction.ASC, size = 10) Pageable pageable) {
+                                   @PageableDefault(sort = {"inStock"}, direction = Sort.Direction.DESC, size = 10) Pageable pageable) {
         model.addAttribute("page", productService.findAll(query, pageable));
         if(query != null) {
             model.addAttribute("link", query);
