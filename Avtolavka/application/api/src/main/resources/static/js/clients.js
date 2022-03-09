@@ -1,26 +1,48 @@
 'use strict';
 const server = "http://localhost:8500/api/"
-showPageLayout();
 makeRequest(0);
 
-$('.page-item').click(function (){
-    let pageNumber = $(this).find('.page-link').text();
-    $('.page-item').removeClass('active');
-    $(this).addClass('active');
-    makeRequest(pageNumber - 1);
-})
+function setHandlers() {
+    $('.page-item').click(function (){
+        let pageNumber = $(this).find('.page-link').text();
+        $('.page-item').removeClass('active');
+        $(this).addClass('active');
+        makeRequest(pageNumber - 1);
+    })
+}
 
 function makeRequest(page) {
     $.ajax({
         method: "GET",
         url: server + "clients?page=" + page,
         success: (response) => {
+            showPageLayout();
+            showPageNavigator(response.totalPages, response.number);
             showClientsTable(response.content);
+            setHandlers();
         },
         error: (error) => {
             console.log(error);
         }
     })
+}
+
+function showPageNavigator(totalPages, number) {
+    for (let i = 1; i <= totalPages; i++) {
+        if (number == i - 1) {
+            $('.pagination').append($(`
+                <li class="page-item active">
+                    <span class="page-link">${i}</span>
+                </li>
+            `));
+        } else {
+            $('.pagination').append($(`
+                <li class="page-item">
+                    <span class="page-link">${i}</span>
+                </li>
+            `));
+        }
+    }
 }
 
 function showPageLayout() {
@@ -31,6 +53,7 @@ function showPageLayout() {
         <a class="btn btn-primary" href="/products/send-price">Отправить прайс</a>
         <br>
         <div class="container mb-3">
+            <ul class="pagination justify-content-center"></ul>
             <table class="table table-hover mt-3">
                 <thead class="table-light">
                 <tr>
@@ -47,7 +70,8 @@ function showPageLayout() {
                 <tbody></tbody>
             </table>
     `)
-    $('#containerClients').append(html)
+    $('#containerClients').empty();
+    $('#containerClients').append(html);
 }
 
 function showClientsTable(clients) {
